@@ -91,10 +91,13 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[85vh]">
-          {/* Left - Text Content with dark background */}
-          <div className="relative bg-hero text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32">
+      <section className="relative bg-hero overflow-hidden min-h-[85vh]">
+        {/* Full dark background */}
+        <div className="absolute inset-0 bg-hero" />
+        
+        <div className="relative flex flex-col lg:flex-row min-h-[85vh]">
+          {/* Left - Text Content */}
+          <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[1.1] mb-10 animate-slide-in-left">
               Making<br />
               Sustainability<br />
@@ -122,15 +125,19 @@ const Index = () => {
             </div>
 
             {/* Decorative diagonal line */}
-            <div className="absolute bottom-0 left-0 right-0">
-              <svg viewBox="0 0 100 20" preserveAspectRatio="none" className="w-full h-20 md:h-28">
-                <line x1="5" y1="100%" x2="75" y2="30%" stroke="hsl(var(--hero-foreground) / 0.15)" strokeWidth="0.3" />
+            <div className="absolute bottom-16 left-8 right-0 hidden lg:block">
+              <svg viewBox="0 0 100 15" preserveAspectRatio="none" className="w-full h-16">
+                <line x1="0" y1="100%" x2="70" y2="100%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
+                <line x1="70" y1="100%" x2="85" y2="20%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
               </svg>
             </div>
           </div>
 
-          {/* Right - Hero Image */}
-          <div className="relative lg:w-[45%] lg:absolute lg:right-0 lg:top-0 lg:bottom-0 h-[50vh] lg:h-auto">
+          {/* Right - Hero Image with clipped bottom-left corner */}
+          <div 
+            className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
+          >
             <img
               src="https://cdn.sanity.io/images/b0ecix6u/production/33db98553b79dd20d98499680c1a144136bfe16e-2000x1333.jpg?w=1200"
               alt="Wind turbines in a sustainable landscape"
@@ -140,9 +147,6 @@ const Index = () => {
             <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         </div>
-
-        {/* Bottom diagonal cutout transition */}
-        <div className="absolute bottom-0 left-0 w-[55%] lg:w-[55%] h-16 md:h-24 bg-background z-10" style={{ clipPath: "polygon(0 100%, 100% 100%, 85% 0, 0 100%)" }} />
       </section>
 
       {/* Latest Projects */}
