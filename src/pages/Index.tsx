@@ -91,15 +91,15 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[70vh]">
-          {/* Left - Text Content */}
-          <div className="container-slr flex flex-col justify-center py-16 lg:py-24 relative z-10">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-tight mb-8 animate-slide-in-left">
+      <section className="relative overflow-hidden">
+        <div className="flex flex-col lg:flex-row min-h-[85vh]">
+          {/* Left - Text Content with dark background */}
+          <div className="relative bg-hero text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[1.1] mb-10 animate-slide-in-left">
               Making<br />
               Sustainability<br />
-              <span className="inline-flex items-center gap-4">
-                <svg viewBox="0 0 40 40" className="w-12 h-12 md:w-16 md:h-16 text-primary-light">
+              <span className="inline-flex items-center gap-3 mt-2">
+                <svg viewBox="0 0 40 40" className="w-10 h-10 md:w-14 md:h-14 text-primary-light">
                   <circle cx="20" cy="8" r="4" fill="currentColor" />
                   <circle cx="8" cy="20" r="4" fill="currentColor" />
                   <circle cx="32" cy="20" r="4" fill="currentColor" />
@@ -120,22 +120,29 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
+
+            {/* Decorative diagonal line */}
+            <div className="absolute bottom-0 left-0 right-0">
+              <svg viewBox="0 0 100 20" preserveAspectRatio="none" className="w-full h-20 md:h-28">
+                <line x1="5" y1="100%" x2="75" y2="30%" stroke="hsl(var(--hero-foreground) / 0.15)" strokeWidth="0.3" />
+              </svg>
+            </div>
           </div>
 
           {/* Right - Hero Image */}
-          <div className="relative h-[50vh] lg:h-auto">
+          <div className="relative lg:w-[45%] lg:absolute lg:right-0 lg:top-0 lg:bottom-0 h-[50vh] lg:h-auto">
             <img
               src="https://cdn.sanity.io/images/b0ecix6u/production/33db98553b79dd20d98499680c1a144136bfe16e-2000x1333.jpg?w=1200"
               alt="Wind turbines in a sustainable landscape"
               className="w-full h-full object-cover"
             />
-            {/* Pattern Overlay */}
-            <div className="absolute bottom-0 right-0 w-1/2 h-1/2 section-pattern opacity-50" />
+            {/* Pattern Overlay on bottom right */}
+            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         </div>
-        
-        {/* Decorative diagonal line */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-background" style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0)" }} />
+
+        {/* Bottom diagonal cutout transition */}
+        <div className="absolute bottom-0 left-0 w-[55%] lg:w-[55%] h-16 md:h-24 bg-background z-10" style={{ clipPath: "polygon(0 100%, 100% 100%, 85% 0, 0 100%)" }} />
       </section>
 
       {/* Latest Projects */}
