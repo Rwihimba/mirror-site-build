@@ -1,89 +1,85 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Shield, Truck, Leaf, Package, DollarSign, Layers, CheckCircle, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 
-const projects = [
-  {
-    id: 1,
-    title: "Climate physical and transition risk assessment for Tronox",
-    client: "Tronox",
-    sector: "Mining",
-    region: "Global",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/ae3f8370a68fd9c400341ca9b72f609c7a00c606-3004x1997.jpg?w=600",
-  },
-  {
-    id: 2,
-    title: "V20 Group funding programme for climate change adaptation",
-    client: "UNIDO",
-    sector: "Government & Communities",
-    region: "Global",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/b01e368b7ec919a448948544869e4c4f2978a8bf-768x427.png?w=600",
-  },
-  {
-    id: 3,
-    title: "Energy management, decarbonisation and circularity for the chemicals sector",
-    client: "Anonymous",
-    sector: "Energy",
-    region: "International",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/03e6f967abb7a9abeecbe7a8bb00e38569104208-4288x2848.jpg?w=600",
-  },
-];
-
 const solutions = [
-  { title: "Climate Resilience & Net Zero", href: "/solutions/climate-resilience" },
-  { title: "Energy Transition", href: "/solutions/energy-transition" },
-  { title: "Nature, Natural Capital & Biodiversity", href: "/solutions/nature-biodiversity" },
-  { title: "Responsible Sourcing", href: "/solutions/responsible-sourcing" },
-  { title: "Social & Community Impact", href: "/solutions/social-impact" },
-  { title: "Sustainable Finance", href: "/solutions/sustainable-finance" },
-  { title: "Waste & Circularity", href: "/solutions/waste-circularity" },
-];
-
-const sectors = [
-  { title: "Energy", href: "/sectors/energy" },
-  { title: "Mining", href: "/sectors/mining" },
-  { title: "Finance", href: "/sectors/finance" },
-  { title: "Industry & Technology", href: "/sectors/industry" },
-  { title: "Government & Infrastructure", href: "/sectors/government" },
-  { title: "Built Environment", href: "/sectors/built-environment" },
-];
-
-const services = [
-  { title: "Advisory", href: "/services/advisory" },
-  { title: "Planning & Assessment", href: "/services/planning" },
-  { title: "Engineering & Design", href: "/services/engineering" },
-  { title: "Environmental & Earth Sciences", href: "/services/environmental" },
+  { 
+    title: "Safety & Compliance Intelligence", 
+    description: "Real-time safety monitoring and automated compliance reporting across all operations.",
+    icon: Shield 
+  },
+  { 
+    title: "Production & Fleet Optimization", 
+    description: "Maximize equipment utilization and production efficiency with intelligent scheduling.",
+    icon: Truck 
+  },
+  { 
+    title: "Environmental Monitoring & Reporting", 
+    description: "Continuous environmental data collection and automated regulatory reporting.",
+    icon: Leaf 
+  },
+  { 
+    title: "Supply Chain & Logistics", 
+    description: "End-to-end visibility and optimization of mining supply chain operations.",
+    icon: Package 
+  },
+  { 
+    title: "Financial Operations & Payroll", 
+    description: "Integrated financial management with automated payroll and cost tracking.",
+    icon: DollarSign 
+  },
+  { 
+    title: "Grade Control & Resource Management", 
+    description: "Precise ore tracking and resource optimization from extraction to processing.",
+    icon: Layers 
+  },
+  { 
+    title: "Quality Control & Processing", 
+    description: "Real-time quality monitoring and processing optimization systems.",
+    icon: CheckCircle 
+  },
+  { 
+    title: "Sub-Contractor Management Systems", 
+    description: "Unified contractor oversight with integrated compliance and performance tracking.",
+    icon: Users 
+  },
 ];
 
 const stats = [
-  { value: "135+", label: "Office Locations" },
-  { value: "4,500+", label: "Global Colleagues" },
-  { value: "127", label: "Countries" },
-  { value: "45+", label: "Technical Disciplines" },
+  { value: "15+", label: "Mining Departments Covered" },
+  { value: "690+", label: "Mining Concessions in Rwanda" },
+  { value: "40+", label: "Years Combined Mining Experience" },
+  { value: "10+", label: "Integrated Systems & Data Sources" },
 ];
 
-const insights = [
+const useCases = [
   {
-    title: "Challenges to reach net zero data centres",
-    authors: "Sharon Abram, Jonny Clark, Peter Lo",
-    date: "04 December 2025",
-    readTime: "8 minutes read",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/ab3dc0beb1bbf30a7e619755bf189bccafbe5ff2-1000x425.png?w=400",
+    title: "Real-Time Grade Control Intelligence",
+    description: "Grade control data flows instantly from geology to operations, preventing ore dilution and processing inefficiencies. Lab results automatically align with live mining locations and equipment assignments, enabling real-time extraction adjustments.",
+    impacts: [
+      "15–20% reduction in ore dilution",
+      "Optimized stockpile management",
+      "Full grade reconciliation from blast to mill"
+    ]
   },
   {
-    title: "Developing an inventory of US hydrogen emissions",
-    authors: "Patrick Dilsaver, Kenny Malmquist",
-    date: "02 December 2025",
-    readTime: "5 minutes read",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/a8814492cd2dc967ba17ec5fc7a83140c28ee80e-4127x2413.jpg?w=400",
+    title: "Automated Compliance & License Management",
+    description: "MineTech continuously aggregates operational data across departments and automatically generates regulatory reports.",
+    impacts: [
+      "80% reduction in compliance reporting time",
+      "Zero missed submissions",
+      "Continuous audit-ready documentation"
+    ]
   },
   {
-    title: "Transforming the Food & Beverage industry: From compliance only to business-driven decarbonisation",
-    authors: "Vincenzo Giordano, Joseph Payne, Stéphane Rapoport",
-    date: "01 December 2025",
-    readTime: "6 minutes read",
-    image: "https://cdn.sanity.io/images/b0ecix6u/production/eb708da92fb21a285dd6fe484af98ddb2a1258e5-1000x425.png?w=400",
+    title: "Integrated Workforce Intelligence",
+    description: "MineTech unifies attendance, payroll, certifications, and equipment assignments into a single workforce intelligence layer.",
+    impacts: [
+      "30–40% reduction in HR admin time",
+      "Optimized labor allocation",
+      "Full RSSB compliance automation"
+    ]
   },
 ];
 
@@ -92,33 +88,45 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative bg-hero overflow-hidden min-h-[85vh]">
-        {/* Full dark background */}
-        <div className="absolute inset-0 bg-hero" />
+        {/* Background animation - abstract data particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-hero" />
+          {/* Animated particles */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          {/* Subtle connecting lines */}
+          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+          </svg>
+        </div>
         
         <div className="relative flex flex-col lg:flex-row min-h-[85vh]">
           {/* Left - Text Content */}
           <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[1.1] mb-10 animate-slide-in-left">
-              Making<br />
-              Sustainability<br />
-              <span className="inline-flex items-center gap-3 mt-2">
-                <svg viewBox="0 0 40 40" className="w-10 h-10 md:w-14 md:h-14 text-primary-light">
-                  <circle cx="20" cy="8" r="4" fill="currentColor" />
-                  <circle cx="8" cy="20" r="4" fill="currentColor" />
-                  <circle cx="32" cy="20" r="4" fill="currentColor" />
-                  <circle cx="20" cy="32" r="4" fill="currentColor" />
-                  <circle cx="12" cy="12" r="3" fill="currentColor" />
-                  <circle cx="28" cy="12" r="3" fill="currentColor" />
-                  <circle cx="12" cy="28" r="3" fill="currentColor" />
-                  <circle cx="28" cy="28" r="3" fill="currentColor" />
-                </svg>
-                Happen.
-              </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-10 animate-slide-in-left">
+              Every action at your mine triggers instant intelligence and real-time insights.
             </h1>
-            <div className="animate-slide-up" style={{ animationDelay: "0.3s" }}>
-              <Link to="/about/mission">
+            <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+              <Link to="/invest">
                 <Button variant="hero-accent" className="group">
-                  Our Mission
+                  Invest
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
+              </Link>
+              <Link to="/partner">
+                <Button variant="hero-accent" className="group">
+                  Partner
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
+              </Link>
+              <Link to="/deploy">
+                <Button variant="hero-accent" className="group">
+                  Deploy
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
               </Link>
@@ -140,7 +148,7 @@ const Index = () => {
           >
             <img
               src="https://cdn.sanity.io/images/b0ecix6u/production/33db98553b79dd20d98499680c1a144136bfe16e-2000x1333.jpg?w=1200"
-              alt="Wind turbines in a sustainable landscape"
+              alt="Mining operations with data intelligence overlay"
               className="w-full h-full object-cover"
             />
             {/* Pattern Overlay on bottom right */}
@@ -149,170 +157,81 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Latest Projects */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container-slr">
-          <h2 className="text-3xl md:text-4xl font-display mb-12">Latest Projects</h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <article key={project.id} className="group card-hover bg-card rounded-lg overflow-hidden">
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-card">
-                    <span className="bg-card/20 backdrop-blur px-3 py-1 rounded text-sm font-body">Project</span>
-                    <span className="text-sm font-body flex items-center gap-1">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      {project.region}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-2 font-body">
-                    <span>{project.client}</span>
-                    <span>{project.sector}</span>
-                  </div>
-                  <h3 className="text-lg font-display font-medium mb-4 line-clamp-2">{project.title}</h3>
-                  <div className="border-t border-border pt-4">
-                    <Link to={`/projects/${project.id}`} className="link-arrow text-sm font-medium text-primary font-body">
-                      Read more
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/projects">
-              <Button variant="outline" className="group">
-                View all projects
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
+      {/* Post-Hero Section - Split Layout */}
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container-slr">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <img
-                src="https://cdn.sanity.io/images/b0ecix6u/production/34137ed3c6b453b7861b2ca425a3f231da98b12a-1040x594.png?w=800"
-                alt="Sustainability illustration"
-                className="rounded-lg"
-              />
-            </div>
-            <div>
               <p className="text-lg md:text-xl leading-relaxed text-foreground/80 mb-6 font-body">
-                Sustainability is no longer discretionary. It has shifted to a core business consideration across operations, culture, strategy and markets. Balancing priorities amid complexity, and within the landscape of a volatile and uncertain world, is harder than ever.
+                Mining operations today run on dozens of systems—fleet management, safety monitoring, production tracking, compliance reporting. Each generates valuable data. But when these systems operate in silos, that data remains trapped, and critical insights slip through the cracks. The challenge isn't digitization anymore. It's orchestration.
               </p>
               <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
-                At SLR, we help clients act with confidence through Rational Sustainability - an evidence-based approach that moves beyond box-ticking to focus on what truly delivers long-term value.
+                At MineTech, we connect your existing systems into a unified intelligence platform—transforming isolated data streams into synchronized, real-time insights that drive decisive action across your entire operation.
               </p>
-              <p className="text-lg leading-relaxed text-foreground/80 font-body">
-                Our promise? To guide bold choices and deliver meaningful results, through real-world action that ensures we're Making Sustainability Happen.
+              <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
+                Our promise? To turn your disconnected digital landscape into orchestrated intelligence, delivering visibility, control, and confidence at every level of your mine.
               </p>
+              <p className="text-xl font-display font-semibold text-foreground">
+                Real-Time Mining Intelligence, Orchestrated.
+              </p>
+            </div>
+            <div>
+              <img
+                src="https://cdn.sanity.io/images/b0ecix6u/production/34137ed3c6b453b7861b2ca425a3f231da98b12a-1040x594.png?w=800"
+                alt="Abstract mining operations with data overlays and systems converging"
+                className="w-full aspect-square object-cover"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Full-Spectrum Solutions */}
+      {/* Solutions Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-display mb-4">Full-Spectrum Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-display mb-4">End-to-End Mining Intelligence</h2>
             <p className="text-lg text-muted-foreground font-body max-w-3xl">
-              We are specialists in our field, able to offer clients full-spectrum sustainability strategy through to project delivery support. This enables us to help clients tackle the greatest sustainability challenges they face today.
+              MineTech is a specialist in mining digitization, offering full orchestration—from integration strategy to real-time operational intelligence, covering every department and decision.
             </p>
             <Link to="/about" className="link-arrow text-primary font-medium mt-4 inline-flex font-body">
-              Learn more about our process
+              Learn more about our approach
               <ArrowUpRight className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Solutions Column */}
-            <div className="bg-card p-8 rounded-lg">
-              <h3 className="text-2xl font-display font-semibold mb-6">Solutions</h3>
-              <ul className="space-y-3">
-                {solutions.map((item) => (
-                  <li key={item.title}>
-                    <Link to={item.href} className="text-muted-foreground hover:text-primary transition-colors font-body">
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/solutions" className="link-arrow text-primary font-medium mt-6 inline-flex font-body">
-                View Solutions
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Sectors Column */}
-            <div className="bg-card p-8 rounded-lg">
-              <h3 className="text-2xl font-display font-semibold mb-6">Sectors</h3>
-              <ul className="space-y-3">
-                {sectors.map((item) => (
-                  <li key={item.title}>
-                    <Link to={item.href} className="text-muted-foreground hover:text-primary transition-colors font-body">
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/sectors" className="link-arrow text-primary font-medium mt-6 inline-flex font-body">
-                View Sectors
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Services Column */}
-            <div className="bg-card p-8 rounded-lg">
-              <h3 className="text-2xl font-display font-semibold mb-6">Services</h3>
-              <ul className="space-y-3">
-                {services.map((item) => (
-                  <li key={item.title}>
-                    <Link to={item.href} className="text-muted-foreground hover:text-primary transition-colors font-body">
-                      {item.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/services" className="link-arrow text-primary font-medium mt-6 inline-flex font-body">
-                View Services
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {solutions.map((solution) => (
+              <div key={solution.title} className="bg-card p-6 rounded-lg hover:shadow-lg transition-shadow">
+                <solution.icon className="w-8 h-8 text-primary mb-4" />
+                <h3 className="text-lg font-display font-semibold mb-2">{solution.title}</h3>
+                <p className="text-sm text-muted-foreground font-body">{solution.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Working at SLR */}
+      {/* Working at MineTech */}
       <section className="py-16 md:py-24 bg-hero text-hero-foreground section-pattern">
         <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-display mb-6">Working at SLR</h2>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">Working at MineTech</h2>
+              <p className="text-lg text-hero-foreground/80 font-body mb-4">
+                MineTech is building Africa's leading mining technology team by combining:
+              </p>
+              <ul className="text-lg text-hero-foreground/80 font-body mb-6 space-y-2">
+                <li>• Mining professionals</li>
+                <li>• Software engineers</li>
+                <li>• Data scientists</li>
+              </ul>
               <p className="text-lg text-hero-foreground/80 font-body mb-6">
-                SLR is committed to creating and sustaining a global, inclusive culture, where differences are embraced for the benefit of our people, our clients and the communities around us.
+                All united by one mission: Transform African mining through intelligent technology.
               </p>
               <Link to="/careers">
                 <Button variant="hero-accent" className="group">
-                  Careers at SLR
+                  Careers at MineTech
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
               </Link>
@@ -326,57 +245,38 @@ const Index = () => {
               ))}
             </div>
           </div>
-
-          {/* One Team Section */}
-          <div className="bg-hero-foreground/5 rounded-lg p-8 md:p-12 backdrop-blur">
-            <h3 className="text-2xl font-display font-semibold mb-4">One Team</h3>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-3xl">
-              SLR's One Team culture is the backbone of our organisation. Our strength not only comes from our skills and experience, but also from our ability to collaborate across disciplines and regions - supporting each other on a global basis.
-            </p>
-          </div>
         </div>
       </section>
 
-      {/* Latest Thinking */}
+      {/* Use Cases Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
-          <h2 className="text-3xl md:text-4xl font-display mb-12">Latest Thinking</h2>
+          <h2 className="text-3xl md:text-4xl font-display mb-12">Use Cases</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {insights.map((insight, index) => (
-              <article key={index} className="group card-hover bg-card rounded-lg overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={insight.image}
-                    alt={insight.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-card px-3 py-1 rounded text-sm font-body">Insight</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3 font-body">
-                    <span>{insight.date}</span>
-                    <span>{insight.readTime}</span>
-                  </div>
-                  <h3 className="text-lg font-display font-medium mb-3 line-clamp-2">{insight.title}</h3>
-                  <p className="text-sm text-muted-foreground font-body mb-4">by {insight.authors}</p>
-                  <div className="border-t border-border pt-4">
-                    <Link to="/insights" className="link-arrow text-sm font-medium text-primary font-body">
-                      View post
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Link>
-                  </div>
+            {useCases.map((useCase, index) => (
+              <article key={index} className="group bg-card rounded-lg overflow-hidden p-6 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-display font-semibold mb-4">{useCase.title}</h3>
+                <p className="text-muted-foreground font-body mb-6">{useCase.description}</p>
+                <div className="border-t border-border pt-4">
+                  <p className="text-sm font-semibold text-foreground mb-2">Impact:</p>
+                  <ul className="space-y-1">
+                    {useCase.impacts.map((impact, i) => (
+                      <li key={i} className="text-sm text-muted-foreground font-body flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        {impact}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </article>
             ))}
           </div>
           
           <div className="text-center mt-10">
-            <Link to="/content-hub">
+            <Link to="/use-cases">
               <Button variant="outline" className="group">
-                View all articles
+                View other use cases
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Button>
             </Link>
