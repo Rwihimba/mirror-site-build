@@ -133,15 +133,17 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right - Hero Image with clipped bottom-left corner */}
+          {/* Right - Hero Video with clipped bottom-left corner */}
           <div 
             className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
-            <img
-              src="https://cdn.sanity.io/images/b0ecix6u/production/33db98553b79dd20d98499680c1a144136bfe16e-2000x1333.jpg?w=1200"
-              alt="Mining operations with data intelligence overlay"
+            <iframe
+              src="https://player.cloudinary.com/embed/?cloud_name=dq1bqc51a&public_id=6618334-uhd_3840_2160_24fps_zkcwzx&profile=cld-default&autoplay=true&loop=true&muted=true&controls=false"
               className="w-full h-full object-cover"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              loading="lazy"
+              style={{ border: 'none' }}
             />
             {/* Pattern Overlay on bottom right */}
             <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
