@@ -1,25 +1,11 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter } from "lucide-react";
 
-const footerLinks = {
-  solutions: [
-    { title: "Safety & Compliance Intelligence", href: "/solutions/safety-compliance" },
-    { title: "Production & Fleet Optimization", href: "/solutions/production-fleet" },
-    { title: "Environmental Monitoring", href: "/solutions/environmental" },
-    { title: "Supply Chain & Logistics", href: "/solutions/supply-chain" },
-    { title: "Grade Control & Resource Management", href: "/solutions/grade-control" },
-  ],
-  useCases: [
-    { title: "Real-Time Grade Control", href: "/use-cases/grade-control" },
-    { title: "Automated Compliance", href: "/use-cases/compliance" },
-    { title: "Workforce Intelligence", href: "/use-cases/workforce" },
-  ],
-  company: [
-    { title: "About Us", href: "/about" },
-    { title: "Careers", href: "/careers" },
-    { title: "Contact", href: "/contact" },
-  ],
-};
+const companyLinks = [
+  { title: "About Us", href: "/about" },
+  { title: "Careers", href: "/careers" },
+  { title: "Contact", href: "/contact" },
+];
 
 export function Footer() {
   return (
@@ -43,44 +29,17 @@ export function Footer() {
           <p className="text-lg font-display">Real-Time Mining Intelligence, Orchestrated.</p>
         </div>
 
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
-          <div>
-            <h4 className="font-display font-semibold mb-4">Solutions</h4>
-            <ul className="space-y-2">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold mb-4">Use Cases</h4>
-            <ul className="space-y-2">
-              {footerLinks.useCases.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        {/* Company Links - Horizontal */}
+        <div className="flex flex-wrap items-center gap-6 mb-12">
+          {companyLinks.map((link) => (
+            <Link 
+              key={link.title} 
+              to={link.href} 
+              className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity"
+            >
+              {link.title}
+            </Link>
+          ))}
         </div>
 
         {/* Social Links */}

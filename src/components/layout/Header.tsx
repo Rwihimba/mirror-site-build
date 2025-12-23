@@ -28,6 +28,9 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
+          <Link to="/" className="text-sm font-body hover:text-primary-light transition-colors">
+            Home
+          </Link>
           <Link to="/solutions" className="text-sm font-body hover:text-primary-light transition-colors">
             Solutions
           </Link>
@@ -67,6 +70,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-hero border-t border-hero-foreground/10">
           <nav className="container-slr py-4 space-y-2">
+            <Link to="/" className="block py-2 font-body text-sm">Home</Link>
             <Link to="/solutions" className="block py-2 font-body text-sm">Solutions</Link>
             <Link to="/about" className="block py-2 font-body text-sm">About</Link>
             <Link to="/careers" className="block py-2 font-body text-sm">Career</Link>
