@@ -1,132 +1,103 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
-
-const footerLinks = {
-  solutions: [
-    { title: "Climate Resilience & Net Zero", href: "/solutions/climate-resilience" },
-    { title: "Energy Transition", href: "/solutions/energy-transition" },
-    { title: "Nature & Biodiversity", href: "/solutions/nature-biodiversity" },
-    { title: "Responsible Sourcing", href: "/solutions/responsible-sourcing" },
-    { title: "Social & Community Impact", href: "/solutions/social-impact" },
-  ],
-  sectors: [
-    { title: "Built Environment", href: "/sectors/built-environment" },
-    { title: "Energy", href: "/sectors/energy" },
-    { title: "Finance", href: "/sectors/finance" },
-    { title: "Mining", href: "/sectors/mining" },
-    { title: "Government & Infrastructure", href: "/sectors/government" },
-  ],
-  services: [
-    { title: "Advisory", href: "/services/advisory" },
-    { title: "Planning & Assessment", href: "/services/planning" },
-    { title: "Engineering & Design", href: "/services/engineering" },
-    { title: "Environmental Sciences", href: "/services/environmental" },
-  ],
-  company: [
-    { title: "About Us", href: "/about" },
-    { title: "Careers", href: "/careers" },
-    { title: "Contact", href: "/contact" },
-    { title: "Projects", href: "/projects" },
-  ],
-};
+import { Linkedin, Twitter, Mail } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="bg-footer text-footer-foreground footer-pattern">
-      <div className="container-slr py-16 md:py-20">
-        {/* Logo and tagline */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <svg viewBox="0 0 40 40" className="w-8 h-8 text-primary-light">
-              <circle cx="20" cy="8" r="4" fill="currentColor" />
-              <circle cx="8" cy="20" r="4" fill="currentColor" />
-              <circle cx="32" cy="20" r="4" fill="currentColor" />
-              <circle cx="20" cy="32" r="4" fill="currentColor" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-              <circle cx="28" cy="12" r="3" fill="currentColor" />
-              <circle cx="12" cy="28" r="3" fill="currentColor" />
-              <circle cx="28" cy="28" r="3" fill="currentColor" />
-            </svg>
-            <span className="text-2xl font-display font-semibold">SLR</span>
+      <div className="container-minetech py-16 md:py-20">
+        {/* Top Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          {/* Logo and Tagline */}
+          <div className="max-w-md">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded bg-primary-light/20 flex items-center justify-center">
+                <div className="w-4 h-4 bg-primary-light rounded-sm" />
+              </div>
+              <span className="text-2xl font-display font-semibold">MineTech</span>
+            </div>
+            <p className="text-sm font-body text-footer-foreground/70 leading-relaxed">
+              Real-Time Mining Intelligence, Orchestrated. Transforming African mining through intelligent technology.
+            </p>
           </div>
-          <p className="text-lg font-display">Making Sustainability Happen</p>
-        </div>
 
-        {/* Links Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-          <div>
-            <h4 className="font-display font-semibold mb-4">Solutions</h4>
-            <ul className="space-y-2">
-              {footerLinks.solutions.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
+          {/* Quick Links */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
+            <div>
+              <h4 className="font-display font-semibold mb-4 text-sm uppercase tracking-wider">Company</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/about" className="text-sm font-body text-footer-foreground/60 hover:text-footer-foreground transition-colors">
+                    About
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold mb-4">Sectors</h4>
-            <ul className="space-y-2">
-              {footerLinks.sectors.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
+                <li>
+                  <Link to="/careers" className="text-sm font-body text-footer-foreground/60 hover:text-footer-foreground transition-colors">
+                    Careers
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              {footerLinks.services.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
+                <li>
+                  <Link to="/contact" className="text-sm font-body text-footer-foreground/60 hover:text-footer-foreground transition-colors">
+                    Contact
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-display font-semibold mb-4">Company</h4>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link) => (
-                <li key={link.title}>
-                  <Link to={link.href} className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity">
-                    {link.title}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold mb-4 text-sm uppercase tracking-wider">Solutions</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/solutions" className="text-sm font-body text-footer-foreground/60 hover:text-footer-foreground transition-colors">
+                    All Solutions
                   </Link>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <Link to="/use-cases" className="text-sm font-body text-footer-foreground/60 hover:text-footer-foreground transition-colors">
+                    Use Cases
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold mb-4 text-sm uppercase tracking-wider">Connect</h4>
+              <div className="flex items-center gap-3">
+                <a 
+                  href="#" 
+                  className="p-2 rounded bg-footer-foreground/5 hover:bg-footer-foreground/10 transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a 
+                  href="#" 
+                  className="p-2 rounded bg-footer-foreground/5 hover:bg-footer-foreground/10 transition-colors"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+                <a 
+                  href="#" 
+                  className="p-2 rounded bg-footer-foreground/5 hover:bg-footer-foreground/10 transition-colors"
+                  aria-label="Email"
+                >
+                  <Mail className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Social Links */}
-        <div className="flex items-center gap-4 mb-8">
-          <a href="#" className="p-2 rounded-full bg-footer-foreground/10 hover:bg-footer-foreground/20 transition-colors">
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a href="#" className="p-2 rounded-full bg-footer-foreground/10 hover:bg-footer-foreground/20 transition-colors">
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a href="#" className="p-2 rounded-full bg-footer-foreground/10 hover:bg-footer-foreground/20 transition-colors">
-            <Youtube className="w-5 h-5" />
-          </a>
-          <a href="#" className="p-2 rounded-full bg-footer-foreground/10 hover:bg-footer-foreground/20 transition-colors">
-            <Instagram className="w-5 h-5" />
-          </a>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-footer-foreground/20 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="text-sm font-body opacity-60">© 2024 SLR Consulting. All rights reserved.</p>
-          <div className="flex flex-wrap gap-4 text-sm font-body">
-            <Link to="/privacy" className="opacity-60 hover:opacity-100 transition-opacity">Privacy Policy</Link>
-            <Link to="/terms" className="opacity-60 hover:opacity-100 transition-opacity">Terms of Use</Link>
-            <Link to="/cookies" className="opacity-60 hover:opacity-100 transition-opacity">Cookie Policy</Link>
+        <div className="pt-8 border-t border-footer-foreground/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="text-xs font-body text-footer-foreground/40">
+            © 2024 MineTech. All rights reserved.
+          </p>
+          <div className="flex flex-wrap gap-6 text-xs font-body">
+            <Link to="/privacy" className="text-footer-foreground/40 hover:text-footer-foreground/70 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-footer-foreground/40 hover:text-footer-foreground/70 transition-colors">
+              Terms of Use
+            </Link>
           </div>
         </div>
       </div>
