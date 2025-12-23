@@ -1,48 +1,40 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Shield, Truck, Leaf, Package, DollarSign, Layers, CheckCircle, Users } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 
 const solutions = [
   { 
     title: "Safety & Compliance Intelligence", 
-    description: "Real-time safety monitoring and automated compliance reporting across all operations.",
-    icon: Shield 
+    description: "Real-time safety monitoring and automated compliance reporting across all operations."
   },
   { 
     title: "Production & Fleet Optimization", 
-    description: "Maximize equipment utilization and production efficiency with intelligent scheduling.",
-    icon: Truck 
+    description: "Maximize equipment utilization and production efficiency with intelligent scheduling."
   },
   { 
     title: "Environmental Monitoring & Reporting", 
-    description: "Continuous environmental data collection and automated regulatory reporting.",
-    icon: Leaf 
+    description: "Continuous environmental data collection and automated regulatory reporting."
   },
   { 
     title: "Supply Chain & Logistics", 
-    description: "End-to-end visibility and optimization of mining supply chain operations.",
-    icon: Package 
+    description: "End-to-end visibility and optimization of mining supply chain operations."
   },
   { 
     title: "Financial Operations & Payroll", 
-    description: "Integrated financial management with automated payroll and cost tracking.",
-    icon: DollarSign 
+    description: "Integrated financial management with automated payroll and cost tracking."
   },
   { 
     title: "Grade Control & Resource Management", 
-    description: "Precise ore tracking and resource optimization from extraction to processing.",
-    icon: Layers 
+    description: "Precise ore tracking and resource optimization from extraction to processing."
   },
   { 
     title: "Quality Control & Processing", 
-    description: "Real-time quality monitoring and processing optimization systems.",
-    icon: CheckCircle 
+    description: "Real-time quality monitoring and processing optimization systems."
   },
   { 
     title: "Sub-Contractor Management Systems", 
-    description: "Unified contractor oversight with integrated compliance and performance tracking.",
-    icon: Users 
+    description: "Unified contractor oversight with integrated compliance and performance tracking."
   },
 ];
 
@@ -203,7 +195,6 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {solutions.map((solution) => (
               <div key={solution.title} className="bg-card p-6 rounded-lg hover:shadow-lg transition-shadow">
-                <solution.icon className="w-8 h-8 text-primary mb-4" />
                 <h3 className="text-lg font-display font-semibold mb-2">{solution.title}</h3>
                 <p className="text-sm text-muted-foreground font-body">{solution.description}</p>
               </div>
