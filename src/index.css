@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,86 +6,86 @@
 
 @layer base {
   :root {
-    /* MineTech - Deep Intelligence Blue/Slate */
-    --primary: 220 25% 12%;
-    --primary-foreground: 210 20% 98%;
-    --primary-light: 200 70% 50%;
-    --primary-dark: 220 30% 8%;
+    /* Primary - Chocolate replacing SLR Green */
+    --primary: 24 78% 24%;
+    --primary-foreground: 40 33% 96%;
+    --primary-light: 30 50% 65%;
+    --primary-dark: 24 78% 18%;
     
-    /* Background colors - Clean whites */
-    --background: 210 20% 98%;
-    --foreground: 220 25% 12%;
+    /* Background colors */
+    --background: 40 20% 96%;
+    --foreground: 24 30% 15%;
     
     /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 12%;
+    --card-foreground: 24 30% 15%;
     
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 12%;
+    --popover-foreground: 24 30% 15%;
     
-    /* Secondary - Light gray */
-    --secondary: 210 15% 95%;
-    --secondary-foreground: 220 25% 12%;
+    /* Secondary - Warm beige/cream */
+    --secondary: 40 25% 92%;
+    --secondary-foreground: 24 30% 15%;
     
     /* Muted */
-    --muted: 210 10% 92%;
-    --muted-foreground: 220 15% 45%;
+    --muted: 40 15% 88%;
+    --muted-foreground: 24 15% 45%;
     
-    /* Accent - Electric blue for CTAs */
-    --accent: 200 100% 50%;
-    --accent-foreground: 220 25% 12%;
+    /* Accent - Lime/Yellow-green button (like SLR's CTA) */
+    --accent: 68 60% 70%;
+    --accent-foreground: 24 78% 18%;
     
     /* Hero section dark background */
-    --hero-bg: 220 25% 10%;
-    --hero-foreground: 210 20% 96%;
+    --hero-bg: 24 40% 18%;
+    --hero-foreground: 40 33% 96%;
     
     /* Footer dark */
-    --footer-bg: 220 30% 8%;
-    --footer-foreground: 210 15% 80%;
+    --footer-bg: 24 40% 15%;
+    --footer-foreground: 40 20% 85%;
     
     /* Destructive */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
     /* Border and input */
-    --border: 210 15% 90%;
-    --input: 210 15% 90%;
-    --ring: 200 100% 50%;
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 24 78% 24%;
     
-    --radius: 0.125rem;
+    --radius: 0.25rem;
     
     /* Sidebar */
-    --sidebar-background: 220 25% 10%;
-    --sidebar-foreground: 210 15% 90%;
-    --sidebar-primary: 200 100% 50%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 20% 18%;
-    --sidebar-accent-foreground: 210 15% 90%;
-    --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 200 100% 50%;
+    --sidebar-background: 24 40% 18%;
+    --sidebar-foreground: 40 20% 90%;
+    --sidebar-primary: 24 78% 24%;
+    --sidebar-primary-foreground: 40 33% 96%;
+    --sidebar-accent: 24 35% 25%;
+    --sidebar-accent-foreground: 40 20% 90%;
+    --sidebar-border: 24 30% 25%;
+    --sidebar-ring: 24 78% 40%;
   }
 
   .dark {
-    --background: 220 25% 8%;
-    --foreground: 210 15% 95%;
-    --card: 220 25% 12%;
-    --card-foreground: 210 15% 95%;
-    --popover: 220 25% 12%;
-    --popover-foreground: 210 15% 95%;
-    --primary: 200 70% 50%;
-    --primary-foreground: 220 25% 8%;
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 15% 95%;
-    --muted: 220 20% 22%;
-    --muted-foreground: 210 10% 55%;
-    --accent: 200 100% 50%;
-    --accent-foreground: 220 25% 8%;
+    --background: 24 40% 10%;
+    --foreground: 40 20% 95%;
+    --card: 24 35% 15%;
+    --card-foreground: 40 20% 95%;
+    --popover: 24 35% 15%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 30 50% 65%;
+    --primary-foreground: 24 78% 18%;
+    --secondary: 24 30% 20%;
+    --secondary-foreground: 40 20% 95%;
+    --muted: 24 25% 25%;
+    --muted-foreground: 40 15% 60%;
+    --accent: 68 60% 70%;
+    --accent-foreground: 24 78% 18%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 20% 22%;
-    --input: 220 20% 22%;
-    --ring: 200 100% 50%;
+    --border: 24 25% 25%;
+    --input: 24 25% 25%;
+    --ring: 30 50% 65%;
   }
 }
 
@@ -99,27 +99,25 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display;
   }
 }
 
 @layer components {
-  .container-minetech {
-    @apply w-full max-w-[1280px] mx-auto px-6 md:px-8 lg:px-12;
+  .container-slr {
+    @apply w-full max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12;
   }
 
   .hero-gradient {
-    background: linear-gradient(180deg, hsl(var(--hero-bg)) 0%, hsl(220 25% 14%) 100%);
+    background: linear-gradient(135deg, hsl(var(--hero-bg)) 0%, hsl(24 35% 22%) 100%);
   }
 
-  .data-flow-pattern {
-    background-image: radial-gradient(circle at 1px 1px, hsl(var(--primary-light) / 0.08) 1px, transparent 0);
-    background-size: 32px 32px;
+  .section-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='none' stroke='%23ffffff' stroke-opacity='0.08' stroke-width='1'/%3E%3C/svg%3E");
   }
 
   .footer-pattern {
-    background-image: radial-gradient(circle at 1px 1px, hsl(210 15% 90% / 0.04) 1px, transparent 0);
-    background-size: 24px 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0L80 40L40 80L0 40z' fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
   }
 
   .text-balance {
@@ -137,10 +135,6 @@
   .card-hover {
     @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
   }
-
-  .glass-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border;
-  }
 }
 
 @layer utilities {
@@ -154,14 +148,6 @@
 
   .animate-slide-in-left {
     animation: slideInLeft 0.8s ease-out forwards;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulseSlow 4s ease-in-out infinite;
   }
 
   @keyframes fadeIn {
@@ -192,24 +178,6 @@
     to {
       opacity: 1;
       transform: translateX(0);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  @keyframes pulseSlow {
-    0%, 100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
     }
   }
 }
