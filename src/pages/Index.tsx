@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import miningPit from "@/assets/mining-pit.jpg";
 import miningLoader from "@/assets/mining-loader.jpg";
+import miningTunnel from "@/assets/mining-tunnel.jpg";
 
 const solutions = [
   { 
@@ -135,17 +136,15 @@ const Index = () => {
             </div>
           </div>
 
-          {/* Right - Hero Video with clipped bottom-left corner */}
+          {/* Right - Hero Image with clipped bottom-left corner */}
           <div 
             className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
-            <iframe
-              src="https://player.cloudinary.com/embed/?cloud_name=dq1bqc51a&public_id=6618334-uhd_3840_2160_24fps_zkcwzx&profile=cld-default&autoplay=true&loop=true&muted=true&controls=false"
+            <img
+              src={miningTunnel}
+              alt="Underground mining tunnel with railway tracks"
               className="w-full h-full object-cover"
-              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-              loading="lazy"
-              style={{ border: 'none' }}
             />
             {/* Pattern Overlay on bottom right */}
             <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
