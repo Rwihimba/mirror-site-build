@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import miningPit from "@/assets/mining-pit.jpg";
+import { UseCaseCard } from "@/components/sections";
 import miningLoader from "@/assets/mining-loader.jpg";
 import heroImage from "@/assets/contact-hero.png";
 import InvestDialog from "@/components/forms/InvestDialog";
@@ -81,23 +81,32 @@ const useCases = [
   },
 ];
 
+const ParticlesBackground = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+    <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+    <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+    <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
+    <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+    <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+      <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+      <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+    </svg>
+  </div>
+);
+
 const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative bg-hero overflow-hidden min-h-[85vh] pt-16">
-        {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src={heroImage} 
-            alt="" 
-            className="w-full h-full object-cover"
-          />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-hero/60" />
         </div>
         
         <div className="relative flex flex-col lg:flex-row min-h-[85vh]">
-          {/* Left - Text Content */}
           <div className="relative text-hero-foreground lg:w-[65%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-10 animate-slide-in-left">
               Every action at your mine triggers instant intelligence and real-time insights.
@@ -108,7 +117,6 @@ const Index = () => {
               <QuoteDialog />
             </div>
 
-            {/* Decorative diagonal line */}
             <div className="absolute bottom-16 left-8 right-0 hidden lg:block">
               <svg viewBox="0 0 100 15" preserveAspectRatio="none" className="w-full h-16">
                 <line x1="0" y1="100%" x2="70" y2="100%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
@@ -119,8 +127,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Post-Hero Section - Split Layout */}
-      <section className="bg-secondary" data-section="light">
+      {/* Post-Hero Section */}
+      <section className="bg-secondary">
         <div className="grid lg:grid-cols-2 gap-0 items-stretch">
           <div className="py-16 md:py-24 pl-8 md:pl-12 lg:pl-20 pr-8 md:pr-12 lg:pr-12">
             <p className="text-lg md:text-xl leading-relaxed text-foreground/80 mb-6 font-body">
@@ -137,17 +145,13 @@ const Index = () => {
             </p>
           </div>
           <div className="h-full">
-            <img
-              src={miningLoader}
-              alt="Mining loader operating in an open pit mine"
-              className="w-full h-full object-cover"
-            />
+            <img src={miningLoader} alt="Mining loader operating in an open pit mine" className="w-full h-full object-cover" />
           </div>
         </div>
       </section>
 
       {/* Solutions Section */}
-      <section className="py-16 md:py-24 bg-background" data-section="light">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-display mb-4">End-to-End Mining Intelligence</h2>
@@ -173,19 +177,7 @@ const Index = () => {
 
       {/* Working at MineTech */}
       <section className="relative py-16 md:py-24 bg-hero text-hero-foreground overflow-hidden">
-        {/* Background animation - matching hero */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-          </svg>
-        </div>
+        <ParticlesBackground />
 
         <div className="container-slr relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -223,27 +215,13 @@ const Index = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-16 md:py-24 bg-background" data-section="light">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
           <h2 className="text-3xl md:text-4xl font-display mb-12">Use Cases</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {useCases.map((useCase, index) => (
-              <article key={index} className="group bg-card rounded-lg overflow-hidden p-6 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-display font-semibold mb-4">{useCase.title}</h3>
-                <p className="text-muted-foreground font-body mb-6">{useCase.description}</p>
-                <div className="border-t border-border pt-4">
-                  <p className="text-sm font-semibold text-foreground mb-2">Impact:</p>
-                  <ul className="space-y-1">
-                    {useCase.impacts.map((impact, i) => (
-                      <li key={i} className="text-sm text-muted-foreground font-body flex items-start gap-2">
-                        <span className="text-primary mt-1">•</span>
-                        {impact}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
+              <UseCaseCard key={index} useCase={useCase} />
             ))}
           </div>
           
