@@ -79,7 +79,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative bg-hero overflow-hidden min-h-[85vh]">
+      <section className="relative bg-hero overflow-hidden min-h-[85vh] pt-16">
         {/* Background animation - abstract data particles */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-hero" />
@@ -152,7 +152,7 @@ const Index = () => {
       </section>
 
       {/* Post-Hero Section - Split Layout */}
-      <section className="py-16 md:py-24 bg-secondary">
+      <section className="py-16 md:py-24 bg-secondary" data-section="light">
         <div className="container-slr">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -181,7 +181,7 @@ const Index = () => {
       </section>
 
       {/* Solutions Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background" data-section="light">
         <div className="container-slr">
           <div className="mb-12">
             <h2 className="text-3xl md:text-4xl font-display mb-4">End-to-End Mining Intelligence</h2>
@@ -257,7 +257,7 @@ const Index = () => {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-background" data-section="light">
         <div className="container-slr">
           <h2 className="text-3xl md:text-4xl font-display mb-12">Use Cases</h2>
           

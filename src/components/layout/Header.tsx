@@ -1,44 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isOnLightSection, setIsOnLightSection] = useState(false);
   const location = useLocation();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const lightSections = document.querySelectorAll('[data-section="light"]');
+      const headerHeight = 56;
+      
+      let onLight = false;
+      lightSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerHeight && rect.bottom >= headerHeight) {
+          onLight = true;
+        }
+      });
+      
+      setIsOnLightSection(onLight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
+
+  const textColor = isOnLightSection ? "text-primary" : "text-white";
+  const hoverColor = isOnLightSection ? "hover:text-primary-dark" : "hover:text-primary-light";
+
   return (
-    <header className="bg-transparent text-hero-foreground fixed top-0 left-0 right-0 z-50">
-      <div className="container-slr flex items-center justify-between h-12 md:h-14">
+    <header className="bg-transparent fixed top-0 left-0 right-0 z-50">
+      <div className="container-slr flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-lg font-display font-semibold tracking-tight text-white drop-shadow-sm">MineTech</span>
+          <span className={`text-base font-display font-semibold tracking-tight ${textColor} drop-shadow-sm transition-colors duration-300`}>MineTech</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6">
-          <Link to="/" className="text-xs font-body text-white hover:text-primary-light transition-colors">
+        <nav className="hidden lg:flex items-center gap-5">
+          <Link to="/" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Home
           </Link>
-          <Link to="/solutions" className="text-xs font-body text-white hover:text-primary-light transition-colors">
+          <Link to="/solutions" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Solutions
           </Link>
-          <Link to="/about" className="text-xs font-body text-white hover:text-primary-light transition-colors">
+          <Link to="/about" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             About
           </Link>
-          <Link to="/careers" className="text-xs font-body text-white hover:text-primary-light transition-colors">
+          <Link to="/careers" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Career
           </Link>
-          <Link to="/contact" className="text-xs font-body text-white hover:text-primary-light transition-colors">
+          <Link to="/contact" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Contact
           </Link>
         </nav>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden p-2 text-white"
+          className={`lg:hidden p-2 ${textColor} transition-colors duration-300`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
       </div>
 
@@ -46,11 +72,11 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-hero/95 backdrop-blur-sm border-t border-hero-foreground/10">
           <nav className="container-slr py-4 space-y-2">
-            <Link to="/" className="block py-2 font-body text-xs text-white">Home</Link>
-            <Link to="/solutions" className="block py-2 font-body text-xs text-white">Solutions</Link>
-            <Link to="/about" className="block py-2 font-body text-xs text-white">About</Link>
-            <Link to="/careers" className="block py-2 font-body text-xs text-white">Career</Link>
-            <Link to="/contact" className="block py-2 font-body text-xs text-white">Contact</Link>
+            <Link to="/" className="block py-2 font-body text-[11px] text-white">Home</Link>
+            <Link to="/solutions" className="block py-2 font-body text-[11px] text-white">Solutions</Link>
+            <Link to="/about" className="block py-2 font-body text-[11px] text-white">About</Link>
+            <Link to="/careers" className="block py-2 font-body text-[11px] text-white">Career</Link>
+            <Link to="/contact" className="block py-2 font-body text-[11px] text-white">Contact</Link>
           </nav>
         </div>
       )}
