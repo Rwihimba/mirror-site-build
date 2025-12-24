@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -19,7 +20,71 @@ const benefits = [
   "Ground-floor opportunity in Africa's mining digitization",
 ];
 
+const categories = [
+  "All Departments",
+  "Core Technical",
+  "Domain Expert",
+  "Growth & Market",
+];
+
+const jobs = [
+  {
+    title: "Senior Full-Stack Engineer",
+    category: "Core Technical",
+    description: "Build and scale our integrated mining platform",
+    requirements: ["Flutter, Python, cloud infrastructure", "Experience with real-time data systems preferred"],
+  },
+  {
+    title: "Data Scientist - Mining Intelligence",
+    category: "Core Technical",
+    description: "Develop predictive models for grade control, safety monitoring",
+    requirements: ["Mining domain knowledge a plus", "Experience with geospatial data"],
+  },
+  {
+    title: "Mobile Application Developer",
+    category: "Core Technical",
+    description: "Build field-ready mobile solutions for mining operations",
+    requirements: ["Flutter/React Native", "Offline-first architecture experience"],
+  },
+  {
+    title: "Mining Operations Specialist",
+    category: "Domain Expert",
+    description: "Bridge technology and mining operations",
+    requirements: ["Geology/Mining Engineering background", "Experience in African mining contexts"],
+  },
+  {
+    title: "Compliance & Safety Systems Analyst",
+    category: "Domain Expert",
+    description: "Design digital compliance workflows aligned with Rwanda Mines Board",
+    requirements: ["Mining safety certification preferred", "Regulatory knowledge essential"],
+  },
+  {
+    title: "Business Development Manager - Mining Sector",
+    category: "Growth & Market",
+    description: "Drive partnerships with mining operations and cooperatives",
+    requirements: ["Existing mining industry relationships valued", "Rwanda/East Africa market knowledge"],
+  },
+  {
+    title: "Customer Success Engineer",
+    category: "Growth & Market",
+    description: "Lead platform implementation and training",
+    requirements: ["Help operations transition from paper-based systems", "Technical + people skills"],
+  },
+  {
+    title: "Implementation Specialist",
+    category: "Growth & Market",
+    description: "On-site deployment and training",
+    requirements: ["Travel to mining sites across Rwanda", "Bilingual (English/Kinyarwanda) required"],
+  },
+];
+
 const Careers = () => {
+  const [activeCategory, setActiveCategory] = useState("All Departments");
+
+  const filteredJobs = activeCategory === "All Departments" 
+    ? jobs 
+    : jobs.filter(job => job.category === activeCategory);
+
   return (
     <Layout>
       {/* Hero Section - No Image */}
@@ -68,14 +133,57 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 md:py-20 bg-background">
+      {/* Open Roles Section */}
+      <section id="openings" className="py-16 md:py-24 bg-background">
         <div className="container-slr">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat) => (
-              <div key={stat.label} className="bg-card text-center p-8 rounded-lg border border-border">
-                <div className="text-2xl md:text-3xl font-display font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
+          <h2 className="text-3xl md:text-4xl font-display mb-4">
+            Open Roles<br />at MineTech
+          </h2>
+          
+          {/* Filter */}
+          <div className="flex flex-wrap items-center gap-3 mb-12">
+            <span className="text-sm text-muted-foreground font-body">Filter by:</span>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 rounded-full border text-sm font-body uppercase tracking-wider transition-colors ${
+                  activeCategory === category
+                    ? "bg-primary text-primary-foreground border-primary"
+                    : "bg-transparent text-foreground border-border hover:border-primary"
+                }`}
+              >
+                {category}
+                {activeCategory === category && (
+                  <span className="ml-2 w-1.5 h-1.5 bg-primary-foreground rounded-full inline-block" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Job Cards Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredJobs.map((job) => (
+              <div 
+                key={job.title} 
+                className="bg-secondary rounded-lg p-8 hover:shadow-lg transition-shadow cursor-pointer group"
+              >
+                <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
+                  {job.category}
+                </div>
+                <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">
+                  {job.title}
+                </h3>
+                <p className="text-muted-foreground font-body mb-4">
+                  {job.description}
+                </p>
+                <ul className="space-y-1">
+                  {job.requirements.map((req, idx) => (
+                    <li key={idx} className="text-sm text-muted-foreground/80 font-body">
+                      • {req}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
