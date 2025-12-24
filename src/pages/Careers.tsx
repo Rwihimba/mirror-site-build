@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { JobApplicationDialog } from "@/components/forms/JobApplicationDialog";
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
@@ -166,24 +167,25 @@ const Careers = () => {
             {filteredJobs.map((job) => (
               <div 
                 key={job.title} 
-                className="bg-secondary rounded-lg p-8 hover:shadow-lg transition-shadow cursor-pointer group"
+                className="bg-secondary rounded-lg p-8 flex flex-col"
               >
                 <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
                   {job.category}
                 </div>
-                <h3 className="text-xl font-display font-semibold mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-display font-semibold mb-3">
                   {job.title}
                 </h3>
                 <p className="text-muted-foreground font-body mb-4">
                   {job.description}
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-1 mb-6 flex-grow">
                   {job.requirements.map((req, idx) => (
                     <li key={idx} className="text-sm text-muted-foreground/80 font-body">
                       • {req}
                     </li>
                   ))}
                 </ul>
+                <JobApplicationDialog jobTitle={job.title} category={job.category} />
               </div>
             ))}
           </div>
