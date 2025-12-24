@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
-import miningTunnel from "@/assets/mining-tunnel.jpg";
-import miningLoader from "@/assets/mining-loader.jpg";
 
 const stats = [
   { value: "15+", label: "Operational Departments Covered" },
@@ -37,8 +35,8 @@ const team = [
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section - Matching Homepage Design */}
-      <section className="relative bg-hero overflow-hidden min-h-[70vh] pt-16">
+      {/* Hero Section - No Image */}
+      <section className="relative bg-hero overflow-hidden min-h-[50vh] pt-16">
         {/* Background animation - abstract data particles */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-hero" />
@@ -54,41 +52,20 @@ const About = () => {
           </svg>
         </div>
         
-        <div className="relative flex flex-col lg:flex-row min-h-[70vh]">
-          {/* Left - Text Content */}
-          <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
+        <div className="relative flex flex-col min-h-[50vh]">
+          {/* Text Content */}
+          <div className="relative text-hero-foreground flex flex-col justify-center items-center text-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
               <Link to="/" className="hover:text-hero-foreground">Home</Link>
               <span>›</span>
               <span>About Us</span>
             </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left max-w-4xl">
               African Leaders in Mining Digitization
             </h1>
             <p className="text-lg text-hero-foreground/80 font-body max-w-xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
               Making Mining Intelligence Accessible
             </p>
-
-            {/* Decorative diagonal line */}
-            <div className="absolute bottom-16 left-8 right-0 hidden lg:block">
-              <svg viewBox="0 0 100 15" preserveAspectRatio="none" className="w-full h-16">
-                <line x1="0" y1="100%" x2="70" y2="100%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
-                <line x1="70" y1="100%" x2="85" y2="20%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Right - Hero Image with clipped bottom-left corner */}
-          <div 
-            className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
-          >
-            <img
-              src={miningTunnel}
-              alt="Underground mining tunnel"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         </div>
       </section>
@@ -96,23 +73,14 @@ const About = () => {
       {/* Purpose Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-primary font-body text-sm uppercase tracking-wider">Purpose</span>
-              <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">
-                Making Mining Intelligence Accessible
-              </h2>
-              <p className="text-lg text-muted-foreground font-body leading-relaxed">
-                At MineTech, we are true mining technology specialists - combining deep industry expertise with practical digital solutions. Our team of geologists, engineers, data scientists, and mining operations advisors work across our clients' full digitization journeys, from strategy through to on-the-ground deployment, training, and ongoing optimization, all supported by real-time data and intelligent automation.
-              </p>
-            </div>
-            <div>
-              <img
-                src={miningLoader}
-                alt="Mining operations"
-                className="rounded-lg w-full h-80 object-cover"
-              />
-            </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-primary font-body text-sm uppercase tracking-wider">Purpose</span>
+            <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">
+              Making Mining Intelligence Accessible
+            </h2>
+            <p className="text-lg text-muted-foreground font-body leading-relaxed">
+              At MineTech, we are true mining technology specialists - combining deep industry expertise with practical digital solutions. Our team of geologists, engineers, data scientists, and mining operations advisors work across our clients' full digitization journeys, from strategy through to on-the-ground deployment, training, and ongoing optimization, all supported by real-time data and intelligent automation.
+            </p>
           </div>
         </div>
       </section>
@@ -120,32 +88,23 @@ const About = () => {
       {/* Approach Section */}
       <section className="py-16 md:py-24 bg-secondary">
         <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <img
-                src={miningTunnel}
-                alt="Mining tunnel operations"
-                className="rounded-lg w-full h-80 object-cover"
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <span className="text-primary font-body text-sm uppercase tracking-wider">Approach</span>
-              <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">
-                We partner with mining operations to drive operational excellence and sustainable growth.
-              </h2>
-              <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">
-                Our reputation is built on affordability, technical robustness, and collaborative partnerships that deliver measurable results.
+          <div className="max-w-4xl mx-auto">
+            <span className="text-primary font-body text-sm uppercase tracking-wider">Approach</span>
+            <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">
+              We partner with mining operations to drive operational excellence and sustainable growth.
+            </h2>
+            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">
+              Our reputation is built on affordability, technical robustness, and collaborative partnerships that deliver measurable results.
+            </p>
+            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-8">
+              We enable efficient mining operations by helping our clients transition from paper-based systems to integrated digital platforms that balance safety, compliance, productivity, and profitability.
+            </p>
+            <blockquote className="border-l-4 border-primary pl-6 py-2">
+              <p className="italic text-foreground font-body mb-4">
+                "We recognized that 80% of African mining operations still rely on paper-based systems, creating gaps in safety, compliance, and operational efficiency. Since founding MineTech, we've built an integrated platform covering 15 operational departments - from exploration and grade control to safety monitoring and financial operations. We partner with mining operations throughout their lifecycle, providing solutions that are 5-75 times more affordable than enterprise alternatives."
               </p>
-              <p className="text-lg text-muted-foreground font-body leading-relaxed mb-8">
-                We enable efficient mining operations by helping our clients transition from paper-based systems to integrated digital platforms that balance safety, compliance, productivity, and profitability.
-              </p>
-              <blockquote className="border-l-4 border-primary pl-6 py-2">
-                <p className="italic text-foreground font-body mb-4">
-                  "We recognized that 80% of African mining operations still rely on paper-based systems, creating gaps in safety, compliance, and operational efficiency. Since founding MineTech, we've built an integrated platform covering 15 operational departments - from exploration and grade control to safety monitoring and financial operations. We partner with mining operations throughout their lifecycle, providing solutions that are 5-75 times more affordable than enterprise alternatives."
-                </p>
-                <cite className="text-sm font-semibold font-body text-primary">MineTech Founders</cite>
-              </blockquote>
-            </div>
+              <cite className="text-sm font-semibold font-body text-primary">MineTech Founders</cite>
+            </blockquote>
           </div>
         </div>
       </section>

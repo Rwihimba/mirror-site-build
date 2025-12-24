@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import miningTunnel from "@/assets/mining-tunnel.jpg";
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
@@ -23,8 +22,8 @@ const benefits = [
 const Careers = () => {
   return (
     <Layout>
-      {/* Hero Section - Matching Homepage Design */}
-      <section className="relative bg-hero overflow-hidden min-h-[70vh] pt-16">
+      {/* Hero Section - No Image */}
+      <section className="relative bg-hero overflow-hidden min-h-[50vh] pt-16">
         {/* Background animation - abstract data particles */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-hero" />
@@ -40,41 +39,34 @@ const Careers = () => {
           </svg>
         </div>
         
-        <div className="relative flex flex-col lg:flex-row min-h-[70vh]">
-          {/* Left - Text Content */}
-          <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
+        <div className="relative flex flex-col min-h-[50vh]">
+          {/* Text Content */}
+          <div className="relative text-hero-foreground flex flex-col justify-center items-center text-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
               <Link to="/" className="hover:text-hero-foreground">Home</Link>
               <span>›</span>
               <span>Careers</span>
             </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left max-w-4xl">
               Join the Mining Intelligence Revolution
             </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <p className="text-lg text-hero-foreground/80 font-body max-w-2xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
               We don't have all the answers to the complex operational challenges faced by African mining today. But we're working on it. When you join MineTech, you'll work alongside industry-leading geologists, engineers, and technologists on projects transforming mining across the continent.
             </p>
-
-            {/* Decorative diagonal line */}
-            <div className="absolute bottom-16 left-8 right-0 hidden lg:block">
-              <svg viewBox="0 0 100 15" preserveAspectRatio="none" className="w-full h-16">
-                <line x1="0" y1="100%" x2="70" y2="100%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
-                <line x1="70" y1="100%" x2="85" y2="20%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
-              </svg>
-            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Right - Hero Image with clipped bottom-left corner */}
-          <div 
-            className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
-          >
-            <img
-              src={miningTunnel}
-              alt="Underground mining tunnel"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
+      {/* Stats Section */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-slr">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-card text-center p-8 rounded-lg border border-border">
+                <div className="text-2xl md:text-3xl font-display font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
