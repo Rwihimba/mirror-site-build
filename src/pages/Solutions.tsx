@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import miningTunnel from "@/assets/mining-tunnel.jpg";
+import solutionsHero from "@/assets/solutions-hero.jpg";
 
 const solutions = [
   { 
@@ -129,7 +129,7 @@ const Solutions = () => {
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
             <img
-              src={miningTunnel}
+              src={solutionsHero}
               alt="Underground mining tunnel with railway tracks"
               className="w-full h-full object-cover"
             />
