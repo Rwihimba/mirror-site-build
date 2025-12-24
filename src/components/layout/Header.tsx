@@ -43,19 +43,19 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-5">
-          <Link to="/" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
+          <Link to="/" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Home
           </Link>
-          <Link to="/solutions" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
+          <Link to="/solutions" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Solutions
           </Link>
-          <Link to="/about" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
+          <Link to="/about" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             About
           </Link>
-          <Link to="/careers" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
+          <Link to="/careers" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Career
           </Link>
-          <Link to="/contact" className={`text-[11px] font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
+          <Link to="/contact" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
             Contact
           </Link>
         </nav>
