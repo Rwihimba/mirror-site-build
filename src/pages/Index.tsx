@@ -40,7 +40,7 @@ const solutions = [
 
 const stats = [
   { value: "15+", label: "Mining Departments Covered" },
-  { value: "690+", label: "Mining Concessions in Rwanda" },
+  { value: "156+", label: "Operation Workflows Implemented" },
   { value: "40+", label: "Years Combined Mining Experience" },
   { value: "10+", label: "Integrated Systems & Data Sources" },
 ];
@@ -232,6 +232,7 @@ const Index = () => {
                 <li>• Mining professionals</li>
                 <li>• Software engineers</li>
                 <li>• Data scientists</li>
+                <li>• Data engineers</li>
               </ul>
               <p className="text-lg text-hero-foreground/80 font-body mb-6">
                 All united by one mission: Transform African mining through intelligent technology.
