@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
+import { PageHero, StatsGrid, CTASection } from "@/components/sections";
 
 const stats = [
   { value: "15+", label: "Operational Departments Covered" },
@@ -35,40 +36,13 @@ const team = [
 const About = () => {
   return (
     <Layout>
-      {/* Hero Section - No Image */}
-      <section className="relative bg-hero overflow-hidden min-h-[50vh] pt-16">
-        {/* Background animation - abstract data particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-hero" />
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-          </svg>
-        </div>
-        
-        <div className="relative flex flex-col min-h-[50vh]">
-          {/* Text Content */}
-          <div className="relative text-hero-foreground flex flex-col justify-center items-center text-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
-            <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-              <Link to="/" className="hover:text-hero-foreground">Home</Link>
-              <span>›</span>
-              <span>About Us</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left max-w-4xl">
-              African Leaders in Mining Digitization
-            </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              Making Mining Intelligence Accessible
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="African Leaders in Mining Digitization"
+        subtitle="Making Mining Intelligence Accessible"
+        breadcrumb="About Us"
+        minHeight="sm"
+        centered
+      />
 
       {/* Purpose Section */}
       <section className="py-16 md:py-24 bg-background">
@@ -109,19 +83,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 md:py-24 bg-hero text-hero-foreground">
-        <div className="container-slr">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat) => (
-              <div key={stat.label} className="bg-hero-foreground/5 backdrop-blur text-center p-8 rounded-lg">
-                <div className="text-4xl md:text-5xl font-display font-bold text-primary-light mb-2">{stat.value}</div>
-                <div className="text-sm text-hero-foreground/70 font-body">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsGrid stats={stats} variant="dark" />
 
       {/* Team Section */}
       <section className="py-16 md:py-24 bg-background">
@@ -154,19 +116,11 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-secondary">
-        <div className="container-slr text-center">
-          <h2 className="text-3xl md:text-4xl font-display mb-6">Want to learn more?</h2>
-          <p className="text-lg text-muted-foreground font-body mb-8 max-w-2xl mx-auto">
-            Get in touch for a collaborative discussion about how MineTech can transform your mining operations.
-          </p>
-          <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-body font-medium hover:bg-primary/90 transition-colors">
-            Contact Us
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
+      <CTASection
+        title="Want to learn more?"
+        description="Get in touch for a collaborative discussion about how MineTech can transform your mining operations."
+        primaryAction={{ label: "Contact Us", href: "/contact" }}
+      />
     </Layout>
   );
 };

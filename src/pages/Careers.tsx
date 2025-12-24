@@ -4,6 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { JobApplicationDialog } from "@/components/forms/JobApplicationDialog";
+import { PageHero, StatsGrid, CTASection } from "@/components/sections";
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
@@ -88,51 +89,14 @@ const Careers = () => {
 
   return (
     <Layout>
-      {/* Hero Section - No Image */}
-      <section className="relative bg-hero overflow-hidden min-h-[50vh] pt-16">
-        {/* Background animation - abstract data particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-hero" />
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-          </svg>
-        </div>
-        
-        <div className="relative flex flex-col min-h-[50vh]">
-          {/* Text Content */}
-          <div className="relative text-hero-foreground flex flex-col justify-center items-center text-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
-            <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-              <Link to="/" className="hover:text-hero-foreground">Home</Link>
-              <span>›</span>
-              <span>Careers</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left max-w-4xl">
-              Join the Mining Intelligence Revolution
-            </h1>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Join the Mining Intelligence Revolution"
+        breadcrumb="Careers"
+        minHeight="sm"
+        centered
+      />
 
-      {/* Stats Section */}
-      <section className="py-16 md:py-20 bg-background">
-        <div className="container-slr">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat) => (
-              <div key={stat.label} className="bg-card text-center p-8 rounded-lg border border-border">
-                <div className="text-2xl md:text-3xl font-display font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsGrid stats={stats} variant="light" />
 
       {/* Open Roles Section */}
       <section id="openings" className="py-16 md:py-24 bg-background">
@@ -256,26 +220,23 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-hero text-hero-foreground section-pattern">
-        <div className="container-slr text-center">
-          <h2 className="text-3xl md:text-4xl font-display mb-6">Ready to Make Mining Intelligence Accessible?</h2>
-          <p className="text-lg text-hero-foreground/80 font-body mb-8 max-w-2xl mx-auto">
-            Join our team of passionate mining professionals and technologists working on solutions that matter. Browse our current openings or get in touch to learn more about opportunities at MineTech.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero-accent" className="group" asChild>
-              <a href="#openings">
-                View Open Positions
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </Button>
-            <Button variant="hero" asChild>
-              <Link to="/contact">Contact Our Team</Link>
-            </Button>
-          </div>
+      <CTASection
+        title="Ready to Make Mining Intelligence Accessible?"
+        description="Join our team of passionate mining professionals and technologists working on solutions that matter. Browse our current openings or get in touch to learn more about opportunities at MineTech."
+        variant="dark"
+      >
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="hero-accent" className="group" asChild>
+            <a href="#openings">
+              View Open Positions
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </Button>
+          <Button variant="hero" asChild>
+            <Link to="/contact">Contact Our Team</Link>
+          </Button>
         </div>
-      </section>
+      </CTASection>
     </Layout>
   );
 };
