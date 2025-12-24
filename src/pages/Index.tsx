@@ -154,30 +154,28 @@ const Index = () => {
       </section>
 
       {/* Post-Hero Section - Split Layout */}
-      <section className="py-16 md:py-24 bg-secondary" data-section="light">
-        <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-lg md:text-xl leading-relaxed text-foreground/80 mb-6 font-body">
-                Mining operations today run on dozens of systems—fleet management, safety monitoring, production tracking, compliance reporting. Each generates valuable data. But when these systems operate in silos, that data remains trapped, and critical insights slip through the cracks. The challenge isn't digitization anymore. It's orchestration.
-              </p>
-              <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
-                At MineTech, we connect your existing systems into a unified intelligence platform—transforming isolated data streams into synchronized, real-time insights that drive decisive action across your entire operation.
-              </p>
-              <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
-                Our promise? To turn your disconnected digital landscape into orchestrated intelligence, delivering visibility, control, and confidence at every level of your mine.
-              </p>
-              <p className="text-xl font-display font-semibold text-foreground">
-                Real-Time Mining Intelligence, Orchestrated.
-              </p>
-            </div>
-            <div>
-              <img
-                src={miningLoader}
-                alt="Mining loader operating in an open pit mine"
-                className="w-full aspect-square object-cover"
-              />
-            </div>
+      <section className="bg-secondary" data-section="light">
+        <div className="grid lg:grid-cols-2 gap-0 items-stretch">
+          <div className="py-16 md:py-24 pl-8 md:pl-12 lg:pl-20 pr-8 md:pr-12 lg:pr-12">
+            <p className="text-lg md:text-xl leading-relaxed text-foreground/80 mb-6 font-body">
+              Mining operations today run on dozens of systems—fleet management, safety monitoring, production tracking, compliance reporting. Each generates valuable data. But when these systems operate in silos, that data remains trapped, and critical insights slip through the cracks. The challenge isn't digitization anymore. It's orchestration.
+            </p>
+            <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
+              At MineTech, we connect your existing systems into a unified intelligence platform—transforming isolated data streams into synchronized, real-time insights that drive decisive action across your entire operation.
+            </p>
+            <p className="text-lg leading-relaxed text-foreground/80 mb-6 font-body">
+              Our promise? To turn your disconnected digital landscape into orchestrated intelligence, delivering visibility, control, and confidence at every level of your mine.
+            </p>
+            <p className="text-xl font-display font-semibold text-foreground">
+              Real-Time Mining Intelligence, Orchestrated.
+            </p>
+          </div>
+          <div className="h-full">
+            <img
+              src={miningLoader}
+              alt="Mining loader operating in an open pit mine"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
