@@ -50,9 +50,6 @@ const Careers = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left max-w-4xl">
               Join the Mining Intelligence Revolution
             </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-2xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              We don't have all the answers to the complex operational challenges faced by African mining today. But we're working on it. When you join MineTech, you'll work alongside industry-leading geologists, engineers, and technologists on projects transforming mining across the continent.
-            </p>
           </div>
         </div>
       </section>
