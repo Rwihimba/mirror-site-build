@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, X } from "lucide-react";
+import minetechLogo from "@/assets/minetech-logo.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,16 +13,7 @@ export function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="flex items-center gap-1.5">
-            <svg viewBox="0 0 40 40" className="w-7 h-7 text-primary-light">
-              <circle cx="20" cy="8" r="4" fill="currentColor" />
-              <circle cx="8" cy="20" r="4" fill="currentColor" />
-              <circle cx="32" cy="20" r="4" fill="currentColor" />
-              <circle cx="20" cy="32" r="4" fill="currentColor" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-              <circle cx="28" cy="12" r="3" fill="currentColor" />
-              <circle cx="12" cy="28" r="3" fill="currentColor" />
-              <circle cx="28" cy="28" r="3" fill="currentColor" />
-            </svg>
+            <img src={minetechLogo} alt="MineTech Logo" className="w-8 h-8 object-contain" />
             <span className="text-xl font-display font-semibold tracking-tight">MineTech</span>
           </div>
         </Link>
