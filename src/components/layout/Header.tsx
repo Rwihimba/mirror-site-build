@@ -31,9 +31,10 @@ export function Header() {
 
   const textColor = isOnLightSection ? "text-primary" : "text-white";
   const hoverColor = isOnLightSection ? "hover:text-primary-dark" : "hover:text-primary-light";
+  const bgColor = isOnLightSection ? "bg-background/80" : "bg-hero/80";
 
   return (
-    <header className="bg-transparent fixed top-0 left-0 right-0 z-50">
+    <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-colors duration-300 ${bgColor}`}>
       <div className="container-slr flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
         <Link to="/" className="flex items-center">
