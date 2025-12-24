@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter } from "lucide-react";
+import minetechLogo from "@/assets/minetech-logo.png";
 
 const companyLinks = [
   { title: "About Us", href: "/about" },
@@ -28,16 +29,7 @@ export function Footer() {
         {/* Logo and tagline */}
         <div className="mb-12">
           <div className="flex items-center gap-2 mb-4">
-            <svg viewBox="0 0 40 40" className="w-8 h-8 text-primary-light">
-              <circle cx="20" cy="8" r="4" fill="currentColor" />
-              <circle cx="8" cy="20" r="4" fill="currentColor" />
-              <circle cx="32" cy="20" r="4" fill="currentColor" />
-              <circle cx="20" cy="32" r="4" fill="currentColor" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-              <circle cx="28" cy="12" r="3" fill="currentColor" />
-              <circle cx="12" cy="28" r="3" fill="currentColor" />
-              <circle cx="28" cy="28" r="3" fill="currentColor" />
-            </svg>
+            <img src={minetechLogo} alt="MineTech Logo" className="w-10 h-10 object-contain" />
             <span className="text-2xl font-display font-semibold">MineTech</span>
           </div>
           <p className="text-lg font-display">Real-Time Mining Intelligence, Orchestrated.</p>
