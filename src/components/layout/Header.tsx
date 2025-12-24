@@ -11,7 +11,7 @@ export function Header() {
       <div className="container-slr flex items-center justify-between h-12 md:h-14">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-lg font-display font-semibold tracking-tight text-white">MineTech</span>
+          <span className="text-lg font-display font-semibold tracking-tight text-white drop-shadow-sm">MineTech</span>
         </Link>
 
         {/* Desktop Navigation */}
