@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import miningTunnel from "@/assets/mining-tunnel.jpg";
 
@@ -43,6 +44,36 @@ const solutions = [
     title: "Sub-Contractor Management Systems", 
     href: "/solutions/subcontractor-management",
     description: "Unified contractor oversight with integrated compliance and performance tracking."
+  },
+];
+
+const useCases = [
+  {
+    title: "Real-Time Grade Control Intelligence",
+    description: "Grade control data flows instantly from geology to operations, preventing ore dilution and processing inefficiencies. Lab results automatically align with live mining locations and equipment assignments, enabling real-time extraction adjustments.",
+    impacts: [
+      "15–20% reduction in ore dilution",
+      "Optimized stockpile management",
+      "Full grade reconciliation from blast to mill"
+    ]
+  },
+  {
+    title: "Automated Compliance & License Management",
+    description: "MineTech continuously aggregates operational data across departments and automatically generates regulatory reports.",
+    impacts: [
+      "80% reduction in compliance reporting time",
+      "Zero missed submissions",
+      "Continuous audit-ready documentation"
+    ]
+  },
+  {
+    title: "Integrated Workforce Intelligence",
+    description: "MineTech unifies attendance, payroll, certifications, and equipment assignments into a single workforce intelligence layer.",
+    impacts: [
+      "30–40% reduction in HR admin time",
+      "Optimized labor allocation",
+      "Full RSSB compliance automation"
+    ]
   },
 ];
 
@@ -127,6 +158,42 @@ const Solutions = () => {
                 <p className="text-sm text-muted-foreground font-body flex-grow">{solution.description}</p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="py-16 md:py-24 bg-background" data-section="light">
+        <div className="container-slr">
+          <h2 className="text-3xl md:text-4xl font-display mb-12">Use Cases</h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {useCases.map((useCase, index) => (
+              <article key={index} className="group bg-card rounded-lg overflow-hidden p-6 hover:shadow-lg transition-shadow border border-border">
+                <h3 className="text-xl font-display font-semibold mb-4">{useCase.title}</h3>
+                <p className="text-muted-foreground font-body mb-6">{useCase.description}</p>
+                <div className="border-t border-border pt-4">
+                  <p className="text-sm font-semibold text-foreground mb-2">Impact:</p>
+                  <ul className="space-y-1">
+                    {useCase.impacts.map((impact, i) => (
+                      <li key={i} className="text-sm text-muted-foreground font-body flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        {impact}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+          
+          <div className="text-center mt-10">
+            <Link to="/use-cases">
+              <Button variant="outline" className="group">
+                View other use cases
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
