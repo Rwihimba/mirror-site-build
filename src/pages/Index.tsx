@@ -5,6 +5,9 @@ import { Layout } from "@/components/layout/Layout";
 import miningPit from "@/assets/mining-pit.jpg";
 import miningLoader from "@/assets/mining-loader.jpg";
 import miningTunnel from "@/assets/mining-tunnel.jpg";
+import InvestDialog from "@/components/forms/InvestDialog";
+import PartnerDialog from "@/components/forms/PartnerDialog";
+import QuoteDialog from "@/components/forms/QuoteDialog";
 
 const solutions = [
   { 
@@ -107,24 +110,9 @@ const Index = () => {
               Every action at your mine triggers instant intelligence and real-time insights.
             </h1>
             <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
-              <Link to="/invest">
-                <Button variant="hero-accent" className="group">
-                  Invest
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Button>
-              </Link>
-              <Link to="/partner">
-                <Button variant="hero-accent" className="group">
-                  Partner
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Button>
-              </Link>
-              <Link to="/deploy">
-                <Button variant="hero-accent" className="group">
-                  Deploy
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </Button>
-              </Link>
+              <InvestDialog />
+              <PartnerDialog />
+              <QuoteDialog />
             </div>
 
             {/* Decorative diagonal line */}
