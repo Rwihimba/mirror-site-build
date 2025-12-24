@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, Menu, X } from "lucide-react";
-import minetechLogo from "@/assets/minetech-logo.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -11,11 +10,8 @@ export function Header() {
     <header className="bg-hero text-hero-foreground sticky top-0 z-50">
       <div className="container-slr flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5">
-            <img src={minetechLogo} alt="MineTech Logo" className="w-8 h-8 object-contain" />
-            <span className="text-xl font-display font-semibold tracking-tight">MineTech</span>
-          </div>
+        <Link to="/" className="flex items-center">
+          <span className="text-xl font-display font-semibold tracking-tight">MineTech</span>
         </Link>
 
         {/* Desktop Navigation */}
