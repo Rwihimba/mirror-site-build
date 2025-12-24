@@ -1,99 +1,140 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import miningTunnel from "@/assets/mining-tunnel.jpg";
 
 const stats = [
-  { value: "135+", label: "Office Locations" },
-  { value: "4,500+", label: "Global Colleagues" },
-  { value: "6", label: "Operating Regions" },
-  { value: "45+", label: "Technical Disciplines" },
+  { value: "Rwanda", label: "Home Base" },
+  { value: "Growing", label: "Team of Specialists" },
+  { value: "Pan-African", label: "Expansion Vision" },
+  { value: "15", label: "Departments Integrated" },
 ];
 
 const benefits = [
-  "Competitive compensation and benefits",
-  "Flexible working arrangements",
-  "Professional development opportunities",
-  "Global mobility programs",
-  "Inclusive workplace culture",
-  "Meaningful sustainability work",
+  "Competitive compensation and equity opportunities",
+  "Flexible and remote-friendly working arrangements",
+  "Professional development in cutting-edge mining technology",
+  "Pan-African growth and expansion opportunities",
+  "Mission-driven culture focused on impact",
+  "Ground-floor opportunity in Africa's mining digitization",
 ];
 
 const Careers = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[50vh]">
-          {/* Breadcrumb and Title */}
-          <div className="container-slr flex flex-col justify-center py-16 lg:py-20">
+      {/* Hero Section - Matching Homepage Design */}
+      <section className="relative bg-hero overflow-hidden min-h-[70vh] pt-16">
+        {/* Background animation - abstract data particles */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-hero" />
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
+          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
+          </svg>
+        </div>
+        
+        <div className="relative flex flex-col lg:flex-row min-h-[70vh]">
+          {/* Left - Text Content */}
+          <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
               <Link to="/" className="hover:text-hero-foreground">Home</Link>
               <span>›</span>
               <span>Careers</span>
             </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6 animate-slide-in-left">
-              Careers at SLR
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-6 animate-slide-in-left">
+              Join the Mining Intelligence Revolution
             </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-xl">
-              We don't have all the answers to the complex sustainability challenges faced by humanity today. But we're working on it. When you join SLR, you'll work alongside some of the world's leading advisors and technicians on projects of global importance.
+            <p className="text-lg text-hero-foreground/80 font-body max-w-xl animate-slide-up" style={{ animationDelay: "0.2s" }}>
+              We don't have all the answers to the complex operational challenges faced by African mining today. But we're working on it. When you join MineTech, you'll work alongside industry-leading geologists, engineers, and technologists on projects transforming mining across the continent.
             </p>
+
+            {/* Decorative diagonal line */}
+            <div className="absolute bottom-16 left-8 right-0 hidden lg:block">
+              <svg viewBox="0 0 100 15" preserveAspectRatio="none" className="w-full h-16">
+                <line x1="0" y1="100%" x2="70" y2="100%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
+                <line x1="70" y1="100%" x2="85" y2="20%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
+              </svg>
+            </div>
           </div>
 
-          {/* Stats Grid */}
-          <div className="flex items-center justify-center p-8 lg:p-16">
-            <div className="grid grid-cols-2 gap-4 w-full max-w-md">
-              {stats.map((stat) => (
-                <div key={stat.label} className="bg-hero-foreground/10 backdrop-blur p-6 rounded-lg text-center">
-                  <div className="text-3xl md:text-4xl font-display font-bold text-primary-light mb-2">{stat.value}</div>
-                  <div className="text-sm text-hero-foreground/70 font-body">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+          {/* Right - Hero Image with clipped bottom-left corner */}
+          <div 
+            className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
+          >
+            <img
+              src={miningTunnel}
+              alt="Underground mining tunnel"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         </div>
       </section>
 
-      {/* One Team Section */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Stats Section */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container-slr">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-card text-center p-8 rounded-lg border border-border">
+                <div className="text-2xl md:text-3xl font-display font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground font-body">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* One Platform Section */}
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="container-slr">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-display mb-6">One Team Culture</h2>
+              <h2 className="text-3xl md:text-4xl font-display mb-6">One Platform Culture</h2>
               <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">
-                SLR's One Team culture is the backbone of our organisation. Our strength not only comes from our skills and experience, but also from our ability to collaborate across disciplines and regions - supporting each other on a global basis.
+                MineTech's One Platform culture is the backbone of our organization. Our strength comes not only from our mining expertise and technical skills, but also from our ability to integrate across disciplines - from geology and safety to compliance and financial operations - creating seamless solutions.
               </p>
               <p className="text-lg text-muted-foreground font-body leading-relaxed">
-                SLR is committed to creating and sustaining a global, inclusive culture, where differences are embraced for the benefit of our people, our clients and the communities around us.
+                MineTech is committed to building an inclusive, collaborative environment where diverse perspectives drive innovation for the benefit of our team, our mining partners, and the communities we serve across Africa.
               </p>
             </div>
-            <div>
-              <img
-                src="https://cdn.sanity.io/images/b0ecix6u/production/2669c53a60f2f74fea2dca3cbf8dbc988b343264-1212x532.png?w=800"
-                alt="One Team culture"
-                className="rounded-lg"
-              />
+            <div className="bg-hero rounded-lg p-12 flex items-center justify-center">
+              <svg viewBox="0 0 200 200" className="w-48 h-48 text-primary-light/30">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" />
+                <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="2" />
+                <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="2" />
+                <circle cx="100" cy="100" r="20" fill="currentColor" opacity="0.3" />
+              </svg>
             </div>
           </div>
         </div>
       </section>
 
       {/* DE&I Section */}
-      <section className="py-16 md:py-24 bg-secondary">
+      <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <img
-                src="https://cdn.sanity.io/images/b0ecix6u/production/15208f5f7c27236db12fe06eecf592f01f51648c-1212x532.png?w=800"
-                alt="DE&I at SLR"
-                className="rounded-lg"
-              />
+            <div className="bg-secondary rounded-lg p-12 flex items-center justify-center order-2 lg:order-1">
+              <svg viewBox="0 0 200 200" className="w-48 h-48 text-primary/20">
+                <rect x="30" y="30" width="60" height="60" fill="currentColor" opacity="0.5" />
+                <rect x="110" y="30" width="60" height="60" fill="currentColor" opacity="0.7" />
+                <rect x="30" y="110" width="60" height="60" fill="currentColor" opacity="0.3" />
+                <rect x="110" y="110" width="60" height="60" fill="currentColor" opacity="0.6" />
+              </svg>
             </div>
-            <div>
+            <div className="order-1 lg:order-2">
               <span className="text-primary font-body text-sm uppercase tracking-wider">Diversity, Equity & Inclusion</span>
-              <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">Our DE&I Strategy</h2>
+              <h2 className="text-3xl md:text-4xl font-display mt-2 mb-6">Our DE&I Commitment</h2>
               <p className="text-lg text-muted-foreground font-body leading-relaxed">
-                Our Diversity, Equity & Inclusion strategy will help us achieve our organisational and people goals, supporting our future strategic direction and growth, and our One Team culture. It provides a shared direction and commitment for the organisation so we can work together to respect and value our diverse workforce and continue to build a more inclusive workplace.
+                Our Diversity, Equity & Inclusion commitment supports our mission to democratize mining intelligence across Africa. It provides direction for building a workplace that respects and values our diverse team, ensuring we create solutions that serve the full spectrum of African mining operations - from artisanal cooperatives to mid-scale commercial mines.
               </p>
             </div>
           </div>
@@ -101,14 +142,14 @@ const Careers = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="container-slr">
-          <h2 className="text-3xl md:text-4xl font-display mb-12 text-center">Why Join SLR?</h2>
+          <h2 className="text-3xl md:text-4xl font-display mb-12 text-center">Why Join MineTech?</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {benefits.map((benefit) => (
-              <div key={benefit} className="flex items-center gap-3 p-4 bg-card rounded-lg">
-                <div className="w-2 h-2 rounded-full bg-primary" />
+              <div key={benefit} className="flex items-start gap-3 p-6 bg-card rounded-lg border border-border">
+                <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="font-body">{benefit}</span>
               </div>
             ))}
@@ -119,9 +160,9 @@ const Careers = () => {
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-hero text-hero-foreground section-pattern">
         <div className="container-slr text-center">
-          <h2 className="text-3xl md:text-4xl font-display mb-6">Ready to Make Sustainability Happen?</h2>
+          <h2 className="text-3xl md:text-4xl font-display mb-6">Ready to Make Mining Intelligence Accessible?</h2>
           <p className="text-lg text-hero-foreground/80 font-body mb-8 max-w-2xl mx-auto">
-            Join our team of passionate professionals working on projects that matter. Browse our current openings or get in touch to learn more.
+            Join our team of passionate mining professionals and technologists working on solutions that matter. Browse our current openings or get in touch to learn more about opportunities at MineTech.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero-accent" className="group" asChild>
@@ -131,7 +172,7 @@ const Careers = () => {
               </a>
             </Button>
             <Button variant="hero" asChild>
-              <Link to="/contact">Contact HR</Link>
+              <Link to="/contact">Contact Our Team</Link>
             </Button>
           </div>
         </div>
