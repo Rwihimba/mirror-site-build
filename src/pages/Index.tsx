@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import miningPit from "@/assets/mining-pit.jpg";
 import miningLoader from "@/assets/mining-loader.jpg";
-import miningTunnel from "@/assets/mining-tunnel.jpg";
+import heroImage from "@/assets/contact-hero.png";
 import InvestDialog from "@/components/forms/InvestDialog";
 import PartnerDialog from "@/components/forms/PartnerDialog";
 import QuoteDialog from "@/components/forms/QuoteDialog";
@@ -86,26 +86,19 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative bg-hero overflow-hidden min-h-[85vh] pt-16">
-        {/* Background animation - abstract data particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-hero" />
-          {/* Animated particles */}
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '0s' }} />
-          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
-          <div className="absolute bottom-1/3 left-1/2 w-2 h-2 bg-primary-light/25 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-primary-light/30 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-primary-light/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          {/* Subtle connecting lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M20,30 Q50,50 80,40" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M10,60 Q40,40 70,55" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-            <path d="M30,80 Q55,50 85,70" stroke="hsl(var(--primary-light))" strokeWidth="0.1" fill="none" />
-          </svg>
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroImage} 
+            alt="" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-hero/60" />
         </div>
         
         <div className="relative flex flex-col lg:flex-row min-h-[85vh]">
           {/* Left - Text Content */}
-          <div className="relative text-hero-foreground lg:w-[55%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
+          <div className="relative text-hero-foreground lg:w-[65%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-10 animate-slide-in-left">
               Every action at your mine triggers instant intelligence and real-time insights.
             </h1>
@@ -122,20 +115,6 @@ const Index = () => {
                 <line x1="70" y1="100%" x2="85" y2="20%" stroke="hsl(var(--hero-foreground) / 0.2)" strokeWidth="0.2" />
               </svg>
             </div>
-          </div>
-
-          {/* Right - Hero Image with clipped bottom-left corner */}
-          <div 
-            className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
-          >
-            <img
-              src={miningTunnel}
-              alt="Underground mining tunnel with railway tracks"
-              className="w-full h-full object-cover"
-            />
-            {/* Pattern Overlay on bottom right */}
-            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         </div>
       </section>
