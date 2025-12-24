@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter } from "lucide-react";
-import minetechLogo from "@/assets/minetech-logo.png";
 
 const companyLinks = [
   { title: "About Us", href: "/about" },
@@ -26,12 +25,9 @@ export function Footer() {
       </div>
 
       <div className="container-slr py-16 md:py-20 relative z-10">
-        {/* Logo and tagline */}
+        {/* Tagline */}
         <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <img src={minetechLogo} alt="MineTech Logo" className="w-10 h-10 object-contain" />
-            <span className="text-2xl font-display font-semibold">MineTech</span>
-          </div>
+          <span className="text-2xl font-display font-semibold mb-4 block">MineTech</span>
           <p className="text-lg font-display">Real-Time Mining Intelligence, Orchestrated.</p>
         </div>
 
