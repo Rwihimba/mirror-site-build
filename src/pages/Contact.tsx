@@ -6,13 +6,24 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import norrskenHouse from "@/assets/norrsken-house.jpg";
+import contactHero from "@/assets/contact-hero.png";
 
 const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground py-12 md:py-16">
-        <div className="container-slr">
+      <section className="relative bg-hero text-hero-foreground py-20 md:py-28 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={contactHero} 
+            alt="" 
+            className="w-full h-full object-cover opacity-60"
+          />
+          <div className="absolute inset-0 bg-hero/70" />
+        </div>
+        
+        <div className="container-slr relative z-10">
           <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
             <Link to="/" className="hover:text-hero-foreground">Home</Link>
             <span>›</span>
