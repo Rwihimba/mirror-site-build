@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
+import miningPit from "@/assets/mining-pit.jpg";
+import miningLoader from "@/assets/mining-loader.jpg";
 
 const solutions = [
   { 
@@ -171,8 +173,8 @@ const Index = () => {
             </div>
             <div>
               <img
-                src="https://cdn.sanity.io/images/b0ecix6u/production/34137ed3c6b453b7861b2ca425a3f231da98b12a-1040x594.png?w=800"
-                alt="Abstract mining operations with data overlays and systems converging"
+                src={miningLoader}
+                alt="Mining loader operating in an open pit mine"
                 className="w-full aspect-square object-cover"
               />
             </div>
