@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin, Mail, Phone } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import norrskenHouse from "@/assets/norrsken-house.jpg";
 
 const Contact = () => {
   return (
@@ -23,22 +24,57 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="py-16 md:py-24 bg-background">
+      {/* Location Section */}
+      <section className="py-16 md:py-24 bg-secondary">
         <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left - Info */}
             <div>
               <p className="text-lg text-muted-foreground font-body mb-8 leading-relaxed">
-                We're here to support you in Making Sustainability Happen. Get in touch for a collaborative discussion about what that could look like for your organisation.
+                We're here to support you in Making Mining Intelligence Accessible. Get in touch for a collaborative discussion about what that could look like for your organisation.
               </p>
-              <Link to="/about/locations" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded font-body font-medium hover:bg-primary/90 transition-colors">
-                Our locations
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-display font-semibold mb-1">Norrsken House Kigali</h3>
+                    <p className="text-muted-foreground font-body">1 KN8ST, Kigali, Rwanda</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-primary flex-shrink-0" />
+                  <a href="mailto:info@minetech.co.rw" className="text-foreground font-body hover:text-primary transition-colors">
+                    info@minetech.co.rw
+                  </a>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-primary flex-shrink-0" />
+                  <a href="tel:+250784725226" className="text-foreground font-body hover:text-primary transition-colors">
+                    +250 784 725 226
+                  </a>
+                </div>
+              </div>
             </div>
 
-            {/* Right - Form */}
+            {/* Right - Image */}
+            <div className="rounded-lg overflow-hidden">
+              <img
+                src={norrskenHouse}
+                alt="Norrsken House Kigali - MineTech Office"
+                className="w-full h-80 object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container-slr">
+          <div className="max-w-2xl mx-auto">
             <div className="bg-secondary p-8 md:p-10 rounded-lg">
               <h2 className="text-2xl font-display font-semibold mb-2">Get in touch</h2>
               <p className="text-muted-foreground font-body mb-8">
@@ -76,12 +112,12 @@ const Contact = () => {
                       <SelectValue placeholder="Region*" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="europe">Europe</SelectItem>
-                      <SelectItem value="africa">Africa</SelectItem>
-                      <SelectItem value="apac">Asia-Pacific</SelectItem>
-                      <SelectItem value="canada">Canada</SelectItem>
-                      <SelectItem value="latam">Latin America</SelectItem>
-                      <SelectItem value="usa">USA</SelectItem>
+                      <SelectItem value="rwanda">Rwanda</SelectItem>
+                      <SelectItem value="east-africa">East Africa</SelectItem>
+                      <SelectItem value="central-africa">Central Africa</SelectItem>
+                      <SelectItem value="west-africa">West Africa</SelectItem>
+                      <SelectItem value="southern-africa">Southern Africa</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -91,12 +127,12 @@ const Contact = () => {
                       <SelectValue placeholder="Enquiry Type*" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="feedback">Feedback</SelectItem>
                       <SelectItem value="general">General Enquiry</SelectItem>
-                      <SelectItem value="info">Request Information about SLR's Services</SelectItem>
-                      <SelectItem value="proposal">Request a Proposal</SelectItem>
-                      <SelectItem value="offer">Offer of service/goods to SLR</SelectItem>
-                      <SelectItem value="recruitment">Recruitment/Career</SelectItem>
+                      <SelectItem value="demo">Request a Demo</SelectItem>
+                      <SelectItem value="partnership">Partnership Opportunity</SelectItem>
+                      <SelectItem value="investment">Investment Enquiry</SelectItem>
+                      <SelectItem value="careers">Careers</SelectItem>
+                      <SelectItem value="support">Technical Support</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
