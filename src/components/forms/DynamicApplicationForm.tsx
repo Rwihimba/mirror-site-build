@@ -36,6 +36,10 @@ export function DynamicApplicationForm({ jobId, jobTitle, schema }: DynamicAppli
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Fire-and-forget GA tracking via dynamic import to avoid coupling
+    import("@/lib/analytics").then(({ track }) =>
+      track("job_application_submit", { category: "conversion", job_id: jobId, job_title: jobTitle })
+    );
 
     // Validate required fields
     for (const f of schema) {

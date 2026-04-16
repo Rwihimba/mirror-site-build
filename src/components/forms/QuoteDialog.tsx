@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackFormSubmit } from "@/lib/analytics";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -44,6 +45,7 @@ const QuoteDialog = () => {
       form_type: "quote",
       data: formData,
     });
+    trackFormSubmit("quote");
 
     toast({
       title: "Quote request received",

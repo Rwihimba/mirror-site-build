@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
+import { trackFormSubmit } from "@/lib/analytics";
 import norrskenHouse from "@/assets/norrsken-house.jpg";
 import contactHero from "@/assets/contact-hero.png";
 
@@ -26,6 +27,7 @@ const Contact = () => {
       form_type: "contact",
       data: formData,
     });
+    trackFormSubmit("contact", { enquiry_type: formData.enquiryType || "unspecified" });
     toast({ title: "Message sent!", description: "We'll get back to you soon." });
     setFormData({ name: "", email: "", company: "", region: "", enquiryType: "", message: "" });
     setIsSubmitting(false);

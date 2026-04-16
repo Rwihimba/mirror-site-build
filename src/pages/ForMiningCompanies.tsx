@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { trackFormSubmit } from "@/lib/analytics";
 import heroImage from "@/assets/contact-hero.png";
 
 const benefits = [
@@ -31,6 +32,7 @@ const ForMiningCompanies = () => {
     if (error) {
       toast({ title: "Something went wrong", description: error.message, variant: "destructive" });
     } else {
+      trackFormSubmit("demo_request");
       toast({ title: "Demo requested", description: "We'll be in touch within one business day." });
       setForm({ name: "", email: "", company: "", message: "" });
     }

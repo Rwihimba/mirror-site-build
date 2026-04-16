@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { CALENDLY_URL } from "@/lib/intent/popupVariants";
+import { trackCtaClick } from "@/lib/analytics";
 import heroImage from "@/assets/contact-hero.png";
 
 const pillars = [
@@ -51,13 +52,13 @@ const Investors = () => {
           </p>
           <div className="flex flex-wrap gap-4">
             <Button asChild variant="hero-accent" size="lg" className="group">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackCtaClick("book_a_call", { location: "investors_hero" })}>
                 Book a 30-min Call
                 <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </Button>
             <Button asChild variant="hero" size="lg">
-              <a href="mailto:info@minetech.co.rw?subject=Investor%20Inquiry">Email the Team</a>
+              <a href="mailto:info@minetech.co.rw?subject=Investor%20Inquiry" onClick={() => trackCtaClick("email_team", { location: "investors_hero" })}>Email the Team</a>
             </Button>
           </div>
         </div>
@@ -94,7 +95,7 @@ const Investors = () => {
             Book a 30-minute intro call with the founders. We'll share the deck, the roadmap, and the round.
           </p>
           <Button asChild variant="hero-accent" size="lg" className="group">
-            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackCtaClick("book_a_call", { location: "investors_footer_cta" })}>
               Book a Call
               <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
