@@ -85,7 +85,7 @@ export function PageHero({
     <section className={`relative bg-hero overflow-hidden ${heightClasses[minHeight]} pt-16`}>
       {image ? (
         <div className="absolute inset-0">
-          <img src={image} alt="" className="w-full h-full object-cover" />
+          <img src={image} alt="" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-hero/60" />
         </div>
       ) : (
@@ -116,7 +116,7 @@ export function PageHero({
             className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
-            <img src={imageAlt} alt={imageAlt} className="w-full h-full object-cover" />
+            <img src={imageAlt} alt={imageAlt} className="w-full h-full object-cover" loading="lazy" />
             <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
           </div>
         )}

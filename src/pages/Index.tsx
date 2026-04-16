@@ -102,7 +102,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative bg-hero overflow-hidden min-h-[85vh] pt-16">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-hero/60" />
         </div>
         
@@ -145,7 +145,7 @@ const Index = () => {
             </p>
           </div>
           <div className="h-full">
-            <img src={miningLoader} alt="Mining loader operating in an open pit mine" className="w-full h-full object-cover" />
+            <img src={miningLoader} alt="Mining loader operating in an open pit mine" className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
       </section>

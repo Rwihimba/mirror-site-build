@@ -19,6 +19,8 @@ const Contact = () => {
             src={contactHero} 
             alt="" 
             className="w-full h-full object-cover opacity-60"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-hero/70" />
         </div>
@@ -75,6 +77,7 @@ const Contact = () => {
               <img
                 src={norrskenHouse}
                 alt="Norrsken House Kigali - MineTech Office"
+                loading="lazy"
                 className="w-full h-80 object-cover"
               />
             </div>
