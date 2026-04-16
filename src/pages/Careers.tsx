@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { JobApplicationDialog } from "@/components/forms/JobApplicationDialog";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import { supabase } from "@/integrations/supabase/client";
 import careersWorker from "@/assets/careers-worker.png";
+
+interface JobListItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  short_description: string | null;
+  location: string | null;
+  employment_type: string | null;
+}
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
