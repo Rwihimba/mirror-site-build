@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, MapPin, Mail, Phone } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -5,10 +6,30 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import norrskenHouse from "@/assets/norrsken-house.jpg";
 import contactHero from "@/assets/contact-hero.png";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "", email: "", company: "", region: "", enquiryType: "", message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await supabase.from("form_submissions").insert({
+      form_type: "contact",
+      data: formData,
+    });
+    toast({ title: "Message sent!", description: "We'll get back to you soon." });
+    setFormData({ name: "", email: "", company: "", region: "", enquiryType: "", message: "" });
+    setIsSubmitting(false);
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -95,12 +116,14 @@ const Contact = () => {
                 Fill in the below form and we'll get you to the right place.
               </p>
               
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <Input
                     type="text"
                     placeholder="Name*"
                     required
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="bg-background border-border font-body"
                   />
                 </div>
@@ -109,6 +132,8 @@ const Contact = () => {
                     type="email"
                     placeholder="Email*"
                     required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="bg-background border-border font-body"
                   />
                 </div>
@@ -117,11 +142,13 @@ const Contact = () => {
                     type="text"
                     placeholder="Company*"
                     required
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="bg-background border-border font-body"
                   />
                 </div>
                 <div>
-                  <Select>
+                  <Select value={formData.region} onValueChange={(val) => setFormData({ ...formData, region: val })}>
                     <SelectTrigger className="bg-background border-border font-body">
                       <SelectValue placeholder="Region*" />
                     </SelectTrigger>
@@ -136,7 +163,7 @@ const Contact = () => {
                   </Select>
                 </div>
                 <div>
-                  <Select>
+                  <Select value={formData.enquiryType} onValueChange={(val) => setFormData({ ...formData, enquiryType: val })}>
                     <SelectTrigger className="bg-background border-border font-body">
                       <SelectValue placeholder="Enquiry Type*" />
                     </SelectTrigger>
@@ -154,11 +181,13 @@ const Contact = () => {
                   <Textarea
                     placeholder="Your Message..."
                     rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="bg-background border-border font-body resize-none"
                   />
                 </div>
-                <Button type="submit" className="group">
-                  Submit
+                <Button type="submit" className="group" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit"}
                   <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Button>
               </form>
