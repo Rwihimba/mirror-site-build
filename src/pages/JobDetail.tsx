@@ -50,6 +50,9 @@ const JobDetail = () => {
 
   const handleApplyClick = () => {
     setShowApply(true);
+    import("@/lib/analytics").then(({ track }) =>
+      track("job_apply_click", { category: "engagement", job_id: job?.id || "", job_title: job?.title || "" })
+    );
     setTimeout(() => applyRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
   };
 

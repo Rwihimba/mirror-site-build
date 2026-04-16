@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { trackFormSubmit } from "@/lib/analytics";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -43,6 +44,7 @@ const PartnerDialog = () => {
       form_type: "partner",
       data: formData,
     });
+    trackFormSubmit("partner", { partnership_type: formData.partnershipType || "unspecified" });
 
     toast({
       title: "Partnership inquiry received",
