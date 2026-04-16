@@ -32,6 +32,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Contact MineTech | Get in Touch"
+        description="Get in touch with MineTech — Africa's leading mining technology startup. Reach our team in Kigali, Rwanda for demos, partnerships and investment inquiries."
+        keywords="contact mining technology, MineTech Rwanda, mining tech demo, African mining startup contact"
+      />
       {/* Hero Section */}
       <section className="relative bg-hero text-hero-foreground py-20 md:py-28 overflow-hidden">
         {/* Background Image */}
