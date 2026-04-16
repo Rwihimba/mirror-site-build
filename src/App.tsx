@@ -9,6 +9,7 @@ import Services from "./pages/Services";
 import Sectors from "./pages/Sectors";
 import Projects from "./pages/Projects";
 import Careers from "./pages/Careers";
+import JobDetail from "./pages/JobDetail";
 import Contact from "./pages/Contact";
 import Solutions from "./pages/Solutions";
 import NotFound from "./pages/NotFound";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/*" element={<Projects />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/:slug" element={<JobDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/*" element={<Solutions />} />
