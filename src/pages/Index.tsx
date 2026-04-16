@@ -109,7 +109,7 @@ const Index = () => {
         
         <div className="relative flex flex-col lg:flex-row min-h-[85vh]">
           <div className="relative text-hero-foreground lg:w-[65%] flex flex-col justify-center px-8 md:px-12 lg:px-20 py-20 lg:py-32 z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-[1.15] mb-10 animate-slide-in-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.15] mb-10 animate-slide-in-left">
               Every action at your mine triggers instant intelligence and real-time insights.
             </h1>
             <div className="flex flex-wrap gap-4 animate-slide-up" style={{ animationDelay: "0.3s" }}>
