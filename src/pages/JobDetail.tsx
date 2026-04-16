@@ -121,7 +121,7 @@ const JobDetail = () => {
           alt="Mining operations at night"
           className="absolute inset-0 w-full h-full object-cover opacity-40"
           loading="eager"
-        / decoding="async">
+        decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/80 to-foreground/40" />
         <div className="container-slr relative pt-32 pb-20 md:pt-40 md:pb-28">
           <Link
