@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import minetechLogo from "@/assets/minetech-logo.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,8 +38,12 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-colors duration-300 ${bgColor}`}>
       <div className="container-slr flex items-center justify-between h-14 md:h-16">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <span className={`text-base font-display font-semibold tracking-tight ${textColor} drop-shadow-sm transition-colors duration-300`}>MineTech</span>
+        <Link to="/" className="flex items-center" aria-label="MineTech home">
+          <img
+            src={minetechLogo}
+            alt="MineTech"
+            className="h-6 md:h-7 w-auto object-contain drop-shadow-sm"
+          />
         </Link>
 
         {/* Desktop Navigation */}
