@@ -170,8 +170,8 @@ const Careers = () => {
                 MineTech is committed to building an inclusive, collaborative environment where diverse perspectives drive innovation for the benefit of our team, our mining partners, and the communities we serve across Africa.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden">
-              <img src={careersWorker} alt="Mining professional in safety gear" className="w-full h-full object-cover" loading="lazy" />
+            <div className="rounded-lg overflow-hidden flex items-center justify-center">
+              <img src={careersWorker} alt="Mining professional in safety gear" className="max-w-[320px] w-full h-auto object-contain" loading="lazy" />
             </div>
           </div>
         </div>
