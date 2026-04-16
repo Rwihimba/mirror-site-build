@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Dialog,
   DialogContent,
@@ -30,8 +31,16 @@ export function JobApplicationDialog({ jobTitle, category, children }: JobApplic
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+    formData.forEach((val, key) => { data[key] = String(val); });
+    data.jobTitle = jobTitle;
+    data.category = category;
+
+    await supabase.from("form_submissions").insert({
+      form_type: "job_application",
+      data,
+    });
 
     toast({
       title: "Application Submitted!",
