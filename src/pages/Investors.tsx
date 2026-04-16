@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { CALENDLY_URL } from "@/lib/intent/popupVariants";
 import { trackCtaClick } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.png";
+import heroImage from "@/assets/contact-hero.webp";
 
 const pillars = [
   { icon: Globe2, title: "$1.7T African Mining Market", body: "Africa holds 30% of global mineral reserves but lags in digital infrastructure — a generational opportunity." },
@@ -38,7 +38,7 @@ const Investors = () => {
       {/* Hero */}
       <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[70vh] pt-16 flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" / decoding="async">
           <div className="absolute inset-0 bg-hero/70" />
         </div>
         <div className="container-slr relative z-10 py-20">

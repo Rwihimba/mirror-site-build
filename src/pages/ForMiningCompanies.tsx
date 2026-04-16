@@ -8,7 +8,7 @@ import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.png";
+import heroImage from "@/assets/contact-hero.webp";
 
 const benefits = [
   { icon: ShieldAlert, title: "Industrial Safety Technology", body: "Real-time hazard detection, automated incident workflows and full RSSB compliance." },
@@ -62,7 +62,7 @@ const ForMiningCompanies = () => {
       {/* Hero */}
       <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[70vh] pt-16 flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" / decoding="async">
           <div className="absolute inset-0 bg-hero/70" />
         </div>
         <div className="container-slr relative z-10 py-20">

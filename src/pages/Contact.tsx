@@ -10,8 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { trackFormSubmit } from "@/lib/analytics";
-import norrskenHouse from "@/assets/norrsken-house.jpg";
-import contactHero from "@/assets/contact-hero.png";
+import norrskenHouse from "@/assets/norrsken-house.webp";
+import contactHero from "@/assets/contact-hero.webp";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +50,7 @@ const Contact = () => {
             className="w-full h-full object-cover opacity-60"
             loading="eager"
             fetchPriority="high"
-          />
+          / decoding="async">
           <div className="absolute inset-0 bg-hero/70" />
         </div>
         
@@ -108,7 +108,7 @@ const Contact = () => {
                 alt="Norrsken House Kigali - MineTech Office"
                 loading="lazy"
                 className="w-full h-80 object-cover"
-              />
+              / decoding="async">
             </div>
           </div>
         </div>

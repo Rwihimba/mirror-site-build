@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import minetechLogo from "@/assets/minetech-logo.png";
+import minetechLogo from "@/assets/minetech-logo.webp";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,7 +43,7 @@ export function Header() {
             src={minetechLogo}
             alt="MineTech"
             className="h-6 md:h-7 w-auto object-contain drop-shadow-sm"
-          />
+          / decoding="async">
         </Link>
 
         {/* Desktop Navigation */}

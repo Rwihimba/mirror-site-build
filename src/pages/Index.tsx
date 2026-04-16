@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { UseCaseCard } from "@/components/sections";
 import { SEO } from "@/components/SEO";
-import miningLoader from "@/assets/mining-loader.jpg";
-import heroImage from "@/assets/contact-hero.png";
+import miningLoader from "@/assets/mining-loader.webp";
+import heroImage from "@/assets/contact-hero.webp";
 import InvestDialog from "@/components/forms/InvestDialog";
 import PartnerDialog from "@/components/forms/PartnerDialog";
 import QuoteDialog from "@/components/forms/QuoteDialog";
@@ -103,7 +103,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative bg-hero overflow-hidden min-h-[85vh] pt-16">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" fetchPriority="high" / decoding="async">
           <div className="absolute inset-0 bg-hero/60" />
         </div>
         
@@ -146,7 +146,7 @@ const Index = () => {
             </p>
           </div>
           <div className="h-full">
-            <img src={miningLoader} alt="Mining loader operating in an open pit mine" className="w-full h-full object-cover" loading="lazy" />
+            <img src={miningLoader} alt="Mining loader operating in an open pit mine" className="w-full h-full object-cover" loading="lazy" / decoding="async">
           </div>
         </div>
       </section>
