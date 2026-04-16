@@ -160,6 +160,39 @@ export type Database = {
         }
         Relationships: []
       }
+      popup_events: {
+        Row: {
+          ab_bucket: string | null
+          created_at: string
+          event_type: string
+          id: string
+          intent: string
+          path: string
+          referrer: string | null
+          variant: string
+        }
+        Insert: {
+          ab_bucket?: string | null
+          created_at?: string
+          event_type: string
+          id?: string
+          intent: string
+          path: string
+          referrer?: string | null
+          variant: string
+        }
+        Update: {
+          ab_bucket?: string | null
+          created_at?: string
+          event_type?: string
+          id?: string
+          intent?: string
+          path?: string
+          referrer?: string | null
+          variant?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
