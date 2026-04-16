@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, Briefcase, MapPin, Building2 } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { DynamicApplicationForm, type FormFieldDef } from "@/components/forms/DynamicApplicationForm";
 import jobHero from "@/assets/job-detail-hero.jpg";
@@ -78,8 +79,38 @@ const JobDetail = () => {
     job.employment_type && { icon: Briefcase, label: job.employment_type },
   ].filter(Boolean) as { icon: typeof MapPin; label: string }[];
 
+  const descriptionText = (job.description || []).map((b) => `${b.heading}\n${b.body}`).join("\n\n");
+  const jobPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    title: job.title,
+    description: descriptionText || job.short_description || job.title,
+    datePosted: new Date().toISOString().split("T")[0],
+    employmentType: job.employment_type || "FULL_TIME",
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "MineTech",
+      sameAs: "https://minetech.lovable.app",
+    },
+    jobLocation: job.location
+      ? {
+          "@type": "Place",
+          address: { "@type": "PostalAddress", addressLocality: job.location, addressCountry: "RW" },
+        }
+      : undefined,
+    industry: job.category,
+    directApply: true,
+  };
+
   return (
     <Layout>
+      <SEO
+        title={`${job.title} | MineTech Careers`}
+        description={job.short_description || `Apply for the ${job.title} role at MineTech — Africa's leading mining technology startup.`}
+        keywords={`${job.title}, ${job.category}, mining tech jobs Africa, MineTech careers`}
+        type="article"
+        jsonLd={jobPostingSchema}
+      />
       {/* Hero */}
       <section className="relative overflow-hidden bg-foreground">
         <img
