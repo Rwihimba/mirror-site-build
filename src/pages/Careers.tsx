@@ -159,32 +159,41 @@ const Careers = () => {
           </div>
 
           {/* Job Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredJobs.map((job) => (
-              <div 
-                key={job.title} 
-                className="bg-secondary rounded-lg p-8 flex flex-col"
-              >
-                <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
-                  {job.category}
-                </div>
-                <h3 className="text-xl font-display font-semibold mb-3">
-                  {job.title}
-                </h3>
-                <p className="text-muted-foreground font-body mb-4">
-                  {job.description}
-                </p>
-                <ul className="space-y-1 mb-6 flex-grow">
-                  {job.requirements.map((req, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground/80 font-body">
-                      • {req}
-                    </li>
-                  ))}
-                </ul>
-                <JobApplicationDialog jobTitle={job.title} category={job.category} />
-              </div>
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-muted-foreground font-body">Loading roles…</p>
+          ) : filteredJobs.length === 0 ? (
+            <p className="text-muted-foreground font-body">No open roles in this category right now.</p>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredJobs.map((job) => (
+                <Link
+                  to={`/careers/${job.slug}`}
+                  key={job.id}
+                  className="group bg-secondary rounded-lg p-8 flex flex-col hover:bg-secondary/70 transition-colors border border-transparent hover:border-primary/30"
+                >
+                  <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
+                    {job.category}
+                  </div>
+                  <h3 className="text-xl font-display font-semibold mb-3">
+                    {job.title}
+                  </h3>
+                  {job.short_description && (
+                    <p className="text-muted-foreground font-body mb-4">
+                      {job.short_description}
+                    </p>
+                  )}
+                  <ul className="space-y-1 mb-6 flex-grow text-sm text-muted-foreground/80 font-body">
+                    {job.location && <li>• {job.location}</li>}
+                    {job.employment_type && <li>• {job.employment_type}</li>}
+                  </ul>
+                  <span className="inline-flex items-center gap-1 text-sm font-body text-primary">
+                    View Role
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
