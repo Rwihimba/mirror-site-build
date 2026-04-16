@@ -292,6 +292,16 @@ const AdminDashboard = () => {
             </div>
           </TabsContent>
 
+          {/* Jobs Tab */}
+          <TabsContent value="jobs" className="mt-6">
+            <JobsManager />
+          </TabsContent>
+
+          {/* Applicants Tab */}
+          <TabsContent value="applicants" className="mt-6">
+            <ApplicantsManager />
+          </TabsContent>
+
           {/* Analytics Tab */}
           <TabsContent value="analytics" className="mt-6">
             <div className="grid md:grid-cols-2 gap-6">
