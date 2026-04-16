@@ -41,6 +41,101 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          applicant_email: string | null
+          applicant_name: string | null
+          created_at: string
+          cv_path: string | null
+          id: string
+          job_id: string
+          responses: Json
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          applicant_email?: string | null
+          applicant_name?: string | null
+          created_at?: string
+          cv_path?: string | null
+          id?: string
+          job_id: string
+          responses?: Json
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          applicant_email?: string | null
+          applicant_name?: string | null
+          created_at?: string
+          cv_path?: string | null
+          id?: string
+          job_id?: string
+          responses?: Json
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          category: string
+          created_at: string
+          department: string | null
+          description: Json
+          employment_type: string | null
+          form_schema: Json
+          id: string
+          is_published: boolean
+          location: string | null
+          short_description: string | null
+          slug: string
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          department?: string | null
+          description?: Json
+          employment_type?: string | null
+          form_schema?: Json
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          short_description?: string | null
+          slug: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          department?: string | null
+          description?: Json
+          employment_type?: string | null
+          form_schema?: Json
+          id?: string
+          is_published?: boolean
+          location?: string | null
+          short_description?: string | null
+          slug?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string

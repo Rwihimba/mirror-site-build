@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { JobApplicationDialog } from "@/components/forms/JobApplicationDialog";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import { supabase } from "@/integrations/supabase/client";
 import careersWorker from "@/assets/careers-worker.png";
+
+interface JobListItem {
+  id: string;
+  slug: string;
+  title: string;
+  category: string;
+  short_description: string | null;
+  location: string | null;
+  employment_type: string | null;
+}
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
@@ -83,10 +93,31 @@ const jobs = [
 
 const Careers = () => {
   const [activeCategory, setActiveCategory] = useState("All Departments");
+  const [jobs, setJobs] = useState<JobListItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredJobs = activeCategory === "All Departments" 
-    ? jobs 
-    : jobs.filter(job => job.category === activeCategory);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from("jobs")
+        .select("id, slug, title, category, short_description, location, employment_type")
+        .eq("is_published", true)
+        .order("sort_order", { ascending: true });
+      if (!cancelled) {
+        setJobs((data as JobListItem[]) || []);
+        setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const categoriesFromData = Array.from(new Set(jobs.map((j) => j.category)));
+  const categories = ["All Departments", ...categoriesFromData];
+
+  const filteredJobs = activeCategory === "All Departments"
+    ? jobs
+    : jobs.filter((job) => job.category === activeCategory);
 
   return (
     <Layout>
@@ -128,32 +159,41 @@ const Careers = () => {
           </div>
 
           {/* Job Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredJobs.map((job) => (
-              <div 
-                key={job.title} 
-                className="bg-secondary rounded-lg p-8 flex flex-col"
-              >
-                <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
-                  {job.category}
-                </div>
-                <h3 className="text-xl font-display font-semibold mb-3">
-                  {job.title}
-                </h3>
-                <p className="text-muted-foreground font-body mb-4">
-                  {job.description}
-                </p>
-                <ul className="space-y-1 mb-6 flex-grow">
-                  {job.requirements.map((req, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground/80 font-body">
-                      • {req}
-                    </li>
-                  ))}
-                </ul>
-                <JobApplicationDialog jobTitle={job.title} category={job.category} />
-              </div>
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-muted-foreground font-body">Loading roles…</p>
+          ) : filteredJobs.length === 0 ? (
+            <p className="text-muted-foreground font-body">No open roles in this category right now.</p>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredJobs.map((job) => (
+                <Link
+                  to={`/careers/${job.slug}`}
+                  key={job.id}
+                  className="group bg-secondary rounded-lg p-8 flex flex-col hover:bg-secondary/70 transition-colors border border-transparent hover:border-primary/30"
+                >
+                  <div className="text-xs text-primary font-body uppercase tracking-wider mb-4">
+                    {job.category}
+                  </div>
+                  <h3 className="text-xl font-display font-semibold mb-3">
+                    {job.title}
+                  </h3>
+                  {job.short_description && (
+                    <p className="text-muted-foreground font-body mb-4">
+                      {job.short_description}
+                    </p>
+                  )}
+                  <ul className="space-y-1 mb-6 flex-grow text-sm text-muted-foreground/80 font-body">
+                    {job.location && <li>• {job.location}</li>}
+                    {job.employment_type && <li>• {job.employment_type}</li>}
+                  </ul>
+                  <span className="inline-flex items-center gap-1 text-sm font-body text-primary">
+                    View Role
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
