@@ -6,10 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Trash2, Pencil, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { FormBuilder } from "./FormBuilder";
 import type { FormFieldDef } from "@/components/forms/DynamicApplicationForm";
+
+const JOB_CATEGORIES = ["Core Technical", "Domain Expert", "Growth & Market"] as const;
 
 type DescBlock = { heading: string; body: string };
 
@@ -46,7 +49,7 @@ const emptyJob = (): JobRecord => ({
     { id: "email", type: "email", label: "Email Address", required: true },
     { id: "cv", type: "file", label: "CV / Resume", required: true, accept: ".pdf,.doc,.docx" },
   ],
-  is_published: false,
+  is_published: true,
   sort_order: 0,
 });
 
@@ -147,7 +150,14 @@ export function JobsManager() {
             </div>
             <div>
               <Label className="font-body">Category</Label>
-              <Input value={editing.category} onChange={(e) => setEditing({ ...editing, category: e.target.value })} className="font-body" />
+              <Select value={editing.category} onValueChange={(v) => setEditing({ ...editing, category: v })}>
+                <SelectTrigger className="font-body"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  {JOB_CATEGORIES.map((c) => (
+                    <SelectItem key={c} value={c}>{c}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div>
               <Label className="font-body">Department</Label>
