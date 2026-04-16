@@ -12,7 +12,9 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Solutions from "./pages/Solutions";
 import NotFound from "./pages/NotFound";
-
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import { PageViewTracker } from "./components/PageViewTracker";
 const queryClient = new QueryClient();
 
 const App = () => (
