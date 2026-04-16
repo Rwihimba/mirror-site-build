@@ -44,6 +44,7 @@ const QuoteDialog = () => {
       form_type: "quote",
       data: formData,
     });
+    trackFormSubmit("quote");
 
     toast({
       title: "Quote request received",
