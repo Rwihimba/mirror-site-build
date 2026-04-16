@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Dialog,
   DialogContent,
