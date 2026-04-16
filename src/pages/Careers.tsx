@@ -93,10 +93,31 @@ const jobs = [
 
 const Careers = () => {
   const [activeCategory, setActiveCategory] = useState("All Departments");
+  const [jobs, setJobs] = useState<JobListItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredJobs = activeCategory === "All Departments" 
-    ? jobs 
-    : jobs.filter(job => job.category === activeCategory);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from("jobs")
+        .select("id, slug, title, category, short_description, location, employment_type")
+        .eq("is_published", true)
+        .order("sort_order", { ascending: true });
+      if (!cancelled) {
+        setJobs((data as JobListItem[]) || []);
+        setLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const categoriesFromData = Array.from(new Set(jobs.map((j) => j.category)));
+  const categories = ["All Departments", ...categoriesFromData];
+
+  const filteredJobs = activeCategory === "All Departments"
+    ? jobs
+    : jobs.filter((job) => job.category === activeCategory);
 
   return (
     <Layout>
