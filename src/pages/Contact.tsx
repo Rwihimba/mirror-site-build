@@ -12,6 +12,24 @@ import norrskenHouse from "@/assets/norrsken-house.jpg";
 import contactHero from "@/assets/contact-hero.png";
 
 const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "", email: "", company: "", region: "", enquiryType: "", message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    await supabase.from("form_submissions").insert({
+      form_type: "contact",
+      data: formData,
+    });
+    toast({ title: "Message sent!", description: "We'll get back to you soon." });
+    setFormData({ name: "", email: "", company: "", region: "", enquiryType: "", message: "" });
+    setIsSubmitting(false);
+  };
+
   return (
     <Layout>
       {/* Hero Section */}
