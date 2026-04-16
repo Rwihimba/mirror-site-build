@@ -4,6 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import careersWorker from "@/assets/careers-worker.png";
 
@@ -121,6 +122,11 @@ const Careers = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Mining Tech Jobs in Africa | Careers at MineTech"
+        description="Join Africa's leading mining technology startup. Open roles in engineering, data science and mining operations across the continent."
+        keywords="mining tech jobs Africa, mining technology careers, African tech startup jobs, data science mining, Rwanda tech jobs"
+      />
       <PageHero
         title="Join the Mining Intelligence Revolution"
         breadcrumb="Careers"

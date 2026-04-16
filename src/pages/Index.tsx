@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { UseCaseCard } from "@/components/sections";
+import { SEO } from "@/components/SEO";
 import miningLoader from "@/assets/mining-loader.jpg";
 import heroImage from "@/assets/contact-hero.png";
 import InvestDialog from "@/components/forms/InvestDialog";

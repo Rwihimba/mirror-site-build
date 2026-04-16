@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import norrskenHouse from "@/assets/norrsken-house.jpg";
 import contactHero from "@/assets/contact-hero.png";
@@ -32,6 +33,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Contact MineTech | Get in Touch"
+        description="Get in touch with MineTech — Africa's leading mining technology startup. Reach our team in Kigali, Rwanda for demos, partnerships and investment inquiries."
+        keywords="contact mining technology, MineTech Rwanda, mining tech demo, African mining startup contact"
+      />
       {/* Hero Section */}
       <section className="relative bg-hero text-hero-foreground py-20 md:py-28 overflow-hidden">
         {/* Background Image */}

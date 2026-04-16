@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero, UseCaseCard, CTASection } from "@/components/sections";
+import { SEO } from "@/components/SEO";
 import solutionsHero from "@/assets/solutions-hero.jpg";
 
 const solutions = [
@@ -81,6 +82,11 @@ const useCases = [
 const Solutions = () => {
   return (
     <Layout>
+      <SEO
+        title="Smart Mining Solutions & AI for Industrial Operations | MineTech"
+        description="End-to-end smart mining solutions covering safety, fleet, environment, supply chain and grade control. AI for industrial operations built for African mines."
+        keywords="smart mining solutions, AI for industrial operations, mining digitization, mining safety technology, grade control software, mining fleet management"
+      />
       <PageHero
         title="End-to-End Mining Intelligence"
         subtitle="MineTech offers full orchestration—from integration strategy to real-time operational intelligence, covering every department and decision."

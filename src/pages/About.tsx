@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import { SEO } from "@/components/SEO";
 
 const stats = [
   { value: "15+", label: "Operational Departments Covered" },
