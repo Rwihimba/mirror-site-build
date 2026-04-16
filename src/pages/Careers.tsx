@@ -5,6 +5,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { JobApplicationDialog } from "@/components/forms/JobApplicationDialog";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import careersWorker from "@/assets/careers-worker.png";
 
 const stats = [
   { value: "Rwanda", label: "Home Base" },
@@ -169,13 +170,8 @@ const Careers = () => {
                 MineTech is committed to building an inclusive, collaborative environment where diverse perspectives drive innovation for the benefit of our team, our mining partners, and the communities we serve across Africa.
               </p>
             </div>
-            <div className="bg-hero rounded-lg p-12 flex items-center justify-center">
-              <svg viewBox="0 0 200 200" className="w-48 h-48 text-primary-light/30">
-                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="2" />
-                <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" strokeWidth="2" />
-                <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" strokeWidth="2" />
-                <circle cx="100" cy="100" r="20" fill="currentColor" opacity="0.3" />
-              </svg>
+            <div className="rounded-lg overflow-hidden">
+              <img src={careersWorker} alt="Mining professional in safety gear" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
         </div>
