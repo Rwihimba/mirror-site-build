@@ -31,7 +31,7 @@ const Partners = () => {
 
       <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[60vh] pt-16 flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" />
+          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" / decoding="async">
           <div className="absolute inset-0 bg-hero/70" />
         </div>
         <div className="container-slr relative z-10 py-20">

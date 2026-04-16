@@ -217,7 +217,7 @@ const Careers = () => {
               </p>
             </div>
             <div className="rounded-lg overflow-hidden flex items-center justify-center">
-              <img src={careersWorker} alt="Mining professional in safety gear" className="max-w-[320px] w-full h-auto object-contain" loading="lazy" />
+              <img src={careersWorker} alt="Mining professional in safety gear" className="max-w-[320px] w-full h-auto object-contain" loading="lazy" / decoding="async">
             </div>
           </div>
         </div>

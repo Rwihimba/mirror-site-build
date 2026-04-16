@@ -50,7 +50,7 @@ const Contact = () => {
             className="w-full h-full object-cover opacity-60"
             loading="eager"
             fetchPriority="high"
-          />
+          / decoding="async">
           <div className="absolute inset-0 bg-hero/70" />
         </div>
         
@@ -108,7 +108,7 @@ const Contact = () => {
                 alt="Norrsken House Kigali - MineTech Office"
                 loading="lazy"
                 className="w-full h-80 object-cover"
-              />
+              / decoding="async">
             </div>
           </div>
         </div>
