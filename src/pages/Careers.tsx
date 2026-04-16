@@ -122,6 +122,11 @@ const Careers = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Mining Tech Jobs in Africa | Careers at MineTech"
+        description="Join Africa's leading mining technology startup. Open roles in engineering, data science and mining operations across the continent."
+        keywords="mining tech jobs Africa, mining technology careers, African tech startup jobs, data science mining, Rwanda tech jobs"
+      />
       <PageHero
         title="Join the Mining Intelligence Revolution"
         breadcrumb="Careers"
