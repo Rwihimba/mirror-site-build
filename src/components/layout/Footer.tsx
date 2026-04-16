@@ -3,6 +3,10 @@ import { Linkedin, Twitter } from "lucide-react";
 
 const companyLinks = [
   { title: "About Us", href: "/about" },
+  { title: "Solutions", href: "/solutions" },
+  { title: "For Mining Companies", href: "/for-mining-companies" },
+  { title: "Investors", href: "/investors" },
+  { title: "Partners", href: "/partners" },
   { title: "Careers", href: "/careers" },
   { title: "Contact", href: "/contact" },
 ];
