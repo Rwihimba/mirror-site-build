@@ -39,8 +39,10 @@ const PartnerDialog = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await supabase.from("form_submissions").insert({
+      form_type: "partner",
+      data: formData,
+    });
 
     toast({
       title: "Partnership inquiry received",
