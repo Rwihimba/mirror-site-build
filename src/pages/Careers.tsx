@@ -4,6 +4,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
+import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import careersWorker from "@/assets/careers-worker.png";
 
