@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { DynamicApplicationForm, type FormFieldDef } from "@/components/forms/DynamicApplicationForm";
-import jobHero from "@/assets/job-detail-hero.jpg";
+import jobHero from "@/assets/job-detail-hero.webp";
 
 type DescriptionBlock = { heading: string; body: string };
 

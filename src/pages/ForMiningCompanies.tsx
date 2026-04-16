@@ -8,7 +8,7 @@ import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.png";
+import heroImage from "@/assets/contact-hero.webp";
 
 const benefits = [
   { icon: ShieldAlert, title: "Industrial Safety Technology", body: "Real-time hazard detection, automated incident workflows and full RSSB compliance." },

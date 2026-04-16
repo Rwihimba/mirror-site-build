@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { PageHero, StatsGrid, CTASection } from "@/components/sections";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
-import careersWorker from "@/assets/careers-worker.png";
+import careersWorker from "@/assets/careers-worker.webp";
 
 interface JobListItem {
   id: string;

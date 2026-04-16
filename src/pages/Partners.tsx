@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import PartnerDialog from "@/components/forms/PartnerDialog";
-import heroImage from "@/assets/contact-hero.png";
+import heroImage from "@/assets/contact-hero.webp";
 
 const opportunities = [
   { icon: Code2, title: "Technology Partners", body: "IoT, sensor, ERP and analytics platforms looking to integrate with mining operators across Africa." },

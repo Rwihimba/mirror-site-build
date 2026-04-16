@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { PageHero, UseCaseCard, CTASection } from "@/components/sections";
 import { SEO } from "@/components/SEO";
-import solutionsHero from "@/assets/solutions-hero.jpg";
+import solutionsHero from "@/assets/solutions-hero.webp";
 
 const solutions = [
   { 

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { CALENDLY_URL } from "@/lib/intent/popupVariants";
 import { trackCtaClick } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.png";
+import heroImage from "@/assets/contact-hero.webp";
 
 const pillars = [
   { icon: Globe2, title: "$1.7T African Mining Market", body: "Africa holds 30% of global mineral reserves but lags in digital infrastructure — a generational opportunity." },

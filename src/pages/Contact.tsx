@@ -10,8 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { trackFormSubmit } from "@/lib/analytics";
-import norrskenHouse from "@/assets/norrsken-house.jpg";
-import contactHero from "@/assets/contact-hero.png";
+import norrskenHouse from "@/assets/norrsken-house.webp";
+import contactHero from "@/assets/contact-hero.webp";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
