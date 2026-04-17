@@ -12,6 +12,7 @@ interface GAReport {
   topPages: { path: string; views: number }[];
   sources: { channel: string; source: string; sessions: number }[];
   events: { name: string; count: number }[];
+  locations: { country: string; city: string; users: number; sessions: number }[];
   range: { startDate: string; endDate: string };
 }
 
@@ -118,6 +119,35 @@ export function GoogleAnalytics() {
                 key={e.name}
                 left={<span className="font-body text-sm">{e.name}</span>}
                 right={<span className="font-display font-semibold">{e.count}</span>}
+              />
+            ))}
+          </div>
+        ) : (
+          <Empty />
+        )}
+      </Card>
+
+      {/* Locations */}
+      <Card title="Visitor Locations">
+        {data?.locations.length ? (
+          <div className="space-y-2 max-h-96 overflow-y-auto">
+            {data.locations.map((loc, i) => (
+              <Row
+                key={`${loc.country}-${loc.city}-${i}`}
+                left={
+                  <div>
+                    <div className="font-body text-sm">
+                      {loc.city && loc.city !== "(not set)" ? loc.city : "Unknown city"}
+                    </div>
+                    <div className="text-xs text-muted-foreground">{loc.country}</div>
+                  </div>
+                }
+                right={
+                  <div className="text-right">
+                    <div className="font-display font-semibold">{loc.users}</div>
+                    <div className="text-xs text-muted-foreground">users</div>
+                  </div>
+                }
               />
             ))}
           </div>

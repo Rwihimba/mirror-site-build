@@ -7,10 +7,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { LogOut, Trash2, Eye, BarChart3, FileText, RefreshCw, Briefcase, Users, MousePointerClick, LineChart } from "lucide-react";
+import { LogOut, Trash2, Eye, FileText, RefreshCw, Briefcase, Users, LineChart } from "lucide-react";
 import { JobsManager } from "@/components/admin/JobsManager";
 import { ApplicantsManager } from "@/components/admin/ApplicantsManager";
-import { PopupAnalytics } from "@/components/admin/PopupAnalytics";
 import { GoogleAnalytics } from "@/components/admin/GoogleAnalytics";
 
 interface FormSubmission {
@@ -171,12 +170,6 @@ const AdminDashboard = () => {
             <TabsTrigger value="applicants" className="gap-1">
               <Users className="w-4 h-4" /> Applicants
             </TabsTrigger>
-            <TabsTrigger value="analytics" className="gap-1">
-              <BarChart3 className="w-4 h-4" /> Analytics
-            </TabsTrigger>
-            <TabsTrigger value="popups" className="gap-1">
-              <MousePointerClick className="w-4 h-4" /> Popups
-            </TabsTrigger>
             <TabsTrigger value="ga" className="gap-1">
               <LineChart className="w-4 h-4" /> Google Analytics
             </TabsTrigger>
@@ -308,46 +301,6 @@ const AdminDashboard = () => {
           {/* Applicants Tab */}
           <TabsContent value="applicants" className="mt-6">
             <ApplicantsManager />
-          </TabsContent>
-
-          {/* Analytics Tab */}
-          <TabsContent value="analytics" className="mt-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-display font-semibold mb-4">Top Pages</h3>
-                {topPages.length === 0 ? (
-                  <p className="text-muted-foreground text-sm">No data yet.</p>
-                ) : (
-                  <div className="space-y-3">
-                    {topPages.map(([path, count]) => (
-                      <div key={path} className="flex items-center justify-between">
-                        <span className="text-sm font-body truncate mr-4">{path}</span>
-                        <span className="text-sm font-display font-semibold">{count}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-display font-semibold mb-4">Recent Visits</h3>
-                <div className="space-y-2 max-h-80 overflow-y-auto">
-                  {pageViews.slice(0, 20).map(view => (
-                    <div key={view.id} className="flex items-center justify-between text-sm border-b border-border pb-2">
-                      <span className="font-body truncate mr-4">{view.path}</span>
-                      <span className="text-xs text-muted-foreground whitespace-nowrap">
-                        {new Date(view.created_at).toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* Popups Tab */}
-          <TabsContent value="popups" className="mt-6">
-            <PopupAnalytics />
           </TabsContent>
 
           {/* Google Analytics Tab */}
