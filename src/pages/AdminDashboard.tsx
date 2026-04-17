@@ -303,46 +303,6 @@ const AdminDashboard = () => {
             <ApplicantsManager />
           </TabsContent>
 
-          {/* Analytics Tab */}
-          <TabsContent value="analytics" className="mt-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-display font-semibold mb-4">Top Pages</h3>
-                {topPages.length === 0 ? (
-                  <p className="text-muted-foreground text-sm">No data yet.</p>
-                ) : (
-                  <div className="space-y-3">
-                    {topPages.map(([path, count]) => (
-                      <div key={path} className="flex items-center justify-between">
-                        <span className="text-sm font-body truncate mr-4">{path}</span>
-                        <span className="text-sm font-display font-semibold">{count}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="bg-card rounded-lg border border-border p-6">
-                <h3 className="font-display font-semibold mb-4">Recent Visits</h3>
-                <div className="space-y-2 max-h-80 overflow-y-auto">
-                  {pageViews.slice(0, 20).map(view => (
-                    <div key={view.id} className="flex items-center justify-between text-sm border-b border-border pb-2">
-                      <span className="font-body truncate mr-4">{view.path}</span>
-                      <span className="text-xs text-muted-foreground whitespace-nowrap">
-                        {new Date(view.created_at).toLocaleString()}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* Popups Tab */}
-          <TabsContent value="popups" className="mt-6">
-            <PopupAnalytics />
-          </TabsContent>
-
           {/* Google Analytics Tab */}
           <TabsContent value="ga" className="mt-6">
             <GoogleAnalytics />
