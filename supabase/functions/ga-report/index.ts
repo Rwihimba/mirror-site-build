@@ -156,8 +156,8 @@ Deno.serve(async (req) => {
 
     const dateRanges = [{ startDate, endDate }];
 
-    // Run all 4 reports in parallel
-    const [totalsRes, topPagesRes, sourcesRes, eventsRes] = await Promise.all([
+    // Run all 5 reports in parallel
+    const [totalsRes, topPagesRes, sourcesRes, eventsRes, locationsRes] = await Promise.all([
       runReport(propertyId, accessToken, {
         dateRanges,
         metrics: [
@@ -188,6 +188,13 @@ Deno.serve(async (req) => {
         orderBys: [{ metric: { metricName: "eventCount" }, desc: true }],
         limit: 25,
       }),
+      runReport(propertyId, accessToken, {
+        dateRanges,
+        dimensions: [{ name: "country" }, { name: "city" }],
+        metrics: [{ name: "totalUsers" }, { name: "sessions" }],
+        orderBys: [{ metric: { metricName: "totalUsers" }, desc: true }],
+        limit: 25,
+      }),
     ]);
 
     const totalsRow = totalsRes.rows?.[0]?.metricValues || [];
@@ -210,9 +217,15 @@ Deno.serve(async (req) => {
       name: r.dimensionValues[0].value,
       count: Number(r.metricValues[0].value),
     }));
+    const locations = (locationsRes.rows || []).map((r: any) => ({
+      country: r.dimensionValues[0].value,
+      city: r.dimensionValues[1].value,
+      users: Number(r.metricValues[0].value),
+      sessions: Number(r.metricValues[1].value),
+    }));
 
     return new Response(
-      JSON.stringify({ totals, topPages, sources, events, range: { startDate, endDate } }),
+      JSON.stringify({ totals, topPages, sources, events, locations, range: { startDate, endDate } }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (err: unknown) {
