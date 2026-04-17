@@ -7,10 +7,11 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { LogOut, Trash2, Eye, BarChart3, FileText, RefreshCw, Briefcase, Users, MousePointerClick } from "lucide-react";
+import { LogOut, Trash2, Eye, BarChart3, FileText, RefreshCw, Briefcase, Users, MousePointerClick, LineChart } from "lucide-react";
 import { JobsManager } from "@/components/admin/JobsManager";
 import { ApplicantsManager } from "@/components/admin/ApplicantsManager";
 import { PopupAnalytics } from "@/components/admin/PopupAnalytics";
+import { GoogleAnalytics } from "@/components/admin/GoogleAnalytics";
 
 interface FormSubmission {
   id: string;
@@ -175,6 +176,9 @@ const AdminDashboard = () => {
             </TabsTrigger>
             <TabsTrigger value="popups" className="gap-1">
               <MousePointerClick className="w-4 h-4" /> Popups
+            </TabsTrigger>
+            <TabsTrigger value="ga" className="gap-1">
+              <LineChart className="w-4 h-4" /> Google Analytics
             </TabsTrigger>
           </TabsList>
 
@@ -344,6 +348,11 @@ const AdminDashboard = () => {
           {/* Popups Tab */}
           <TabsContent value="popups" className="mt-6">
             <PopupAnalytics />
+          </TabsContent>
+
+          {/* Google Analytics Tab */}
+          <TabsContent value="ga" className="mt-6">
+            <GoogleAnalytics />
           </TabsContent>
         </Tabs>
       </div>
