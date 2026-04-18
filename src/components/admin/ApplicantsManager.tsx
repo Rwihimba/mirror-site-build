@@ -34,24 +34,29 @@ export function ApplicantsManager() {
   const { toast } = useToast();
   const [apps, setApps] = useState<ApplicationRow[]>([]);
   const [jobs, setJobs] = useState<JobLite[]>([]);
+  const [pipeline, setPipeline] = useState<Record<string, PipelineRow>>({});
   const [filterJob, setFilterJob] = useState("all");
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<ApplicationRow | null>(null);
 
   const fetchAll = async () => {
     setLoading(true);
-    const [aRes, jRes] = await Promise.all([
+    const [aRes, jRes, pRes] = await Promise.all([
       supabase.from("job_applications").select("*").order("created_at", { ascending: false }),
-      supabase.from("jobs").select("id, title").order("title"),
+      supabase.from("jobs").select("id, title, pipeline_enabled").order("title"),
+      supabase.from("candidate_pipeline").select("application_id, stage, submission_payload, submission_token, assignment_due_at, meeting_scheduled_at"),
     ]);
     setApps((aRes.data as unknown as ApplicationRow[]) || []);
     setJobs((jRes.data as unknown as JobLite[]) || []);
+    const map: Record<string, PipelineRow> = {};
+    ((pRes.data as unknown as PipelineRow[]) || []).forEach((p) => { map[p.application_id] = p; });
+    setPipeline(map);
     setLoading(false);
   };
 
   useEffect(() => { fetchAll(); }, []);
 
-  const jobMap = useMemo(() => Object.fromEntries(jobs.map((j) => [j.id, j.title])), [jobs]);
+  const jobMap = useMemo(() => Object.fromEntries(jobs.map((j) => [j.id, j])), [jobs]);
   const filtered = filterJob === "all" ? apps : apps.filter((a) => a.job_id === filterJob);
 
   const updateStatus = async (id: string, status: string) => {
@@ -71,6 +76,12 @@ export function ApplicantsManager() {
 
   const downloadCv = async (path: string) => {
     const { data, error } = await supabase.storage.from("job-applications").createSignedUrl(path, 60);
+    if (error || !data) return toast({ title: "Error", description: error?.message || "Could not generate link", variant: "destructive" });
+    window.open(data.signedUrl, "_blank");
+  };
+
+  const downloadSubmission = async (path: string) => {
+    const { data, error } = await supabase.storage.from("assignment-submissions").createSignedUrl(path, 60);
     if (error || !data) return toast({ title: "Error", description: error?.message || "Could not generate link", variant: "destructive" });
     window.open(data.signedUrl, "_blank");
   };
