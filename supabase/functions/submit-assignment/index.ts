@@ -26,18 +26,17 @@ Deno.serve(async (req) => {
 
     const app: any = pipeline.job_applications
 
+    // payload may include: { text, link, file_path, file_name, submitted_at }
     await supabase.from('candidate_pipeline').update({
       stage: 'assignment_submitted',
       submission_payload: payload,
     }).eq('id', pipeline.id)
 
-    // Cancel pending assignment reminders
     await supabase.from('pipeline_scheduled_emails').update({ status: 'cancelled' })
       .eq('application_id', pipeline.application_id)
       .eq('status', 'pending')
       .in('template_key', ['assignment_reminder', 'assignment_overdue'])
 
-    // Schedule confirmation + meeting invite immediately, plus reminder in 48h
     const now = new Date().toISOString()
     const remindAt = new Date(Date.now() + 48 * 3600 * 1000).toISOString()
     await supabase.from('pipeline_scheduled_emails').insert([
