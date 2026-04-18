@@ -32,6 +32,7 @@ interface PageView {
 const AdminDashboard = () => {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [pageViews, setPageViews] = useState<PageView[]>([]);
+  const [jobAppsCount, setJobAppsCount] = useState(0);
   const [filterType, setFilterType] = useState("all");
   const [loading, setLoading] = useState(true);
   const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
@@ -41,6 +42,18 @@ const AdminDashboard = () => {
   useEffect(() => {
     checkAuth();
     fetchData();
+
+    // Realtime subscriptions for live updates
+    const channel = supabase
+      .channel("admin-dashboard")
+      .on("postgres_changes", { event: "*", schema: "public", table: "form_submissions" }, () => fetchData())
+      .on("postgres_changes", { event: "*", schema: "public", table: "page_views" }, () => fetchData())
+      .on("postgres_changes", { event: "*", schema: "public", table: "job_applications" }, () => fetchData())
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const checkAuth = async () => {
@@ -61,12 +74,14 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     setLoading(true);
-    const [subRes, pvRes] = await Promise.all([
+    const [subRes, pvRes, jaRes] = await Promise.all([
       supabase.from("form_submissions").select("*").order("created_at", { ascending: false }),
       supabase.from("page_views").select("*").order("created_at", { ascending: false }).limit(500),
+      supabase.from("job_applications").select("id", { count: "exact", head: true }),
     ]);
     if (subRes.data) setSubmissions(subRes.data as FormSubmission[]);
     if (pvRes.data) setPageViews(pvRes.data as PageView[]);
+    setJobAppsCount(jaRes.count ?? 0);
     setLoading(false);
   };
 
@@ -143,7 +158,8 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-card rounded-lg p-4 border border-border">
             <p className="text-sm text-muted-foreground font-body">Total Submissions</p>
-            <p className="text-2xl font-display font-semibold">{submissions.length}</p>
+            <p className="text-2xl font-display font-semibold">{submissions.length + jobAppsCount}</p>
+            <p className="text-xs text-muted-foreground mt-1">Forms: {submissions.length} · Jobs: {jobAppsCount}</p>
           </div>
           <div className="bg-card rounded-lg p-4 border border-border">
             <p className="text-sm text-muted-foreground font-body">New Submissions</p>
