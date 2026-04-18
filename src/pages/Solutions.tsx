@@ -107,9 +107,8 @@ const Solutions = () => {
                 to={solution.href}
                 className="group p-8 min-h-[220px] bg-card rounded-lg hover:shadow-lg transition-shadow border border-border flex flex-col"
               >
-                <h3 className="text-lg font-display font-semibold mb-3 group-hover:text-primary transition-colors flex items-start justify-between gap-2">
-                  <span>{solution.title}</span>
-                  <ArrowUpRight className="w-5 h-5 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <h3 className="text-lg font-display font-semibold mb-3 group-hover:text-primary transition-colors">
+                  {solution.title}
                 </h3>
                 <p className="text-sm text-muted-foreground font-body flex-grow">{solution.description}</p>
               </Link>
@@ -127,15 +126,6 @@ const Solutions = () => {
             {useCases.map((useCase, index) => (
               <UseCaseCard key={index} useCase={useCase} />
             ))}
-          </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/use-cases">
-              <Button variant="outline" className="group">
-                View other use cases
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>

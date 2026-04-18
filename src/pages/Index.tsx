@@ -225,15 +225,6 @@ const Index = () => {
               <UseCaseCard key={index} useCase={useCase} />
             ))}
           </div>
-          
-          <div className="text-center mt-10">
-            <Link to="/use-cases">
-              <Button variant="outline" className="group">
-                View other use cases
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
     </Layout>
