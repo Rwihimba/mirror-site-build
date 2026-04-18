@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 
 const companyLinks = [
   { title: "About Us", href: "/about" },
@@ -50,11 +50,21 @@ export function Footer() {
 
         {/* Social Links */}
         <div className="flex items-center gap-4 mb-8">
-          <a href="#" className="p-2 rounded-full bg-hero-foreground/10 hover:bg-hero-foreground/20 transition-colors">
+          <a
+            href="https://www.linkedin.com/company/minetech-rwanda"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MineTech on LinkedIn"
+            className="p-2 rounded-full bg-hero-foreground/10 hover:bg-hero-foreground/20 transition-colors"
+          >
             <Linkedin className="w-5 h-5" />
           </a>
-          <a href="#" className="p-2 rounded-full bg-hero-foreground/10 hover:bg-hero-foreground/20 transition-colors">
-            <Twitter className="w-5 h-5" />
+          <a
+            href="mailto:info@minetech.co.rw"
+            aria-label="Email MineTech"
+            className="p-2 rounded-full bg-hero-foreground/10 hover:bg-hero-foreground/20 transition-colors"
+          >
+            <Mail className="w-5 h-5" />
           </a>
         </div>
 
