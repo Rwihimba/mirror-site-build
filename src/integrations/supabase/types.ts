@@ -14,6 +14,56 @@ export type Database = {
   }
   public: {
     Tables: {
+      candidate_pipeline: {
+        Row: {
+          application_id: string
+          assignment_due_at: string | null
+          calendly_event_url: string | null
+          created_at: string
+          id: string
+          meeting_scheduled_at: string | null
+          notes: string | null
+          stage: Database["public"]["Enums"]["pipeline_stage"]
+          submission_payload: Json | null
+          submission_token: string | null
+          updated_at: string
+        }
+        Insert: {
+          application_id: string
+          assignment_due_at?: string | null
+          calendly_event_url?: string | null
+          created_at?: string
+          id?: string
+          meeting_scheduled_at?: string | null
+          notes?: string | null
+          stage?: Database["public"]["Enums"]["pipeline_stage"]
+          submission_payload?: Json | null
+          submission_token?: string | null
+          updated_at?: string
+        }
+        Update: {
+          application_id?: string
+          assignment_due_at?: string | null
+          calendly_event_url?: string | null
+          created_at?: string
+          id?: string
+          meeting_scheduled_at?: string | null
+          notes?: string | null
+          stage?: Database["public"]["Enums"]["pipeline_stage"]
+          submission_payload?: Json | null
+          submission_token?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidate_pipeline_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: true
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -247,6 +297,169 @@ export type Database = {
         }
         Relationships: []
       }
+      pipeline_email_log: {
+        Row: {
+          application_id: string | null
+          error: string | null
+          id: string
+          recipient: string
+          sent_at: string
+          status: string
+          subject: string | null
+          template_key: string
+        }
+        Insert: {
+          application_id?: string | null
+          error?: string | null
+          id?: string
+          recipient: string
+          sent_at?: string
+          status?: string
+          subject?: string | null
+          template_key: string
+        }
+        Update: {
+          application_id?: string | null
+          error?: string | null
+          id?: string
+          recipient?: string
+          sent_at?: string
+          status?: string
+          subject?: string | null
+          template_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pipeline_email_log_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pipeline_email_templates: {
+        Row: {
+          body_html: string
+          created_at: string
+          delay_minutes: number
+          from_name: string
+          id: string
+          is_active: boolean
+          key: string
+          name: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          body_html: string
+          created_at?: string
+          delay_minutes?: number
+          from_name?: string
+          id?: string
+          is_active?: boolean
+          key: string
+          name: string
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          body_html?: string
+          created_at?: string
+          delay_minutes?: number
+          from_name?: string
+          id?: string
+          is_active?: boolean
+          key?: string
+          name?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      pipeline_scheduled_emails: {
+        Row: {
+          application_id: string
+          attempts: number
+          created_at: string
+          id: string
+          last_error: string | null
+          send_at: string
+          sent_at: string | null
+          status: string
+          template_key: string
+        }
+        Insert: {
+          application_id: string
+          attempts?: number
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          send_at: string
+          sent_at?: string | null
+          status?: string
+          template_key: string
+        }
+        Update: {
+          application_id?: string
+          attempts?: number
+          created_at?: string
+          id?: string
+          last_error?: string | null
+          send_at?: string
+          sent_at?: string | null
+          status?: string
+          template_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pipeline_scheduled_emails_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pipeline_settings: {
+        Row: {
+          assignment_duration_hours: number
+          assignment_link: string | null
+          brand_logo_url: string | null
+          brand_primary_color: string | null
+          brand_signature_html: string | null
+          calendly_url: string | null
+          id: number
+          notification_email: string
+          reminder_offsets_hours: number[]
+          updated_at: string
+        }
+        Insert: {
+          assignment_duration_hours?: number
+          assignment_link?: string | null
+          brand_logo_url?: string | null
+          brand_primary_color?: string | null
+          brand_signature_html?: string | null
+          calendly_url?: string | null
+          id?: number
+          notification_email?: string
+          reminder_offsets_hours?: number[]
+          updated_at?: string
+        }
+        Update: {
+          assignment_duration_hours?: number
+          assignment_link?: string | null
+          brand_logo_url?: string | null
+          brand_primary_color?: string | null
+          brand_signature_html?: string | null
+          calendly_url?: string | null
+          id?: number
+          notification_email?: string
+          reminder_offsets_hours?: number[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       popup_events: {
         Row: {
           ab_bucket: string | null
@@ -365,6 +578,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      pipeline_stage:
+        | "applied"
+        | "assignment_sent"
+        | "assignment_submitted"
+        | "meeting_scheduled"
+        | "completed"
+        | "rejected"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -493,6 +713,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      pipeline_stage: [
+        "applied",
+        "assignment_sent",
+        "assignment_submitted",
+        "meeting_scheduled",
+        "completed",
+        "rejected",
+      ],
     },
   },
 } as const
