@@ -19,6 +19,7 @@ import Partners from "./pages/Partners";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import AssignmentSubmit from "./pages/AssignmentSubmit";
 import { PageViewTracker } from "./components/PageViewTracker";
 import { ScrollToTop } from "./components/ScrollToTop";
 
@@ -57,6 +58,7 @@ const App = () => (
           <Route path="/insights" element={<Projects />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/assignment/:token" element={<AssignmentSubmit />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
