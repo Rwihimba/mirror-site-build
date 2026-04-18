@@ -220,6 +220,86 @@ export function JobsManager() {
           ))}
         </div>
 
+        <div className="bg-card border border-border rounded-lg p-6 space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="font-display font-semibold text-lg">Pipeline Automation</h3>
+              <p className="text-xs text-muted-foreground font-body">Per-role automated emails, assignment, and scheduling.</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Switch
+                checked={editing.pipeline_enabled}
+                onCheckedChange={(c) => setEditing({ ...editing, pipeline_enabled: c })}
+                id="pipe"
+              />
+              <Label htmlFor="pipe" className="font-body cursor-pointer">Enabled</Label>
+            </div>
+          </div>
+
+          {editing.pipeline_enabled && (
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="md:col-span-2">
+                <Label className="font-body">Assignment instructions (shown in email & on submission page)</Label>
+                <Textarea
+                  rows={4}
+                  value={editing.assignment_instructions || ""}
+                  onChange={(e) => setEditing({ ...editing, assignment_instructions: e.target.value })}
+                  placeholder="Describe what the candidate needs to do..."
+                  className="font-body"
+                />
+              </div>
+              <div>
+                <Label className="font-body">Assignment PDF brief (optional)</Label>
+                <Input
+                  type="file"
+                  accept=".pdf"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const path = `${editing.id || "new"}/${Date.now()}-${file.name}`;
+                    const { error } = await supabase.storage.from("assignment-files").upload(path, file, { upsert: true });
+                    if (error) return toast({ title: "Upload failed", description: error.message, variant: "destructive" });
+                    setEditing({ ...editing, assignment_pdf_path: path });
+                    toast({ title: "Uploaded", description: file.name });
+                  }}
+                  className="font-body"
+                />
+                {editing.assignment_pdf_path && (
+                  <p className="text-xs text-muted-foreground mt-1 font-mono truncate">📎 {editing.assignment_pdf_path}</p>
+                )}
+              </div>
+              <div>
+                <Label className="font-body">External assignment link (optional)</Label>
+                <Input
+                  value={editing.assignment_link || ""}
+                  onChange={(e) => setEditing({ ...editing, assignment_link: e.target.value })}
+                  placeholder="https://docs.google.com/..."
+                  className="font-body"
+                />
+              </div>
+              <div>
+                <Label className="font-body">Deadline (hours) — overrides global</Label>
+                <Input
+                  type="number"
+                  value={editing.assignment_duration_hours ?? ""}
+                  onChange={(e) => setEditing({ ...editing, assignment_duration_hours: e.target.value ? Number(e.target.value) : null })}
+                  placeholder="72"
+                  className="font-body"
+                />
+              </div>
+              <div>
+                <Label className="font-body">Calendly URL (optional override)</Label>
+                <Input
+                  value={editing.calendly_url || ""}
+                  onChange={(e) => setEditing({ ...editing, calendly_url: e.target.value })}
+                  placeholder="https://calendly.com/..."
+                  className="font-body"
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
         <div className="bg-card border border-border rounded-lg p-6">
           <FormBuilder value={editing.form_schema} onChange={(s) => setEditing({ ...editing, form_schema: s })} />
         </div>
