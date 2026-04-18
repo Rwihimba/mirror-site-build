@@ -32,6 +32,7 @@ interface PageView {
 const AdminDashboard = () => {
   const [submissions, setSubmissions] = useState<FormSubmission[]>([]);
   const [pageViews, setPageViews] = useState<PageView[]>([]);
+  const [jobAppsCount, setJobAppsCount] = useState(0);
   const [filterType, setFilterType] = useState("all");
   const [loading, setLoading] = useState(true);
   const [selectedSubmission, setSelectedSubmission] = useState<FormSubmission | null>(null);
@@ -41,6 +42,18 @@ const AdminDashboard = () => {
   useEffect(() => {
     checkAuth();
     fetchData();
+
+    // Realtime subscriptions for live updates
+    const channel = supabase
+      .channel("admin-dashboard")
+      .on("postgres_changes", { event: "*", schema: "public", table: "form_submissions" }, () => fetchData())
+      .on("postgres_changes", { event: "*", schema: "public", table: "page_views" }, () => fetchData())
+      .on("postgres_changes", { event: "*", schema: "public", table: "job_applications" }, () => fetchData())
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const checkAuth = async () => {
