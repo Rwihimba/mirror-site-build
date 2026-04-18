@@ -86,37 +86,6 @@ const About = () => {
 
       <StatsGrid stats={stats} variant="dark" />
 
-      {/* Team Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container-slr">
-          <div className="mb-12">
-            <span className="text-primary font-body text-sm uppercase tracking-wider">Our Team</span>
-            <h2 className="text-3xl md:text-4xl font-display mt-2 mb-4">
-              Building Africa's Leading Mining Technology Team
-            </h2>
-            <p className="text-lg text-muted-foreground font-body max-w-3xl">
-              MineTech combines mining professionals, software engineers, data scientists, and data engineers - all united by one mission: Transform African mining through intelligent technology.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <div key={member.name} className="bg-card p-8 rounded-lg hover:shadow-lg transition-shadow border border-border">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-display font-semibold mb-1">{member.name}</h3>
-                <p className="text-sm text-primary font-body mb-3">{member.role}</p>
-                <p className="text-sm text-muted-foreground font-body">{member.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTASection
         title="Want to learn more?"
         description="Get in touch for a collaborative discussion about how MineTech can transform your mining operations."

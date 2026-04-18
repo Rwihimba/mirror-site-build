@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import { PageViewTracker } from "./components/PageViewTracker";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 // Lazy-load popup so it stays out of the main bundle
 const IntentPopup = lazy(() => import("./components/popups/IntentPopup"));
@@ -32,6 +33,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <PageViewTracker />
         <Routes>
           <Route path="/" element={<Index />} />
