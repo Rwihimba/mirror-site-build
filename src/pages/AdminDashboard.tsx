@@ -158,7 +158,8 @@ const AdminDashboard = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-card rounded-lg p-4 border border-border">
             <p className="text-sm text-muted-foreground font-body">Total Submissions</p>
-            <p className="text-2xl font-display font-semibold">{submissions.length}</p>
+            <p className="text-2xl font-display font-semibold">{submissions.length + jobAppsCount}</p>
+            <p className="text-xs text-muted-foreground mt-1">Forms: {submissions.length} · Jobs: {jobAppsCount}</p>
           </div>
           <div className="bg-card rounded-lg p-4 border border-border">
             <p className="text-sm text-muted-foreground font-body">New Submissions</p>
