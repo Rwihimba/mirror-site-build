@@ -97,7 +97,7 @@ export function ApplicantsManager() {
     };
     const rows = filtered.map((a) => {
       const base: Record<string, unknown> = {
-        job: jobMap[a.job_id] || a.job_id,
+        job: jobMap[a.job_id]?.title || a.job_id,
         name: a.applicant_name,
         email: a.applicant_email,
         status: a.status,
@@ -157,7 +157,14 @@ export function ApplicantsManager() {
                       <div className="font-medium">{a.applicant_name || "—"}</div>
                       <div className="text-xs text-muted-foreground">{a.applicant_email || ""}</div>
                     </td>
-                    <td className="px-4 py-3 font-body text-xs">{jobMap[a.job_id] || "—"}</td>
+                    <td className="px-4 py-3 font-body text-xs">
+                      <div>{jobMap[a.job_id]?.title || "—"}</div>
+                      {pipeline[a.id] && (
+                        <Badge variant="secondary" className="capitalize text-[10px] mt-1">
+                          {pipeline[a.id].stage.replace(/_/g, " ")}
+                        </Badge>
+                      )}
+                    </td>
                     <td className="px-4 py-3">
                       <Badge variant="outline" className="capitalize text-xs">{a.status}</Badge>
                     </td>
@@ -193,8 +200,13 @@ export function ApplicantsManager() {
                 </Select>
               </div>
               <div className="text-sm text-muted-foreground font-body">
-                <div>Role: <span className="text-foreground">{jobMap[selected.job_id] || "—"}</span></div>
+                <div>Role: <span className="text-foreground">{jobMap[selected.job_id]?.title || "—"}</span></div>
                 <div>Email: <span className="text-foreground">{selected.applicant_email || "—"}</span></div>
+                {pipeline[selected.id] && (
+                  <div className="mt-2">
+                    Pipeline stage: <Badge variant="secondary" className="capitalize text-xs">{pipeline[selected.id].stage.replace(/_/g, " ")}</Badge>
+                  </div>
+                )}
               </div>
 
               {selected.cv_path && (
@@ -202,6 +214,39 @@ export function ApplicantsManager() {
                   <Download className="w-4 h-4 mr-1" /> Download CV
                 </Button>
               )}
+
+              {pipeline[selected.id]?.submission_payload && (() => {
+                const sub = pipeline[selected.id].submission_payload as Record<string, unknown>;
+                const filePath = sub.file_path as string | undefined;
+                const fileName = sub.file_name as string | undefined;
+                const linkUrl = sub.link as string | undefined;
+                const notes = sub.text as string | undefined;
+                const submittedAt = sub.submitted_at as string | undefined;
+                return (
+                  <div className="bg-muted/40 border border-border rounded-md p-3 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-display font-semibold text-sm">Assignment submission</h4>
+                      {submittedAt && <span className="text-[10px] text-muted-foreground">{new Date(submittedAt).toLocaleString()}</span>}
+                    </div>
+                    {filePath && (
+                      <Button variant="outline" size="sm" onClick={() => downloadSubmission(filePath)} className="w-full">
+                        <Download className="w-4 h-4 mr-1" /> {fileName || "Download submission"}
+                      </Button>
+                    )}
+                    {linkUrl && (
+                      <a href={linkUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline text-sm break-all block">
+                        {linkUrl}
+                      </a>
+                    )}
+                    {notes && (
+                      <div>
+                        <div className="text-xs text-muted-foreground font-body mb-1">Notes</div>
+                        <p className="text-sm font-body whitespace-pre-wrap">{notes}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })()}
 
               <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
                 {Object.entries(selected.responses || {}).map(([k, v]) => {
