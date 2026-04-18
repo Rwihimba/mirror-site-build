@@ -74,12 +74,14 @@ const AdminDashboard = () => {
 
   const fetchData = async () => {
     setLoading(true);
-    const [subRes, pvRes] = await Promise.all([
+    const [subRes, pvRes, jaRes] = await Promise.all([
       supabase.from("form_submissions").select("*").order("created_at", { ascending: false }),
       supabase.from("page_views").select("*").order("created_at", { ascending: false }).limit(500),
+      supabase.from("job_applications").select("id", { count: "exact", head: true }),
     ]);
     if (subRes.data) setSubmissions(subRes.data as FormSubmission[]);
     if (pvRes.data) setPageViews(pvRes.data as PageView[]);
+    setJobAppsCount(jaRes.count ?? 0);
     setLoading(false);
   };
 
