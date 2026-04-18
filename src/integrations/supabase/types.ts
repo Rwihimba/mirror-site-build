@@ -224,6 +224,11 @@ export type Database = {
       }
       jobs: {
         Row: {
+          assignment_duration_hours: number | null
+          assignment_instructions: string | null
+          assignment_link: string | null
+          assignment_pdf_path: string | null
+          calendly_url: string | null
           category: string
           created_at: string
           department: string | null
@@ -233,6 +238,7 @@ export type Database = {
           id: string
           is_published: boolean
           location: string | null
+          pipeline_enabled: boolean
           short_description: string | null
           slug: string
           sort_order: number
@@ -240,6 +246,11 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          assignment_duration_hours?: number | null
+          assignment_instructions?: string | null
+          assignment_link?: string | null
+          assignment_pdf_path?: string | null
+          calendly_url?: string | null
           category: string
           created_at?: string
           department?: string | null
@@ -249,6 +260,7 @@ export type Database = {
           id?: string
           is_published?: boolean
           location?: string | null
+          pipeline_enabled?: boolean
           short_description?: string | null
           slug: string
           sort_order?: number
@@ -256,6 +268,11 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          assignment_duration_hours?: number | null
+          assignment_instructions?: string | null
+          assignment_link?: string | null
+          assignment_pdf_path?: string | null
+          calendly_url?: string | null
           category?: string
           created_at?: string
           department?: string | null
@@ -265,6 +282,7 @@ export type Database = {
           id?: string
           is_published?: boolean
           location?: string | null
+          pipeline_enabled?: boolean
           short_description?: string | null
           slug?: string
           sort_order?: number
