@@ -29,6 +29,12 @@ interface JobRecord {
   form_schema: FormFieldDef[];
   is_published: boolean;
   sort_order: number;
+  pipeline_enabled: boolean;
+  assignment_instructions: string | null;
+  assignment_pdf_path: string | null;
+  assignment_link: string | null;
+  assignment_duration_hours: number | null;
+  calendly_url: string | null;
 }
 
 const slugify = (s: string) =>
@@ -51,6 +57,12 @@ const emptyJob = (): JobRecord => ({
   ],
   is_published: true,
   sort_order: 0,
+  pipeline_enabled: true,
+  assignment_instructions: "",
+  assignment_pdf_path: "",
+  assignment_link: "",
+  assignment_duration_hours: null,
+  calendly_url: "",
 });
 
 export function JobsManager() {
@@ -100,6 +112,12 @@ export function JobsManager() {
       form_schema: editing.form_schema as never,
       is_published: editing.is_published,
       sort_order: editing.sort_order,
+      pipeline_enabled: editing.pipeline_enabled,
+      assignment_instructions: editing.assignment_instructions || null,
+      assignment_pdf_path: editing.assignment_pdf_path || null,
+      assignment_link: editing.assignment_link || null,
+      assignment_duration_hours: editing.assignment_duration_hours,
+      calendly_url: editing.calendly_url || null,
     };
 
     if (editing.id) {
