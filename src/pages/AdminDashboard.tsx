@@ -7,10 +7,13 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { LogOut, Trash2, Eye, FileText, RefreshCw, Briefcase, Users, LineChart } from "lucide-react";
+import { LogOut, Trash2, Eye, FileText, RefreshCw, Briefcase, Users, LineChart, Workflow } from "lucide-react";
 import { JobsManager } from "@/components/admin/JobsManager";
 import { ApplicantsManager } from "@/components/admin/ApplicantsManager";
 import { GoogleAnalytics } from "@/components/admin/GoogleAnalytics";
+import { PipelineSettings } from "@/components/admin/PipelineSettings";
+import { EmailTemplatesEditor } from "@/components/admin/EmailTemplatesEditor";
+import { CandidatesBoard } from "@/components/admin/CandidatesBoard";
 
 interface FormSubmission {
   id: string;
@@ -186,6 +189,9 @@ const AdminDashboard = () => {
             <TabsTrigger value="applicants" className="gap-1">
               <Users className="w-4 h-4" /> Applicants
             </TabsTrigger>
+            <TabsTrigger value="pipeline" className="gap-1">
+              <Workflow className="w-4 h-4" /> Pipeline
+            </TabsTrigger>
             <TabsTrigger value="ga" className="gap-1">
               <LineChart className="w-4 h-4" /> Google Analytics
             </TabsTrigger>
@@ -317,6 +323,20 @@ const AdminDashboard = () => {
           {/* Applicants Tab */}
           <TabsContent value="applicants" className="mt-6">
             <ApplicantsManager />
+          </TabsContent>
+
+          {/* Pipeline Tab */}
+          <TabsContent value="pipeline" className="mt-6">
+            <Tabs defaultValue="board">
+              <TabsList>
+                <TabsTrigger value="board">Candidates</TabsTrigger>
+                <TabsTrigger value="templates">Email Templates</TabsTrigger>
+                <TabsTrigger value="settings">Settings</TabsTrigger>
+              </TabsList>
+              <TabsContent value="board" className="mt-4"><CandidatesBoard /></TabsContent>
+              <TabsContent value="templates" className="mt-4"><EmailTemplatesEditor /></TabsContent>
+              <TabsContent value="settings" className="mt-4"><PipelineSettings /></TabsContent>
+            </Tabs>
           </TabsContent>
 
           {/* Google Analytics Tab */}

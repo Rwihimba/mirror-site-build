@@ -9,3 +9,9 @@ project_id = "jmewtawqpkfqmqsyukay"
     verify_jwt = true
   [functions.sitemap]
     verify_jwt = false
+  [functions.send-pipeline-email]
+    verify_jwt = true
+  [functions.process-pipeline-queue]
+    verify_jwt = true
+  [functions.submit-assignment]
+    verify_jwt = false
