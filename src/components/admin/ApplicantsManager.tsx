@@ -6,6 +6,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Download, Trash2, Eye, FileText } from "lucide-react";
 
+interface PipelineRow {
+  application_id: string;
+  stage: string;
+  submission_payload: Record<string, unknown> | null;
+  submission_token: string | null;
+  assignment_due_at: string | null;
+  meeting_scheduled_at: string | null;
+}
+
 interface ApplicationRow {
   id: string;
   job_id: string;
@@ -17,7 +26,7 @@ interface ApplicationRow {
   created_at: string;
 }
 
-interface JobLite { id: string; title: string; }
+interface JobLite { id: string; title: string; pipeline_enabled: boolean; }
 
 const STATUSES = ["new", "reviewing", "interview", "rejected", "hired"];
 
