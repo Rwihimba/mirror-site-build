@@ -11,8 +11,8 @@ interface SEOProps {
   noIndex?: boolean;
 }
 
-const SITE_URL = "https://minetech.lovable.app";
-const DEFAULT_IMAGE = "https://lovable.dev/opengraph-image-p98pqg.png";
+const SITE_URL = "https://minetech.co.rw";
+const DEFAULT_IMAGE = "https://minetech.co.rw/og-image.jpg";
 
 export function SEO({
   title,
