@@ -98,72 +98,56 @@ export function ApplicantsManager() {
 
   const buildCsv = async (rows: ApplicationRow[], filename: string) => {
     if (rows.length === 0) return;
-    const baseCols = [
-      "application_id",
-      "job_title",
-      "job_id",
-      "applicant_name",
-      "applicant_email",
-      "status",
-      "submitted_at",
-      "cv_path",
-      "cv_url",
-      "pipeline_stage",
-      "assignment_due_at",
-      "meeting_scheduled_at",
-      "submission_file_name",
-      "submission_file_path",
-      "submission_file_url",
-      "submission_link",
-      "submission_notes",
-      "submission_submitted_at",
-      "submission_token",
+    const headers = [
+      "Full Name",
+      "Role",
+      "Email Address",
+      "CV / Resume",
+      "Portfolio Upload",
     ];
-    const responseCols = new Set<string>();
-    rows.forEach((a) => Object.keys(a.responses || {}).forEach((k) => {
-      responseCols.add(`response_${k}`);
-      const v = (a.responses || {})[k];
-      if (v && typeof v === "object" && "path" in (v as object)) {
-        responseCols.add(`response_${k}_url`);
-      }
-    }));
-    const headers = [...baseCols, ...Array.from(responseCols)];
-    const csvRows = await Promise.all(rows.map(async (a) => {
-      const p = pipeline[a.id];
-      const sub = (p?.submission_payload || {}) as Record<string, unknown>;
-      const subFilePath = sub.file_path as string | undefined;
-      const base: Record<string, unknown> = {
-        application_id: a.id,
-        job_title: jobMap[a.job_id]?.title || "",
-        job_id: a.job_id,
-        applicant_name: a.applicant_name,
-        applicant_email: a.applicant_email,
-        status: a.status,
-        submitted_at: a.created_at,
-        cv_path: a.cv_path,
-        cv_url: a.cv_path ? await signedUrl("job-applications", a.cv_path) : "",
-        pipeline_stage: p?.stage,
-        assignment_due_at: p?.assignment_due_at,
-        meeting_scheduled_at: p?.meeting_scheduled_at,
-        submission_file_name: sub.file_name,
-        submission_file_path: sub.file_path,
-        submission_file_url: subFilePath ? await signedUrl("assignment-submissions", subFilePath) : "",
-        submission_link: sub.link,
-        submission_notes: sub.text,
-        submission_submitted_at: sub.submitted_at,
-        submission_token: p?.submission_token,
-      };
-      for (const [k, v] of Object.entries(a.responses || {})) {
-        if (v && typeof v === "object" && "path" in (v as object)) {
-          const fv = v as { path: string; fileName?: string };
-          base[`response_${k}`] = fv.fileName || fv.path;
-          base[`response_${k}_url`] = await signedUrl("job-applications", fv.path);
-        } else {
-          base[`response_${k}`] = Array.isArray(v) ? v.join("; ") : v;
-        }
-      }
-      return headers.map((h) => escapeCsv(base[h])).join(",");
-    }));
+
+    const findPortfolioField = (responses: Record<string, unknown>) => {
+      const entries = Object.entries(responses || {});
+      // Prefer a key that looks like portfolio
+      const portfolioEntry = entries.find(
+        ([k, v]) =>
+          /portfolio/i.test(k) &&
+          v &&
+          typeof v === "object" &&
+          "path" in (v as object)
+      );
+      if (portfolioEntry) return portfolioEntry[1] as { path: string; fileName?: string };
+      // Fallback: first file field that is not cv
+      const nonCvFile = entries.find(
+        ([k, v]) =>
+          k !== "cv" &&
+          v &&
+          typeof v === "object" &&
+          "path" in (v as object)
+      );
+      if (nonCvFile) return nonCvFile[1] as { path: string; fileName?: string };
+      return null;
+    };
+
+    const csvRows = await Promise.all(
+      rows.map(async (a) => {
+        const cvUrl = a.cv_path
+          ? await signedUrl("job-applications", a.cv_path)
+          : "";
+        const portfolio = findPortfolioField(a.responses);
+        const portfolioUrl = portfolio
+          ? await signedUrl("job-applications", portfolio.path)
+          : "";
+        const cols = [
+          a.applicant_name || "",
+          jobMap[a.job_id]?.title || "",
+          a.applicant_email || "",
+          cvUrl,
+          portfolioUrl,
+        ];
+        return cols.map(escapeCsv).join(",");
+      })
+    );
     const csv = [headers.join(","), ...csvRows].join("\n");
     const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
