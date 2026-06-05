@@ -91,7 +91,12 @@ export function ApplicantsManager() {
     return `"${s.replace(/"/g, '""')}"`;
   };
 
-  const buildCsv = (rows: ApplicationRow[], filename: string) => {
+  const signedUrl = async (bucket: string, path: string) => {
+    const { data } = await supabase.storage.from(bucket).createSignedUrl(path, 60 * 60 * 24 * 7);
+    return data?.signedUrl || "";
+  };
+
+  const buildCsv = async (rows: ApplicationRow[], filename: string) => {
     if (rows.length === 0) return;
     const baseCols = [
       "application_id",
@@ -102,22 +107,31 @@ export function ApplicantsManager() {
       "status",
       "submitted_at",
       "cv_path",
+      "cv_url",
       "pipeline_stage",
       "assignment_due_at",
       "meeting_scheduled_at",
       "submission_file_name",
       "submission_file_path",
+      "submission_file_url",
       "submission_link",
       "submission_notes",
       "submission_submitted_at",
       "submission_token",
     ];
     const responseCols = new Set<string>();
-    rows.forEach((a) => Object.keys(a.responses || {}).forEach((k) => responseCols.add(`response_${k}`)));
+    rows.forEach((a) => Object.keys(a.responses || {}).forEach((k) => {
+      responseCols.add(`response_${k}`);
+      const v = (a.responses || {})[k];
+      if (v && typeof v === "object" && "path" in (v as object)) {
+        responseCols.add(`response_${k}_url`);
+      }
+    }));
     const headers = [...baseCols, ...Array.from(responseCols)];
-    const csvRows = rows.map((a) => {
+    const csvRows = await Promise.all(rows.map(async (a) => {
       const p = pipeline[a.id];
       const sub = (p?.submission_payload || {}) as Record<string, unknown>;
+      const subFilePath = sub.file_path as string | undefined;
       const base: Record<string, unknown> = {
         application_id: a.id,
         job_title: jobMap[a.job_id]?.title || "",
@@ -127,19 +141,29 @@ export function ApplicantsManager() {
         status: a.status,
         submitted_at: a.created_at,
         cv_path: a.cv_path,
+        cv_url: a.cv_path ? await signedUrl("job-applications", a.cv_path) : "",
         pipeline_stage: p?.stage,
         assignment_due_at: p?.assignment_due_at,
         meeting_scheduled_at: p?.meeting_scheduled_at,
         submission_file_name: sub.file_name,
         submission_file_path: sub.file_path,
+        submission_file_url: subFilePath ? await signedUrl("assignment-submissions", subFilePath) : "",
         submission_link: sub.link,
         submission_notes: sub.text,
         submission_submitted_at: sub.submitted_at,
         submission_token: p?.submission_token,
       };
-      Object.entries(a.responses || {}).forEach(([k, v]) => { base[`response_${k}`] = v; });
+      for (const [k, v] of Object.entries(a.responses || {})) {
+        if (v && typeof v === "object" && "path" in (v as object)) {
+          const fv = v as { path: string; fileName?: string };
+          base[`response_${k}`] = fv.fileName || fv.path;
+          base[`response_${k}_url`] = await signedUrl("job-applications", fv.path);
+        } else {
+          base[`response_${k}`] = Array.isArray(v) ? v.join("; ") : v;
+        }
+      }
       return headers.map((h) => escapeCsv(base[h])).join(",");
-    });
+    }));
     const csv = [headers.join(","), ...csvRows].join("\n");
     const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
@@ -150,10 +174,10 @@ export function ApplicantsManager() {
     URL.revokeObjectURL(url);
   };
 
-  const exportCsv = () =>
+  const exportCsv = async () =>
     buildCsv(filtered, `applications-${filterJob === "all" ? "all" : (jobMap[filterJob]?.title || filterJob).replace(/\s+/g, "_")}-${new Date().toISOString().slice(0, 10)}.csv`);
 
-  const exportAllCsv = () =>
+  const exportAllCsv = async () =>
     buildCsv(apps, `applications-all-${new Date().toISOString().slice(0, 10)}.csv`);
 
   return (
