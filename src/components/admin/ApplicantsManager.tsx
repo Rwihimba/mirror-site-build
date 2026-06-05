@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Download, Trash2, Eye, FileText } from "lucide-react";
+import { Download, Trash2, Eye, FileText, FileDown } from "lucide-react";
 
 interface PipelineRow {
   application_id: string;
@@ -86,36 +86,75 @@ export function ApplicantsManager() {
     window.open(data.signedUrl, "_blank");
   };
 
-  const exportCsv = () => {
-    if (filtered.length === 0) return;
-    const cols = new Set<string>(["job", "name", "email", "status", "submitted_at", "cv_path"]);
-    filtered.forEach((a) => Object.keys(a.responses || {}).forEach((k) => cols.add(`response_${k}`)));
-    const headers = Array.from(cols);
-    const escape = (v: unknown) => {
-      const s = v === null || v === undefined ? "" : typeof v === "object" ? JSON.stringify(v) : String(v);
-      return `"${s.replace(/"/g, '""')}"`;
-    };
-    const rows = filtered.map((a) => {
+  const escapeCsv = (v: unknown) => {
+    const s = v === null || v === undefined ? "" : typeof v === "object" ? JSON.stringify(v) : String(v);
+    return `"${s.replace(/"/g, '""')}"`;
+  };
+
+  const buildCsv = (rows: ApplicationRow[], filename: string) => {
+    if (rows.length === 0) return;
+    const baseCols = [
+      "application_id",
+      "job_title",
+      "job_id",
+      "applicant_name",
+      "applicant_email",
+      "status",
+      "submitted_at",
+      "cv_path",
+      "pipeline_stage",
+      "assignment_due_at",
+      "meeting_scheduled_at",
+      "submission_file_name",
+      "submission_file_path",
+      "submission_link",
+      "submission_notes",
+      "submission_submitted_at",
+      "submission_token",
+    ];
+    const responseCols = new Set<string>();
+    rows.forEach((a) => Object.keys(a.responses || {}).forEach((k) => responseCols.add(`response_${k}`)));
+    const headers = [...baseCols, ...Array.from(responseCols)];
+    const csvRows = rows.map((a) => {
+      const p = pipeline[a.id];
+      const sub = (p?.submission_payload || {}) as Record<string, unknown>;
       const base: Record<string, unknown> = {
-        job: jobMap[a.job_id]?.title || a.job_id,
-        name: a.applicant_name,
-        email: a.applicant_email,
+        application_id: a.id,
+        job_title: jobMap[a.job_id]?.title || "",
+        job_id: a.job_id,
+        applicant_name: a.applicant_name,
+        applicant_email: a.applicant_email,
         status: a.status,
         submitted_at: a.created_at,
         cv_path: a.cv_path,
+        pipeline_stage: p?.stage,
+        assignment_due_at: p?.assignment_due_at,
+        meeting_scheduled_at: p?.meeting_scheduled_at,
+        submission_file_name: sub.file_name,
+        submission_file_path: sub.file_path,
+        submission_link: sub.link,
+        submission_notes: sub.text,
+        submission_submitted_at: sub.submitted_at,
+        submission_token: p?.submission_token,
       };
       Object.entries(a.responses || {}).forEach(([k, v]) => { base[`response_${k}`] = v; });
-      return headers.map((h) => escape(base[h])).join(",");
+      return headers.map((h) => escapeCsv(base[h])).join(",");
     });
-    const csv = [headers.join(","), ...rows].join("\n");
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const csv = [headers.join(","), ...csvRows].join("\n");
+    const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `applications-${new Date().toISOString().slice(0, 10)}.csv`;
-    a.click();
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
     URL.revokeObjectURL(url);
   };
+
+  const exportCsv = () =>
+    buildCsv(filtered, `applications-${filterJob === "all" ? "all" : (jobMap[filterJob]?.title || filterJob).replace(/\s+/g, "_")}-${new Date().toISOString().slice(0, 10)}.csv`);
+
+  const exportAllCsv = () =>
+    buildCsv(apps, `applications-all-${new Date().toISOString().slice(0, 10)}.csv`);
 
   return (
     <div className="space-y-4">
@@ -128,7 +167,10 @@ export function ApplicantsManager() {
           </SelectContent>
         </Select>
         <Button variant="outline" size="sm" onClick={exportCsv} disabled={filtered.length === 0}>
-          <Download className="w-4 h-4 mr-1" /> Export CSV
+          <Download className="w-4 h-4 mr-1" /> Export filtered
+        </Button>
+        <Button variant="default" size="sm" onClick={exportAllCsv} disabled={apps.length === 0}>
+          <FileDown className="w-4 h-4 mr-1" /> Export all ({apps.length})
         </Button>
         <span className="text-xs text-muted-foreground font-body ml-auto">{filtered.length} application{filtered.length === 1 ? "" : "s"}</span>
       </div>
