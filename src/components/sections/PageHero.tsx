@@ -54,6 +54,8 @@ export function PageHero({
   children,
 }: PageHeroProps) {
   const hasImage = !!image;
+  const sidePanelSrc = imageAlt || "";
+  const showSidePanel = !centered && !image;
 
   if (centered) {
     return (
@@ -111,13 +113,31 @@ export function PageHero({
           <DecorativeLine />
         </div>
 
-        {!image && imageAlt && (
-          <div 
+        {showSidePanel && (
+          <div
             className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
-            <img src={imageAlt} alt={imageAlt} className="w-full h-full object-cover" loading="lazy" decoding="async" />
-            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40" />
+            {sidePanelSrc ? (
+              <img src={sidePanelSrc} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
+            ) : (
+              <div className="w-full h-full relative bg-hero-foreground/5 border border-hero-foreground/10 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-hero/40 to-hero" />
+                <div className="absolute inset-0 section-pattern opacity-30" />
+                <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 100 100" preserveAspectRatio="none">
+                  <defs>
+                    <pattern id="hero-grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                      <path d="M 8 0 L 0 0 0 8" fill="none" stroke="hsl(var(--hero-foreground))" strokeWidth="0.15" />
+                    </pattern>
+                  </defs>
+                  <rect width="100" height="100" fill="url(#hero-grid)" />
+                </svg>
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-hero-foreground/40 font-body text-xs uppercase tracking-[0.2em]">
+                  <span>MineTech</span>
+                  <span>{breadcrumb}</span>
+                </div>
+              </div>
+            )}
+            <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40 pointer-events-none" />
           </div>
         )}
       </div>
