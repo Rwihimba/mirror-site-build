@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { PageHero } from "@/components/sections";
-import osImg from "@/assets/product-os.jpg";
+import osHeroAsset from "@/assets/minetech-os-hero.png.asset.json";
 import corpImg from "@/assets/product-corp.jpg";
 import traceImg from "@/assets/product-trace.jpg";
 import upstreamImg from "@/assets/product-upstream.jpg";
