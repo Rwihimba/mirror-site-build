@@ -232,6 +232,7 @@ export default function ProductPlaceholder() {
         subtitle={data.oneLiner}
         breadcrumb={data.name}
         minHeight="md"
+        imageAlt="https://images.pexels.com/photos/32529341/pexels-photo-32529341.jpeg"
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <Link

@@ -45,6 +45,7 @@ export default function TelcoInfrastructure() {
         subtitle="Private network and edge compute we own and operate, so the operating record reaches every pit, every shift, every time."
         breadcrumb="Infrastructure"
         minHeight="md"
+        imageAlt="https://images.pexels.com/photos/6595788/pexels-photo-6595788.jpeg"
       >
         <div className="mt-8">
           <Link
