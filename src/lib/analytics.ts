@@ -37,3 +37,28 @@ export const trackFormSubmit = (formName: string, extra: EventParams = {}) =>
 
 export const trackCtaClick = (label: string, extra: EventParams = {}) =>
   track("cta_click", { category: "engagement", label, ...extra });
+
+// Phase 2 demand-tracking helpers. All carry audience / product / source
+// so the admin Demand panel can later attribute every click to a door.
+export type Audience = "cooperatives" | "large_miners" | "traders" | "regulators";
+export type Product = "os" | "corp" | "trace" | "upstream" | "telco";
+
+export const trackRoleRouterClick = (
+  audience: Audience,
+  source: string = "home"
+) => track("role_router_click", { category: "engagement", audience, source });
+
+export const trackProductTileClick = (
+  product: Product,
+  source: string = "home"
+) => track("product_tile_click", { category: "engagement", product, source });
+
+export const trackLeadSubmit = (
+  formName: string,
+  context: { audience?: Audience; product?: Product; source?: string } = {}
+) =>
+  track("lead_submit", {
+    category: "conversion",
+    form: formName,
+    ...context,
+  });

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { UseCaseCard } from "@/components/sections";
+import { UseCaseCard, RoleRouter, ProductsStrip, ClosingCTA } from "@/components/sections";
 import { SEO } from "@/components/SEO";
 import miningLoader from "@/assets/mining-loader.webp";
 import heroImage from "@/assets/contact-hero.webp";
@@ -151,6 +151,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Role Router (Phase 2 — pick your door) */}
+      <RoleRouter source="home" />
+
       {/* Solutions Section */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">
@@ -227,6 +230,12 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Products Strip (Phase 2 — side door) */}
+      <ProductsStrip source="home" />
+
+      {/* Closing CTA (Phase 2) */}
+      <ClosingCTA source="home" />
     </Layout>
   );
 };

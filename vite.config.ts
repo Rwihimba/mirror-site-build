@@ -15,6 +15,14 @@ const PRERENDER_ROUTES = [
   "/careers",
   "/contact",
   "/solutions",
+  "/solutions/cooperatives",
+  "/solutions/large-miners",
+  "/solutions/traders",
+  "/products/os",
+  "/products/corp",
+  "/products/trace",
+  "/products/upstream",
+  "/infrastructure/telco",
   "/investors",
   "/for-mining-companies",
   "/partners",
@@ -36,8 +44,10 @@ export default defineConfig(({ mode }) => ({
         routes: PRERENDER_ROUTES,
         renderer: "@prerenderer/renderer-puppeteer",
         rendererOptions: {
-          // Wait until react-helmet has mutated <head> and route content has rendered.
-          renderAfterTime: 2000,
+          // App dispatches "render-event" once Helmet + route content settle.
+          renderAfterDocumentEvent: "render-event",
+          // Belt and braces fallback in case the event never fires.
+          timeout: 30000,
           maxConcurrentRoutes: 2,
           launchOptions: {
             executablePath:

@@ -34,6 +34,15 @@ export function Header() {
   const hoverColor = isOnLightSection ? "hover:text-primary-dark" : "hover:text-primary-light";
   const bgColor = isOnLightSection ? "bg-background/80" : "bg-hero/80";
 
+  const navItems = [
+    { to: "/solutions", label: "Solutions" },
+    { to: "/products/os", label: "Products" },
+    { to: "/infrastructure/telco", label: "Infrastructure" },
+    { to: "/about", label: "Company" },
+    { to: "/careers", label: "Careers" },
+    { to: "/contact", label: "Contact" },
+  ];
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-colors duration-300 ${bgColor}`}>
       <div className="container-slr flex items-center justify-between h-14 md:h-16">
@@ -48,21 +57,15 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-5">
-          <Link to="/" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
-            Home
-          </Link>
-          <Link to="/solutions" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
-            Solutions
-          </Link>
-          <Link to="/about" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
-            About
-          </Link>
-          <Link to="/careers" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
-            Career
-          </Link>
-          <Link to="/contact" className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}>
-            Contact
-          </Link>
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`text-xs font-body ${textColor} ${hoverColor} transition-colors duration-300`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -78,11 +81,16 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-hero/95 backdrop-blur-sm border-t border-hero-foreground/10">
           <nav className="container-slr py-4 space-y-2">
-            <Link to="/" className="block py-2 font-body text-[11px] text-white">Home</Link>
-            <Link to="/solutions" className="block py-2 font-body text-[11px] text-white">Solutions</Link>
-            <Link to="/about" className="block py-2 font-body text-[11px] text-white">About</Link>
-            <Link to="/careers" className="block py-2 font-body text-[11px] text-white">Career</Link>
-            <Link to="/contact" className="block py-2 font-body text-[11px] text-white">Contact</Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setMobileMenuOpen(false)}
+                className="block py-2 font-body text-[11px] text-white"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
