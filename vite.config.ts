@@ -40,12 +40,11 @@ export default defineConfig(({ mode }) => ({
           renderAfterTime: 1500,
         },
         postProcess(rendered: { route: string; html: string }) {
-          // Strip dev-only attributes if any leak through
+          // Strip dev-only inline scripts if any leak through
           rendered.html = rendered.html.replace(
             /<script[^>]+data-lov-id[^>]*>[\s\S]*?<\/script>/g,
             ""
           );
-          return rendered;
         },
       }),
   ].filter(Boolean),
