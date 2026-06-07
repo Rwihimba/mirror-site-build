@@ -10,8 +10,10 @@ type ProductCopy = {
   oneLiner: string;
   outcome: string;
   forWhom: string;
+  audienceLinks: { label: string; href: string }[];
   capabilities: string[];
   funding?: string;
+  proof?: { stat: string; label: string };
 };
 
 const COPY: Record<string, ProductCopy> = {
@@ -23,6 +25,9 @@ const COPY: Record<string, ProductCopy> = {
     outcome:
       "One source of truth across geology, fleet, safety, finance and compliance.",
     forWhom: "Large and mid scale miners.",
+    audienceLinks: [
+      { label: "Large & Mid Scale Miners", href: "/solutions/large-miners" },
+    ],
     capabilities: [
       "Grade control and exploration, including drone survey via partners",
       "Fleet utilisation and maintenance",
@@ -30,6 +35,7 @@ const COPY: Record<string, ProductCopy> = {
       "Workforce, attendance and payroll",
       "Regulator ready compliance reporting",
     ],
+    proof: { stat: "156+", label: "Operation workflows implemented." },
   },
   corp: {
     product: "corp",
@@ -38,6 +44,9 @@ const COPY: Record<string, ProductCopy> = {
       "Shared infrastructure for cooperatives and artisanal small scale mining.",
     outcome: "Every gram accounted for, compliant before the inspector arrives.",
     forWhom: "Cooperatives and ASM associations.",
+    audienceLinks: [
+      { label: "Cooperatives & ASM", href: "/solutions/cooperatives" },
+    ],
     capabilities: [
       "Production capture at source, by site and by miner",
       "Sales, payments and member records",
@@ -47,6 +56,7 @@ const COPY: Record<string, ProductCopy> = {
     ],
     funding:
       "Minetech Corp runs on a self subsidising, shared infrastructure model. Larger operators on Minetech OS and buyers on Minetech Trace fund the rails. That keeps the per cooperative cost low enough to be real, instead of a pilot. Pricing is set per region and per cooperative size. We will quote you on a call once we understand your sites.",
+    proof: { stat: "150+", label: "Cooperatives on the waitlist." },
   },
   trace: {
     product: "trace",
@@ -55,12 +65,16 @@ const COPY: Record<string, ProductCopy> = {
       "Chain of custody and due diligence, generated from the same record the supplier already keeps.",
     outcome: "Due diligence in a folder, not a quarter.",
     forWhom: "Traders, refineries and downstream buyers.",
+    audienceLinks: [
+      { label: "Traders & Suppliers", href: "/solutions/traders" },
+    ],
     capabilities: [
       "Lot level chain of custody from mine to shipment",
       "OECD, iTSCi and LBMA aligned dossiers",
       "Buyer facing audit trail with one click export",
       "Linked to Minetech Upstream for pre deal counterparty screening",
     ],
+    proof: { stat: "1 click", label: "Buyer ready dossier export." },
   },
   upstream: {
     product: "upstream",
@@ -69,12 +83,16 @@ const COPY: Record<string, ProductCopy> = {
       "Counterparty, licence and supplier screening before you sign the deal.",
     outcome: "Know who is on the other side of the contract before money moves.",
     forWhom: "Traders, refineries and any buyer with OECD exposure.",
+    audienceLinks: [
+      { label: "Traders & Suppliers", href: "/solutions/traders" },
+    ],
     capabilities: [
       "Licence and concession verification",
       "Beneficial ownership and sanctions screening",
       "Supplier risk scoring",
       "Feeds the Minetech Trace dossier on the deals you close",
     ],
+    proof: { stat: "Pre deal", label: "Screening before the contract is signed." },
   },
 };
 
@@ -120,7 +138,18 @@ export default function ProductPlaceholder() {
             <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2 font-body">
               Who it is for
             </p>
-            <p className="font-body">{data.forWhom}</p>
+            <p className="font-body mb-4">{data.forWhom}</p>
+            <div className="flex flex-col gap-2">
+              {data.audienceLinks.map((a) => (
+                <Link
+                  key={a.href}
+                  to={a.href}
+                  className="text-sm font-body text-primary hover:underline"
+                >
+                  See the {a.label} page
+                </Link>
+              ))}
+            </div>
           </div>
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2 font-body">
@@ -167,6 +196,14 @@ export default function ProductPlaceholder() {
 
       <section className="py-20 bg-hero text-hero-foreground">
         <div className="container-slr max-w-3xl text-center">
+          {data.proof && (
+            <div className="mb-12">
+              <div className="text-5xl md:text-6xl font-display font-bold text-primary-light mb-3">
+                {data.proof.stat}
+              </div>
+              <p className="font-body opacity-80">{data.proof.label}</p>
+            </div>
+          )}
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
             See it on your operation.
           </h2>

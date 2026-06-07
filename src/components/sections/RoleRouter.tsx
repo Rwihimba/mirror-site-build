@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Pickaxe, Factory, Truck, Building2 } from "lucide-react";
 import { trackRoleRouterClick, type Audience } from "@/lib/analytics";
 
 type Card = {
@@ -7,7 +6,6 @@ type Card = {
   title: string;
   outcome: string;
   href: string;
-  Icon: typeof Pickaxe;
   available: boolean;
 };
 
@@ -18,7 +16,6 @@ const CARDS: Card[] = [
     title: "Cooperatives & ASM",
     outcome: "Every gram accounted for, compliant before the inspector arrives.",
     href: "/solutions/cooperatives",
-    Icon: Pickaxe,
     available: true,
   },
   {
@@ -26,7 +23,6 @@ const CARDS: Card[] = [
     title: "Large & Mid Scale Miners",
     outcome: "One operating record across geology, fleet, safety and finance.",
     href: "/solutions/large-miners",
-    Icon: Factory,
     available: true,
   },
   {
@@ -34,7 +30,6 @@ const CARDS: Card[] = [
     title: "Traders & Suppliers",
     outcome: "Due diligence in a folder, not a quarter.",
     href: "/solutions/traders",
-    Icon: Truck,
     available: true,
   },
   {
@@ -42,7 +37,6 @@ const CARDS: Card[] = [
     title: "Regulators & Government",
     outcome: "Coming soon. Live audit trail and royalty reconciliation.",
     href: "#",
-    Icon: Building2,
     available: false,
   },
 ];
@@ -62,18 +56,13 @@ export function RoleRouter({ source = "home" }: { source?: string }) {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {CARDS.map(({ audience, title, outcome, href, Icon, available }) => {
+          {CARDS.map(({ audience, title, outcome, href, available }) => {
             const inner = (
               <>
                 <div className="flex items-start justify-between mb-6">
-                  <Icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
-                  {available ? (
-                    <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
-                  ) : (
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-body">
-                      Soon
-                    </span>
-                  )}
+                  <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-body">
+                    {available ? "Solution" : "Soon"}
+                  </span>
                 </div>
                 <h3 className="text-lg font-display font-semibold mb-3">{title}</h3>
                 <p className="text-sm text-muted-foreground font-body leading-relaxed">
