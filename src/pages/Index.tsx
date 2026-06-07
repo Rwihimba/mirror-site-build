@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
-import { UseCaseCard } from "@/components/sections";
+import { UseCaseCard, RoleRouter, ProductsStrip, ClosingCTA } from "@/components/sections";
 import { SEO } from "@/components/SEO";
 import miningLoader from "@/assets/mining-loader.webp";
 import heroImage from "@/assets/contact-hero.webp";
