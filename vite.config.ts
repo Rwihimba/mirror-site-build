@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => ({
         renderer: "@prerenderer/renderer-puppeteer",
         rendererOptions: {
           // Wait until react-helmet has mutated <head> and route content has rendered.
-          renderAfterTime: 2000,
+          renderAfterTime: 3500,
           maxConcurrentRoutes: 2,
           launchOptions: {
             executablePath:
