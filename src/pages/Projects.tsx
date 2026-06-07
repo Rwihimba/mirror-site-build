@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { PageHero } from "@/components/sections";
 
 const projects = [
   {
@@ -61,19 +62,7 @@ const Projects = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground py-12 md:py-16">
-        <div className="container-slr">
-          <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-            <Link to="/" className="hover:text-hero-foreground">Home</Link>
-            <span>›</span>
-            <span>Projects</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight animate-slide-in-left">
-            Projects
-          </h1>
-        </div>
-      </section>
+      <PageHero title="Projects" breadcrumb="Projects" minHeight="sm" />
 
       {/* Filters */}
       <section className="py-8 bg-background border-b border-border">

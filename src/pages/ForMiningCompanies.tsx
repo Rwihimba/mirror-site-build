@@ -8,7 +8,7 @@ import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { trackFormSubmit } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.webp";
+import { PageHero } from "@/components/sections";
 
 const benefits = [
   { icon: ShieldAlert, title: "Industrial Safety Technology", body: "Real-time hazard detection, automated incident workflows and full RSSB compliance." },
@@ -59,21 +59,13 @@ const ForMiningCompanies = () => {
         jsonLd={jsonLd}
       />
 
-      {/* Hero */}
-      <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[70vh] pt-16 flex items-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
-          <div className="absolute inset-0 bg-hero/70" />
-        </div>
-        <div className="container-slr relative z-10 py-20">
-          <div className="text-xs text-primary-light font-body uppercase tracking-[0.2em] mb-4">For Mining Operators</div>
-          <h1 className="text-4xl md:text-6xl font-display leading-[1.1] mb-6 max-w-4xl">
-            Optimize safety and productivity in your operations
-          </h1>
-          <p className="text-lg md:text-xl text-hero-foreground/80 font-body max-w-2xl mb-10">
-            One real-time intelligence layer connecting safety, fleet, compliance and grade control —
-            built specifically for African mining operations.
-          </p>
+      <PageHero
+        title="Optimize safety and productivity in your operations"
+        subtitle="One real time intelligence layer connecting safety, fleet, compliance and grade control, built specifically for African mining operations."
+        breadcrumb="For Mining Operators"
+        minHeight="md"
+      >
+        <div className="mt-8">
           <Button asChild variant="hero-accent" size="lg" className="group">
             <a href="#demo">
               Request a Demo
@@ -81,7 +73,7 @@ const ForMiningCompanies = () => {
             </a>
           </Button>
         </div>
-      </section>
+      </PageHero>
 
       {/* Benefits */}
       <section className="py-16 md:py-24 bg-background">

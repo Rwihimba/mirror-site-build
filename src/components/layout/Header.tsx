@@ -35,6 +35,7 @@ export function Header() {
   const bgColor = isOnLightSection ? "bg-background/80" : "bg-hero/80";
 
   const navItems = [
+    { to: "/", label: "Home" },
     { to: "/solutions", label: "Solutions" },
     { to: "/products/os", label: "Products" },
     { to: "/infrastructure/telco", label: "Infrastructure" },

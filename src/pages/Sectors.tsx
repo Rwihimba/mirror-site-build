@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
+import { PageHero } from "@/components/sections";
 
 const sectors = [
   { title: "Built Environment", href: "/sectors/built-environment" },
@@ -16,44 +17,12 @@ const sectors = [
 const Sectors = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[50vh]">
-          {/* Breadcrumb and Title */}
-          <div className="container-slr flex flex-col justify-center py-16 lg:py-20">
-            <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-              <Link to="/" className="hover:text-hero-foreground">Home</Link>
-              <span>›</span>
-              <span>Sectors</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6 animate-slide-in-left">
-              Sectors
-            </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-xl mb-4">
-              SLR supports a wide range of industry sectors, with a large focus on organisations that are facing some of the world's toughest sustainability challenges. We aim to be a partner to our clients, supporting and advising on industry leading sustainability approaches.
-            </p>
-            <p className="text-hero-foreground/60 font-body">
-              If you have different requirements and would like to learn more about how we might be able to help,{" "}
-              <Link to="/contact" className="text-primary-light hover:underline">please get in touch</Link>.
-            </p>
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative h-[40vh] lg:h-auto">
-            <img
-              src="https://cdn.sanity.io/images/b0ecix6u/production/000e68d6cf9cee5b6e569d42f984d5094a81c780-1170x640.png?w=1000"
-              alt="Sectors hero"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg viewBox="0 0 200 200" className="w-48 h-48 text-hero-foreground/90">
-                <polygon points="100,20 140,60 140,140 100,180 60,140 60,60" fill="none" stroke="currentColor" strokeWidth="3" />
-                <polygon points="100,50 125,75 125,125 100,150 75,125 75,75" fill="currentColor" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Sectors"
+        subtitle="MineTech supports a wide range of industry sectors, with a focus on organisations facing the toughest operational and compliance challenges."
+        breadcrumb="Sectors"
+        minHeight="md"
+      />
 
       {/* Sectors List */}
       <section className="py-16 md:py-24 bg-background">

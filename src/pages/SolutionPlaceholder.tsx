@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/sections";
 import { trackCtaClick } from "@/lib/analytics";
 
 type AudienceCopy = {
@@ -108,19 +109,12 @@ export default function SolutionPlaceholder() {
         title={`${data.title} | MineTech`}
         description={data.outcome}
       />
-      <section className="pt-32 pb-20 bg-hero text-hero-foreground">
-        <div className="container-slr max-w-4xl">
-          <p className="text-xs uppercase tracking-wider opacity-60 mb-4 font-body">
-            For {data.title}
-          </p>
-          <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight mb-6">
-            {data.outcome}
-          </h1>
-          <p className="text-lg md:text-xl opacity-80 font-body max-w-2xl">
-            {data.description}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title={data.outcome}
+        subtitle={data.description}
+        breadcrumb={data.title}
+        minHeight="md"
+      />
 
       {/* Their reality */}
       <section className="py-20 bg-background" data-section="light">
