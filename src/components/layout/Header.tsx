@@ -37,7 +37,7 @@ export function Header() {
   const navItems = [
     { to: "/", label: "Home" },
     { to: "/solutions", label: "Solutions" },
-    { to: "/products/os", label: "Products" },
+    { to: "/products", label: "Products" },
     { to: "/infrastructure/telco", label: "Infrastructure" },
     { to: "/about", label: "Company" },
     { to: "/careers", label: "Careers" },
