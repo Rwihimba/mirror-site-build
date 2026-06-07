@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { trackProductTileClick, type Product } from "@/lib/analytics";
 
 type Tile = {
@@ -64,12 +63,9 @@ export function ProductsStrip({ source = "home" }: { source?: string }) {
               onClick={() => trackProductTileClick(product, source)}
               className="group bg-card p-6 border border-border hover:border-primary hover:shadow-md transition-all flex flex-col"
             >
-              <div className="flex items-start justify-between mb-6">
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-body">
-                  Product
-                </span>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
-              </div>
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-body mb-6">
+                Product
+              </span>
               <h3 className="text-base font-display font-semibold mb-3">{name}</h3>
               <p className="text-sm text-muted-foreground font-body leading-relaxed flex-1">
                 {outcome}
