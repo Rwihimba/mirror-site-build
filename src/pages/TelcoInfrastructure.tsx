@@ -4,6 +4,16 @@ import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/sections";
 import { trackCtaClick } from "@/lib/analytics";
+import { Radio, Cpu, HardDrive, Satellite, ShieldCheck, Activity } from "lucide-react";
+
+const OFFERINGS = [
+  { icon: Radio, label: "Private Radio Network", spec: "LTE / 5G private cells", body: "Coverage across pit, plant, camp and haul road." },
+  { icon: Satellite, label: "Backhaul", spec: "Fibre · Microwave · Satellite", body: "Picked per site so the record always reaches the cloud." },
+  { icon: Cpu, label: "Edge Compute", spec: "On-site cabinets", body: "Local processing for capture, dashboards and alerts." },
+  { icon: HardDrive, label: "Hardened Hardware", spec: "IP65 · -20°C to 55°C", body: "Engineered for dust, heat, vibration and unstable power." },
+  { icon: Activity, label: "24/7 NOC", spec: "Monitored operations", body: "We own and run it. You get an SLA, not a parts list." },
+  { icon: ShieldCheck, label: "Licensed & Compliant", spec: "National spectrum frameworks", body: "Deployed within each country's licensing rules." },
+];
 
 const FLOW = [
   { step: "01", title: "Survey the site", body: "We walk the pit, the camp and the haul road and map where coverage actually has to land." },
@@ -58,6 +68,39 @@ export default function TelcoInfrastructure() {
           </Link>
         </div>
       </PageHero>
+
+      {/* What we provide — at a glance */}
+      <section className="py-20 bg-background" data-section="light">
+        <div className="container-slr">
+          <div className="flex items-end justify-between mb-12 flex-wrap gap-6">
+            <div>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3 font-body">
+                What we provide
+              </p>
+              <h2 className="text-2xl md:text-3xl font-display font-semibold leading-tight max-w-xl">
+                The infrastructure stack, at a glance.
+              </h2>
+            </div>
+            <p className="text-sm text-muted-foreground font-body max-w-sm">
+              Six layers we deploy, own and operate on every site.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
+            {OFFERINGS.map((o) => (
+              <div key={o.label} className="bg-card p-8 flex flex-col">
+                <div className="w-12 h-12 flex items-center justify-center bg-primary/10 text-primary mb-6">
+                  <o.icon className="w-6 h-6" strokeWidth={1.5} />
+                </div>
+                <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-body mb-1">
+                  {o.spec}
+                </p>
+                <h3 className="text-lg font-display font-semibold mb-2">{o.label}</h3>
+                <p className="text-sm text-muted-foreground font-body leading-relaxed">{o.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Why it exists */}
       <section className="py-20 bg-background" data-section="light">
