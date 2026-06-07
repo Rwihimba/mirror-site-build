@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => ({
         renderer: "@prerenderer/renderer-jsdom",
         rendererOptions: {
           // wait for react-helmet to mutate <head>
-          renderAfterTime: 1500,
+          renderAfterTime: 4000,
         },
         postProcess(rendered: { route: string; html: string }) {
           // Strip dev-only inline scripts if any leak through
