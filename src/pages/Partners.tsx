@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import PartnerDialog from "@/components/forms/PartnerDialog";
-import heroImage from "@/assets/contact-hero.webp";
+import { PageHero } from "@/components/sections";
 
 const opportunities = [
   { icon: Code2, title: "Technology Partners", body: "IoT, sensor, ERP and analytics platforms looking to integrate with mining operators across Africa." },
@@ -29,23 +29,16 @@ const Partners = () => {
         jsonLd={jsonLd}
       />
 
-      <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[60vh] pt-16 flex items-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
-          <div className="absolute inset-0 bg-hero/70" />
-        </div>
-        <div className="container-slr relative z-10 py-20">
-          <div className="text-xs text-primary-light font-body uppercase tracking-[0.2em] mb-4">For Partners</div>
-          <h1 className="text-4xl md:text-6xl font-display leading-[1.1] mb-6 max-w-3xl">
-            Build the future of mining with us
-          </h1>
-          <p className="text-lg md:text-xl text-hero-foreground/80 font-body max-w-2xl mb-10">
-            MineTech connects an ecosystem of technology, integration and research partners
-            transforming how African mines operate.
-          </p>
+      <PageHero
+        title="Build the future of mining with us"
+        subtitle="MineTech connects an ecosystem of technology, integration and research partners transforming how African mines operate."
+        breadcrumb="For Partners"
+        minHeight="md"
+      >
+        <div className="mt-8">
           <PartnerDialog />
         </div>
-      </section>
+      </PageHero>
 
       <section className="py-16 md:py-24 bg-background">
         <div className="container-slr">

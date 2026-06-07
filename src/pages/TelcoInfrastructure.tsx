@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/sections";
 import { trackCtaClick } from "@/lib/analytics";
-import telcoImg from "@/assets/product-telco.jpg";
 
 const FLOW = [
   { step: "01", title: "Survey the site", body: "We walk the pit, the camp and the haul road and map where coverage actually has to land." },
@@ -40,42 +40,23 @@ export default function TelcoInfrastructure() {
         title="Minetech Telco | Network and edge for African pits"
         description="The hardware layer under MineTech. Private network and edge compute, engineered for the way African pits actually run."
       />
-      {/* Hero */}
-      <section className="pt-32 pb-20 bg-hero text-hero-foreground">
-        <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-xs uppercase tracking-wider opacity-60 mb-4 font-body">
-                Minetech Telco &middot; Infrastructure
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
-                The network the record runs on.
-              </h1>
-              <p className="text-lg md:text-xl opacity-80 font-body max-w-xl mb-8">
-                Private network and edge compute we own and operate, so the operating
-                record reaches every pit, every shift, every time.
-              </p>
-              <Link
-                to="/contact"
-                onClick={() =>
-                  trackCtaClick("telco_hero_cta", { product: "telco", source: "infrastructure/telco" })
-                }
-              >
-                <Button variant="hero-accent" size="lg">Talk to us</Button>
-              </Link>
-            </div>
-            <div className="aspect-square w-full overflow-hidden border border-hero-foreground/10">
-              <img
-                src={telcoImg}
-                alt="Telecom tower and edge cabinet overlooking an African mine"
-                width={1024}
-                height={1024}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+      <PageHero
+        title="The network the record runs on."
+        subtitle="Private network and edge compute we own and operate, so the operating record reaches every pit, every shift, every time."
+        breadcrumb="Infrastructure"
+        minHeight="md"
+      >
+        <div className="mt-8">
+          <Link
+            to="/contact"
+            onClick={() =>
+              trackCtaClick("telco_hero_cta", { product: "telco", source: "infrastructure/telco" })
+            }
+          >
+            <Button variant="hero-accent" size="lg">Talk to us</Button>
+          </Link>
         </div>
-      </section>
+      </PageHero>
 
       {/* Why it exists */}
       <section className="py-20 bg-background" data-section="light">

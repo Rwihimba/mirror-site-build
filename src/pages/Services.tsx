@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
+import { PageHero } from "@/components/sections";
 
 const services = [
   { title: "Acoustics & Vibration", href: "/services/acoustics" },
@@ -32,42 +33,12 @@ const services = [
 const Services = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="bg-hero text-hero-foreground relative overflow-hidden">
-        <div className="grid lg:grid-cols-2 min-h-[50vh]">
-          {/* Breadcrumb and Title */}
-          <div className="container-slr flex flex-col justify-center py-16 lg:py-20">
-            <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-              <Link to="/" className="hover:text-hero-foreground">Home</Link>
-              <span>›</span>
-              <span>Services</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight mb-6 animate-slide-in-left">
-              Services
-            </h1>
-            <p className="text-lg text-hero-foreground/80 font-body max-w-xl">
-              From strategic planning to implementation, SLR supports clients throughout their sustainability journey. With a global network of technical specialists, we help organisations navigate complex environmental and sustainability challenges.
-            </p>
-          </div>
-
-          {/* Hero Image */}
-          <div className="relative h-[40vh] lg:h-auto">
-            <img
-              src="https://cdn.sanity.io/images/b0ecix6u/production/8d40692127959d324ebb40ce29162068667431a8-1170x640.png?w=1000"
-              alt="Services hero"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg viewBox="0 0 200 200" className="w-48 h-48 text-hero-foreground/90">
-                <polygon points="100,20 140,50 140,90 100,120 60,90 60,50" fill="currentColor" />
-                <polygon points="100,80 140,110 140,150 100,180 60,150 60,110" fill="currentColor" />
-                <polygon points="30,50 70,80 70,120 30,150 -10,120 -10,80" fill="currentColor" transform="translate(40,0)" />
-                <polygon points="130,50 170,80 170,120 130,150 90,120 90,80" fill="currentColor" transform="translate(0,0)" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Services"
+        subtitle="From strategic planning to implementation, MineTech supports operators across the full mining lifecycle with specialist technology and advisory."
+        breadcrumb="Services"
+        minHeight="md"
+      />
 
       {/* Services List */}
       <section className="py-16 md:py-24 bg-background">

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
 import { CALENDLY_URL } from "@/lib/intent/popupVariants";
 import { trackCtaClick } from "@/lib/analytics";
-import heroImage from "@/assets/contact-hero.webp";
+import { PageHero } from "@/components/sections";
 
 const pillars = [
   { icon: Globe2, title: "$1.7T African Mining Market", body: "Africa holds 30% of global mineral reserves but lags in digital infrastructure — a generational opportunity." },
@@ -35,34 +35,24 @@ const Investors = () => {
         jsonLd={jsonLd}
       />
 
-      {/* Hero */}
-      <section className="relative bg-hero text-hero-foreground overflow-hidden min-h-[70vh] pt-16 flex items-center">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="" className="w-full h-full object-cover" loading="eager" decoding="async" />
-          <div className="absolute inset-0 bg-hero/70" />
+      <PageHero
+        title="Invest in the future of mining technology"
+        subtitle="MineTech is rebuilding mining operations on an intelligent, real time foundation, starting in Africa, the most underpenetrated and resource rich mining market in the world."
+        breadcrumb="For Investors"
+        minHeight="md"
+      >
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button asChild variant="hero-accent" size="lg" className="group">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackCtaClick("book_a_call", { location: "investors_hero" })}>
+              Book a 30 min Call
+              <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </Button>
+          <Button asChild variant="hero" size="lg">
+            <a href="mailto:info@minetech.co.rw?subject=Investor%20Inquiry" onClick={() => trackCtaClick("email_team", { location: "investors_hero" })}>Email the Team</a>
+          </Button>
         </div>
-        <div className="container-slr relative z-10 py-20">
-          <div className="text-xs text-primary-light font-body uppercase tracking-[0.2em] mb-4">For Investors</div>
-          <h1 className="text-4xl md:text-6xl font-display leading-[1.1] mb-6 max-w-4xl">
-            Invest in the future of mining technology
-          </h1>
-          <p className="text-lg md:text-xl text-hero-foreground/80 font-body max-w-2xl mb-10">
-            MineTech is rebuilding mining operations on an intelligent, real-time foundation —
-            starting in Africa, the most underpenetrated and resource-rich mining market in the world.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Button asChild variant="hero-accent" size="lg" className="group">
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackCtaClick("book_a_call", { location: "investors_hero" })}>
-                Book a 30-min Call
-                <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-            </Button>
-            <Button asChild variant="hero" size="lg">
-              <a href="mailto:info@minetech.co.rw?subject=Investor%20Inquiry" onClick={() => trackCtaClick("email_team", { location: "investors_hero" })}>Email the Team</a>
-            </Button>
-          </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Why now */}
       <section className="py-16 md:py-24 bg-background">

@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/sections";
 import { trackCtaClick } from "@/lib/analytics";
 import osImg from "@/assets/product-os.jpg";
 import corpImg from "@/assets/product-corp.jpg";
@@ -226,50 +227,30 @@ export default function ProductPlaceholder() {
     <Layout>
       <SEO title={`${data.name} | MineTech`} description={data.oneLiner} />
 
-      {/* Hero with image */}
-      <section className="pt-32 pb-20 bg-hero text-hero-foreground">
-        <div className="container-slr">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-xs uppercase tracking-wider opacity-60 mb-4 font-body">
-                {data.name} &middot; {data.category}
-              </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
-                {data.outcome}
-              </h1>
-              <p className="text-lg md:text-xl opacity-80 font-body max-w-xl mb-8">
-                {data.oneLiner}
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/contact"
-                  onClick={() =>
-                    trackCtaClick("product_hero_cta", { product: data.product, source: `products/${product}` })
-                  }
-                >
-                  <Button variant="hero-accent" size="lg">Talk to us</Button>
-                </Link>
-                {data.audienceLinks.map((a) => (
-                  <Link key={a.href} to={a.href}>
-                    <Button variant="outline" size="lg" className="bg-transparent border-hero-foreground/40 text-hero-foreground hover:bg-hero-foreground/10">
-                      For {a.label}
-                    </Button>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="aspect-square w-full overflow-hidden border border-hero-foreground/10">
-              <img
-                src={data.image}
-                alt={`${data.name} in operation`}
-                width={1024}
-                height={1024}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+      <PageHero
+        title={data.outcome}
+        subtitle={data.oneLiner}
+        breadcrumb={data.name}
+        minHeight="md"
+      >
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            to="/contact"
+            onClick={() =>
+              trackCtaClick("product_hero_cta", { product: data.product, source: `products/${product}` })
+            }
+          >
+            <Button variant="hero-accent" size="lg">Talk to us</Button>
+          </Link>
+          {data.audienceLinks.map((a) => (
+            <Link key={a.href} to={a.href}>
+              <Button variant="outline" size="lg" className="bg-transparent border-hero-foreground/40 text-hero-foreground hover:bg-hero-foreground/10">
+                For {a.label}
+              </Button>
+            </Link>
+          ))}
         </div>
-      </section>
+      </PageHero>
 
       {/* Context */}
       <section className="py-20 bg-background" data-section="light">

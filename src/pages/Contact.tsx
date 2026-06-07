@@ -10,8 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import { SEO } from "@/components/SEO";
 import { supabase } from "@/integrations/supabase/client";
 import { trackFormSubmit } from "@/lib/analytics";
+import { PageHero } from "@/components/sections";
 import norrskenHouse from "@/assets/norrsken-house.webp";
-import contactHero from "@/assets/contact-hero.webp";
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,31 +40,7 @@ const Contact = () => {
         description="Get in touch with MineTech — Africa's leading mining technology startup. Reach our team in Kigali, Rwanda for demos, partnerships and investment inquiries."
         keywords="contact mining technology, MineTech Rwanda, mining tech demo, African mining startup contact"
       />
-      {/* Hero Section */}
-      <section className="relative bg-hero text-hero-foreground py-20 md:py-28 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
-            src={contactHero} 
-            alt="" 
-            className="w-full h-full object-cover opacity-60"
-            loading="eager"
-            fetchPriority="high"
-          decoding="async" />
-          <div className="absolute inset-0 bg-hero/70" />
-        </div>
-        
-        <div className="container-slr relative z-10">
-          <nav className="flex items-center gap-2 text-sm text-hero-foreground/60 mb-8 font-body">
-            <Link to="/" className="hover:text-hero-foreground">Home</Link>
-            <span>›</span>
-            <span>Contact</span>
-          </nav>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display leading-tight animate-slide-in-left">
-            Contact
-          </h1>
-        </div>
-      </section>
+      <PageHero title="Contact" breadcrumb="Contact" minHeight="sm" />
 
       {/* Location Section */}
       <section className="py-16 md:py-24 bg-secondary">
