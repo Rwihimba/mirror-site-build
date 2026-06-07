@@ -8,6 +8,7 @@ import osImg from "@/assets/product-os.jpg";
 import corpImg from "@/assets/product-corp.jpg";
 import traceImg from "@/assets/product-trace.jpg";
 import upstreamImg from "@/assets/product-upstream.jpg";
+import osHeroAsset from "@/assets/minetech-os-hero.png.asset.json";
 
 type ProductCopy = {
   product: string;
@@ -223,6 +224,11 @@ export default function ProductPlaceholder() {
     );
   }
 
+  const heroImage =
+    data.product === "os"
+      ? osHeroAsset.url
+      : "https://images.pexels.com/photos/32529341/pexels-photo-32529341.jpeg";
+
   return (
     <Layout>
       <SEO title={`${data.name} | MineTech`} description={data.oneLiner} />
@@ -232,7 +238,7 @@ export default function ProductPlaceholder() {
         subtitle={data.oneLiner}
         breadcrumb={data.name}
         minHeight="md"
-        imageAlt="https://images.pexels.com/photos/32529341/pexels-photo-32529341.jpeg"
+        imageAlt={heroImage}
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
