@@ -117,6 +117,7 @@ export function PageHero({
         {showSidePanel && (
           <div
             className="relative lg:absolute lg:right-0 lg:top-0 lg:w-[48%] h-[50vh] lg:h-[calc(100%-3rem)] lg:mt-8 lg:mr-0"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 85%)" }}
           >
             <img src={sidePanelSrc} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             <div className="absolute bottom-0 right-0 w-2/3 h-1/3 section-pattern opacity-40 pointer-events-none" />
