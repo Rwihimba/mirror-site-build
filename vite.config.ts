@@ -34,10 +34,17 @@ export default defineConfig(({ mode }) => ({
     mode !== "development" &&
       prerender({
         routes: PRERENDER_ROUTES,
-        renderer: "@prerenderer/renderer-jsdom",
+        renderer: "@prerenderer/renderer-puppeteer",
         rendererOptions: {
-          // wait for react-helmet to mutate <head>
-          renderAfterTime: 4000,
+          // Wait until react-helmet has mutated <head> and route content has rendered.
+          renderAfterTime: 2000,
+          maxConcurrentRoutes: 2,
+          launchOptions: {
+            executablePath:
+              process.env.PUPPETEER_EXECUTABLE_PATH || "/bin/chromium",
+            headless: "new",
+            args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+          },
         },
         postProcess(rendered: { route: string; html: string }) {
           // Strip dev-only inline scripts if any leak through
