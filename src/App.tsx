@@ -20,6 +20,9 @@ import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import AssignmentSubmit from "./pages/AssignmentSubmit";
+import SolutionPlaceholder from "./pages/SolutionPlaceholder";
+import ProductPlaceholder from "./pages/ProductPlaceholder";
+import TelcoInfrastructure from "./pages/TelcoInfrastructure";
 import { PageViewTracker } from "./components/PageViewTracker";
 import { ScrollToTop } from "./components/ScrollToTop";
 
@@ -51,6 +54,9 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/*" element={<Solutions />} />
+          <Route path="/solutions/:audience" element={<SolutionPlaceholder />} />
+          <Route path="/products/:product" element={<ProductPlaceholder />} />
+          <Route path="/infrastructure/telco" element={<TelcoInfrastructure />} />
           <Route path="/investors" element={<Investors />} />
           <Route path="/for-mining-companies" element={<ForMiningCompanies />} />
           <Route path="/partners" element={<Partners />} />
