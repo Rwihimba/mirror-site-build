@@ -18,3 +18,13 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </HelmetProvider>
 );
+
+// Tell the prerenderer the app is ready. Fires after first paint,
+// then once more after a short delay so per-route <Helmet> tags settle.
+if (typeof window !== "undefined") {
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.dispatchEvent(new Event("render-event"));
+    }, 1500);
+  });
+}
