@@ -1,10 +1,22 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Mail } from "lucide-react";
 
+const solutionsLinks = [
+  { title: "Cooperatives & ASM", href: "/solutions/cooperatives" },
+  { title: "Large & Mid Scale Miners", href: "/solutions/large-miners" },
+  { title: "Traders & Suppliers", href: "/solutions/traders" },
+];
+
+const productsLinks = [
+  { title: "Minetech OS", href: "/products/os" },
+  { title: "Minetech Corp", href: "/products/corp" },
+  { title: "Minetech Trace", href: "/products/trace" },
+  { title: "Minetech Upstream", href: "/products/upstream" },
+  { title: "Minetech Telco", href: "/infrastructure/telco" },
+];
+
 const companyLinks = [
-  { title: "About Us", href: "/about" },
-  { title: "Solutions", href: "/solutions" },
-  { title: "For Mining Companies", href: "/for-mining-companies" },
+  { title: "About", href: "/about" },
   { title: "Investors", href: "/investors" },
   { title: "Partners", href: "/partners" },
   { title: "Careers", href: "/careers" },
@@ -35,17 +47,59 @@ export function Footer() {
           <p className="text-lg font-display">Real-Time Mining Intelligence, Orchestrated.</p>
         </div>
 
-        {/* Company Links - Horizontal */}
-        <div className="flex flex-wrap items-center gap-6 mb-12">
-          {companyLinks.map((link) => (
-            <Link 
-              key={link.title} 
-              to={link.href} 
-              className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity"
-            >
-              {link.title}
-            </Link>
-          ))}
+        {/* Flat index — three columns, crawler friendly */}
+        <div className="grid md:grid-cols-3 gap-10 mb-12">
+          <div>
+            <h3 className="text-xs uppercase tracking-wider font-body opacity-60 mb-4">
+              Solutions
+            </h3>
+            <ul className="space-y-2">
+              {solutionsLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    to={l.href}
+                    className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity"
+                  >
+                    {l.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider font-body opacity-60 mb-4">
+              Products
+            </h3>
+            <ul className="space-y-2">
+              {productsLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    to={l.href}
+                    className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity"
+                  >
+                    {l.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs uppercase tracking-wider font-body opacity-60 mb-4">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              {companyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    to={l.href}
+                    className="text-sm font-body opacity-80 hover:opacity-100 transition-opacity"
+                  >
+                    {l.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Social Links */}
