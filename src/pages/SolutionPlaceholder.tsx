@@ -164,21 +164,87 @@ export default function SolutionPlaceholder() {
       </section>
 
       {/* The product */}
-      <section className="py-20 bg-background" data-section="light">
-        <div className="container-slr max-w-4xl">
-          <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3 font-body">
-            The product behind it
-          </p>
+      <section className="py-24 bg-hero text-hero-foreground relative overflow-hidden" data-section="dark">
+        {/* Editorial grid lines */}
+        <div
+          className="absolute inset-0 opacity-[0.06] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+          aria-hidden
+        />
+        {/* Ambient accent */}
+        <div
+          className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full pointer-events-none opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%)" }}
+          aria-hidden
+        />
+
+        <div className="container-slr max-w-6xl relative">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="h-px w-12 bg-primary" />
+            <p className="text-xs uppercase tracking-[0.2em] font-body opacity-70">
+              The product behind it
+            </p>
+          </div>
+
           <Link
             to={data.productHref}
-            className="block p-8 bg-card border border-border hover:border-primary transition-colors group"
+            className="group block relative border border-hero-foreground/15 hover:border-primary/60 transition-all duration-500 bg-hero-foreground/[0.02] hover:bg-hero-foreground/[0.04]"
           >
-            <h2 className="text-2xl font-display font-semibold mb-2">
-              {data.product}
-            </h2>
-            <p className="text-muted-foreground font-body">
-              See how it delivers this outcome.
-            </p>
+            {/* Corner marks */}
+            <span className="absolute top-0 left-0 w-3 h-3 border-t border-l border-primary" aria-hidden />
+            <span className="absolute top-0 right-0 w-3 h-3 border-t border-r border-primary" aria-hidden />
+            <span className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-primary" aria-hidden />
+            <span className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-primary" aria-hidden />
+
+            <div className="grid md:grid-cols-12 gap-0">
+              {/* Left: product identity */}
+              <div className="md:col-span-7 p-8 md:p-12 md:border-r border-hero-foreground/10 relative">
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span className="text-xs font-mono tracking-wider opacity-50">PRODUCT</span>
+                  <span className="h-px flex-1 bg-hero-foreground/15" />
+                  <span className="text-xs font-mono tracking-wider text-primary-light">
+                    {data.audience === "large_miners" ? "OS" : data.audience === "traders" ? "TRACE" : "CORP"}
+                  </span>
+                </div>
+
+                <h2 className="text-4xl md:text-5xl font-display font-semibold mb-4 leading-[1.05]">
+                  {data.product}
+                </h2>
+                <p className="text-lg md:text-xl font-body opacity-80 max-w-md mb-10 leading-relaxed">
+                  {data.productTagline}
+                </p>
+
+                <div className="inline-flex items-center gap-3 text-sm font-body tracking-wide border-b border-primary/40 pb-1 group-hover:border-primary transition-colors">
+                  <span>See how it delivers this outcome</span>
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+                    →
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: pillars */}
+              <div className="md:col-span-5 p-8 md:p-12 flex flex-col justify-center">
+                <p className="text-xs uppercase tracking-[0.2em] opacity-50 mb-6 font-body">
+                  What it ships with
+                </p>
+                <ul className="space-y-5">
+                  {data.productPillars.map((pillar, i) => (
+                    <li key={pillar} className="flex items-start gap-4 group/item">
+                      <span className="text-xs font-mono opacity-50 pt-1 w-6">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-body text-base md:text-lg leading-snug border-b border-transparent group-hover/item:border-primary/40 transition-colors">
+                        {pillar}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </Link>
         </div>
       </section>
