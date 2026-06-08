@@ -42,19 +42,11 @@ export default defineConfig(({ mode }) => ({
     mode !== "development" &&
       prerender({
         routes: PRERENDER_ROUTES,
-        renderer: "@prerenderer/renderer-puppeteer",
+        renderer: "@prerenderer/renderer-jsdom",
         rendererOptions: {
-          // App dispatches "render-event" once Helmet + route content settle.
           renderAfterDocumentEvent: "render-event",
-          // Belt and braces fallback in case the event never fires.
           timeout: 30000,
           maxConcurrentRoutes: 2,
-          launchOptions: {
-            executablePath:
-              process.env.PUPPETEER_EXECUTABLE_PATH || "/bin/chromium",
-            headless: "new",
-            args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-          },
         },
         postProcess(rendered: { route: string; html: string }) {
           // Strip dev-only inline scripts if any leak through
