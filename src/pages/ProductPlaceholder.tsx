@@ -226,7 +226,7 @@ export default function ProductPlaceholder() {
 
   const heroImage =
     data.product === "os"
-      ? osHeroAsset.url
+      ? "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1600"
       : "https://images.pexels.com/photos/32529341/pexels-photo-32529341.jpeg";
 
   return (
