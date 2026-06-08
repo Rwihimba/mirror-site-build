@@ -68,6 +68,7 @@ export default function Products() {
                     alt=""
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-body mb-3">
