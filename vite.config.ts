@@ -44,8 +44,7 @@ export default defineConfig(({ mode }) => ({
         routes: PRERENDER_ROUTES,
         renderer: "@prerenderer/renderer-jsdom",
         rendererOptions: {
-          renderAfterDocumentEvent: "render-event",
-          timeout: 30000,
+          renderAfterTime: 5000,
           maxConcurrentRoutes: 2,
         },
         postProcess(rendered: { route: string; html: string }) {
