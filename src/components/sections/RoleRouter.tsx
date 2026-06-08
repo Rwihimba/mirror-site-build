@@ -44,7 +44,7 @@ const CARDS: Card[] = [
     audience: "consultancy",
     title: "Consultancy",
     outcome: "This is for any player looking for customized solutions.",
-    href: "/solutions/consultancy",
+    href: "/contact",
     available: true,
     stage: "Advisory",
     index: "04",
