@@ -12,7 +12,6 @@ type Card = {
   index: string;
 };
 
-// Regulators door hidden until Minetech Oversight ships (Open Decision #1 = b).
 const CARDS: Card[] = [
   {
     audience: "cooperatives",
@@ -42,12 +41,12 @@ const CARDS: Card[] = [
     index: "03",
   },
   {
-    audience: "regulators",
-    title: "Regulators & Government",
-    outcome: "Coming soon. Live audit trail and royalty reconciliation.",
-    href: "#",
-    available: false,
-    stage: "Oversight",
+    audience: "consultancy",
+    title: "Consultancy",
+    outcome: "This is for any player looking for customized solutions.",
+    href: "/solutions/consultancy",
+    available: true,
+    stage: "Advisory",
     index: "04",
   },
 ];
@@ -55,21 +54,10 @@ const CARDS: Card[] = [
 export function RoleRouter({ source = "home" }: { source?: string }) {
   return (
     <section className="relative py-20 md:py-28 bg-secondary overflow-hidden" data-section="light">
-      {/* Editorial grain / corner marks */}
-      <div className="absolute top-8 right-8 hidden md:flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-foreground/40 font-body">
-        <span className="w-8 h-px bg-foreground/30" />
-        <span>Value Chain · 04 doors</span>
-      </div>
 
       <div className="container-slr relative">
         <div className="mb-16 grid lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-10 h-px bg-primary" />
-              <span className="text-[11px] uppercase tracking-[0.25em] text-primary font-body font-semibold">
-                Pick your door
-              </span>
-            </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-[1.05] text-foreground">
               Where do you sit
               <br />
@@ -89,7 +77,7 @@ export function RoleRouter({ source = "home" }: { source?: string }) {
         <div className="relative">
           <div className="hidden lg:block absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
           <div className="hidden lg:flex absolute -top-1.5 left-0 right-0 justify-between px-[12.5%] pointer-events-none">
-            {[0, 1, 2, 3].map((i) => (
+            {[0, 1, 2].map((i) => (
               <span key={i} className="w-3 h-3 bg-secondary border border-primary/60 rotate-45" />
             ))}
           </div>
