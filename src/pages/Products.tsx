@@ -13,7 +13,7 @@ const PRODUCTS = [
     name: "Minetech OS",
     category: "Operating system for mid and large scale mines",
     outcome: "One source of truth across geology, fleet, safety, finance and compliance.",
-    image: osHeroAsset.url,
+    image: "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg",
   },
   {
     slug: "corp",

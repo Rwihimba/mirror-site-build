@@ -34,7 +34,7 @@ const COPY: Record<string, ProductCopy> = {
     product: "os",
     name: "Minetech OS",
     category: "Operating system for mid and large scale mines",
-    image: osImg,
+    image: "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg",
     oneLiner:
       "The operating record for mid and large scale mines, from pit to plant.",
     outcome:
