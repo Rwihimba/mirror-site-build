@@ -11,6 +11,8 @@ type AudienceCopy = {
   outcome: string;
   product: string;
   productHref: string;
+  productTagline: string;
+  productPillars: string[];
   description: string;
   pains: string[];
   whatYouGet: { title: string; body: string }[];
@@ -25,6 +27,8 @@ const COPY: Record<string, AudienceCopy> = {
       "Every gram accounted for, compliant before the inspector arrives.",
     product: "Minetech Corp",
     productHref: "/products/corp",
+    productTagline: "Shared infrastructure for artisanal & small-scale mining.",
+    productPillars: ["Field-first capture", "iTSCi & OECD ready", "Buyer-grade dossiers"],
     description:
       "Shared infrastructure that lets cooperatives capture production, sales and compliance in one record. Built for the way ASM actually works in the field.",
     pains: [
@@ -47,6 +51,8 @@ const COPY: Record<string, AudienceCopy> = {
       "One operating record across geology, fleet, safety and finance.",
     product: "Minetech OS",
     productHref: "/products/os",
+    productTagline: "The operating layer for serious mines.",
+    productPillars: ["Grade control, live", "Fleet & maintenance", "Safety & workforce"],
     description:
       "The operating layer for serious mines. Grade control, fleet, safety and compliance stop living in spreadsheets and start living in one record every team plugs into.",
     pains: [
@@ -68,6 +74,8 @@ const COPY: Record<string, AudienceCopy> = {
     outcome: "Due diligence in a folder, not a quarter.",
     product: "Minetech Trace",
     productHref: "/products/trace",
+    productTagline: "Chain of custody, OECD-aligned, export in one click.",
+    productPillars: ["Lot-level traceability", "Pre-deal screening", "Audit-ready exports"],
     description:
       "Chain of custody and OECD ready dossiers, generated from the same record your suppliers already keep. Pair with Minetech Upstream to screen counterparties before the deal.",
     pains: [
