@@ -40,7 +40,7 @@ export const trackCtaClick = (label: string, extra: EventParams = {}) =>
 
 // Phase 2 demand-tracking helpers. All carry audience / product / source
 // so the admin Demand panel can later attribute every click to a door.
-export type Audience = "cooperatives" | "large_miners" | "traders" | "regulators";
+export type Audience = "cooperatives" | "large_miners" | "traders" | "regulators" | "consultancy";
 export type Product = "os" | "corp" | "trace" | "upstream" | "telco";
 
 export const trackRoleRouterClick = (
